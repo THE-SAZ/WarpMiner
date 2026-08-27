@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WarpMiner — Icon Generator</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#101322;color:#e8eaf3;padding:28px;line-height:1.6}
+h1{color:#a78bfa;margin:0 0 6px}
+p.sub{color:#8b91a7;margin:0 0 20px}
+code{background:#1c2138;padding:2px 6px;border-radius:6px;color:#67e8f9}
+.grid{display:flex;gap:20px;flex-wrap:wrap;margin:20px 0}
+.card{background:#171b2e;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px;text-align:center}
+.card canvas{border-radius:12px;background:#fff;display:block;margin:0 auto 12px}
+.card .name{font-weight:700;color:#67e8f9;font-size:13px;margin-bottom:2px}
+.card .size{color:#8b91a7;font-size:12px;margin-bottom:10px}
+button{background:linear-gradient(120deg,#a78bfa,#67e8f9);border:none;color:#0b0d16;font-weight:800;
+  padding:10px 16px;border-radius:10px;cursor:pointer;font-size:13px}
+button:hover{filter:brightness(1.1)}
+#all{margin:10px 0 24px;padding:14px 22px;font-size:15px}
+.note{background:rgba(103,232,249,.08);border:1px solid rgba(103,232,249,.3);border-radius:12px;padding:14px;margin-top:18px}
+</style>
+</head>
+<body>
+<h1>⛏ WarpMiner Icon Generator</h1>
+<p class="sub">Generates every PNG icon the PWA needs. Save each file into the <code>assets/</code> folder of your repository.</p>
+<button id="all" onclick="downloadAll()">⬇ Download All Icons</button>
+<div class="grid" id="grid"></div>
+<div class="note">
+  <strong>Where each file goes:</strong><br>
+  <code>icon-192.png</code>, <code>icon-512.png</code>, <code>icon-maskable.png</code> → referenced by <code>manifest.webmanifest</code><br>
+  <code>apple-touch-icon.png</code> → referenced by <code>&lt;link rel="apple-touch-icon"&gt;</code> for iOS home screen
+</div>
+<script>
+const SIZES=[
+  {name:'icon-192.png',size:192,maskable:false},
+  {name:'icon-512.png',size:512,maskable:false},
+  {name:'icon-maskable.png',size:512,maskable:true},
+  {name:'apple-touch-icon.png',size:180,maskable:false}
+];
+function roundRect(x,ctxX,ctxY,w,h,r,ctx){ctx.beginPath();ctx.moveTo(ctxX+r,ctxY);ctx.arcTo(ctxX+w,ctxY,ctxX+w,ctxY+h,r);
+  ctx.arcTo(ctxX+w,ctxY+h,ctxX,ctxY+h,r);ctx.arcTo(ctxX,ctxY+h,ctxX,ctxY,r);ctx.arcTo(ctxX,ctxY,ctxX+w,ctxY,r);ctx.closePath();}
+function drawIcon(size,maskable){
+  const c=document.createElement('canvas');c.width=size;c.height=size;
+  const x=c.getContext('2d');
+  // background
+  const r=size*0.22;
+  roundRect(1,0,0,size,size,r,x);
+  const bg=x.createLinearGradient(0,0,size,size);
+  bg.addColorStop(0,'#171b2e');bg.addColorStop(1,'#101322');
+  x.fillStyle=bg;x.fill();
+  // subtle border
+  x.strokeStyle='rgba(167,139,250,.4)';x.lineWidth=size*0.015;
+  roundRect(1,size*0.02,size*0.02,size*0.96,size*0.96,r*0.94,x);x.stroke();
+  // pickaxe (smaller for maskable safe-zone)
+  const s=maskable?size*0.5:size*0.62;
+  const cx=size/2,cy=size/2;
+  const grad=x.createLinearGradient(cx-s/2,cy-s/2,cx+s/2,cy+s/2);
+  grad.addColorStop(0,'#a78bfa');grad.addColorStop(0.5,'#67e8f9');grad.addColorStop(1,'#fcd34d');
+  x.strokeStyle=grad;x.lineCap='round';x.lineWidth=s*0.115;
+  const k=s/24;
+  x.save();x.translate(cx-s/2,cy-s/2);x.scale(k,k);
+  x.beginPath();x.moveTo(12.9,3.4);x.bezierCurveTo(16.5,3.7,19.5,6.4,20.6,11);x.bezierCurveTo(18.7,9.7,16.7,9,14.7,8.9);x.stroke();
+  x.beginPath();x.moveTo(12.9,3.4);x.bezierCurveTo(12.6,7,9.9,10,5.3,11.1);x.bezierCurveTo(6.6,9.2,7.3,7.2,7.4,5.2);x.stroke();
+  x.beginPath();x.moveTo(3.5,20.5);x.lineTo(12.5,11.5);x.stroke();
+  x.restore();
+  return c;
+}
+function buildCard(cfg){
+  const c=drawIcon(cfg.size,cfg.maskable);
+  const wrap=document.createElement('div');wrap.className='card';
+  const cv=document.createElement('canvas');
+  const disp=Math.min(cfg.size,160);cv.width=disp;cv.height=disp;
+  cv.getContext('2d').drawImage(c,0,0,disp,disp);
+  wrap.appendChild(cv);
+  wrap.insertAdjacentHTML('beforeend','<div class="name">'+cfg.name+'</div><div class="size">'+cfg.size+'×'+cfg.size+(cfg.maskable?' · maskable':'')+'</div>');
+  const btn=document.createElement('button');btn.textContent='⬇ Download';
+  btn.onclick=()=>{const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=cfg.name;a.click();};
+  wrap.appendChild(btn);
+  cfg._canvas=c;
+  return wrap;
+}
+const grid=document.getElementById('grid');
+SIZES.forEach(cfg=>grid.appendChild(buildCard(cfg)));
+function downloadAll(){SIZES.forEach((cfg,i)=>setTimeout(()=>{
+  const a=document.createElement('a');a.href=cfg._canvas.toDataURL('image/png');a.download=cfg.name;a.click();
+},i*400));}
+</script>
+</body>
+</html>
