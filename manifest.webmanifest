@@ -1,0 +1,38 @@
+{
+  "name": "WarpMiner — AmneziaWG Config Forge",
+  "short_name": "WarpMiner",
+  "description": "Forge WARP-compatible AmneziaWG configs instantly. Fully offline PWA by THE SAZ.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "fullscreen"],
+  "orientation": "portrait-primary",
+  "background_color": "#101322",
+  "theme_color": "#101322",
+  "lang": "fa",
+  "dir": "rtl",
+  "categories": ["utilities", "productivity", "developer-tools", "vpn"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Forge Config",
+      "short_name": "Forge",
+      "description": "Jump to the config forge panel",
+      "url": "./#forge",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "IP Vault",
+      "short_name": "Vault",
+      "description": "Open the endpoint vault",
+      "url": "./#vault",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

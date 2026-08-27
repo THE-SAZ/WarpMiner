@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>⛏ WarpMiner — AmneziaWG Config Forge</title>
+<meta name="description" content="Forge WARP-compatible AmneziaWG configs instantly. Offline PWA by THE SAZ.">
+<meta name="theme-color" content="#101322">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="WarpMiner">
+<meta name="application-name" content="WarpMiner">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23101322'/%3E%3Cpath d='M54 14c15 1 27 12 32 31-8-5-16-8-24-8M54 14c-1 15-12 27-31 32 5-8 8-16 8-24M14 85l38-38' stroke='%23a78bfa' stroke-width='9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" onerror="this.remove()">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#101322;--panel:rgba(255,255,255,.045);--panel-solid:#171b2e;--panel-hover:rgba(255,255,255,.07);
+  --stroke:rgba(255,255,255,.09);--stroke-strong:rgba(255,255,255,.16);
+  --tx:#e8eaf3;--mut:#8b91a7;--mut2:#5d6376;
+  --acc:#a78bfa;--acc-soft:rgba(167,139,250,.16);
+  --acc2:#67e8f9;--acc2-soft:rgba(103,232,249,.14);
+  --ok:#6ee7b7;--ok-soft:rgba(110,231,183,.14);
+  --warn:#fcd34d;--warn-soft:rgba(252,211,77,.14);
+  --err:#fda4af;--err-soft:rgba(253,164,175,.14);
+  --info:#93c5fd;--info-soft:rgba(147,197,253,.14);
+  --star:#fcd34d;
+  --rad:18px;--rad-s:12px;--pad:18px;
+  --ff:'Vazirmatn','Estedad','IRANSansX','Segoe UI',Tahoma,Arial,sans-serif;
+  --mono:'Vazirmatn',ui-monospace,'Cascadia Code',Consolas,monospace;
+  --shadow:0 8px 30px rgba(0,0,0,.28);--shadow-sm:0 4px 14px rgba(0,0,0,.2);
+}
+body[data-theme=ocean]{--acc:#60a5fa;--acc-soft:rgba(96,165,250,.16);--acc2:#67e8f9;--acc2-soft:rgba(103,232,249,.14)}
+body[data-theme=sunset]{--acc:#f9a8d4;--acc-soft:rgba(249,168,212,.16);--acc2:#fcd34d;--acc2-soft:rgba(252,211,77,.14)}
+body[data-theme=forest]{--acc:#6ee7b7;--acc-soft:rgba(110,231,183,.16);--acc2:#a7f3d0;--acc2-soft:rgba(167,243,208,.14)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--ff);font-size:14px;color:var(--tx);background:var(--bg);min-height:100vh;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:-10%;z-index:-2;pointer-events:none;
+  background:radial-gradient(600px 400px at 15% 15%,var(--acc-soft),transparent 60%),
+  radial-gradient(700px 500px at 85% 85%,var(--acc2-soft),transparent 60%);
+  animation:aurora 30s ease-in-out infinite alternate}
+@keyframes aurora{0%{transform:translate(0,0)}50%{transform:translate(2%,-2%) scale(1.04)}100%{transform:translate(-1%,2%)}}
+body.noaurora::before{animation:none;opacity:.5}
+body.dense{--pad:12px;font-size:13px}
+body.noanim *,body.noanim *::before,body.noanim *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+::selection{background:var(--acc);color:#0b0d16}
+button{font-family:inherit}input,select,textarea{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-3px}
+.ic.sm{width:15px;height:15px}.ic.lg{width:22px;height:22px}
+.panel{animation:fadeUp .6s cubic-bezier(.22,.8,.3,1) both;animation-delay:var(--d,0ms)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.wrap{max-width:1080px;margin:0 auto;padding:16px 16px 40px}
+header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:13px 18px;margin-bottom:20px;background:rgba(23,27,46,.75);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--acc);
+  background:linear-gradient(135deg,var(--acc-soft),var(--acc2-soft));
+  border:1px solid var(--stroke-strong);position:relative;overflow:hidden;flex:none}
+.logo::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
+  transform:translateX(-100%);animation:sheen 4s ease-in-out infinite}
+@keyframes sheen{0%,60%{transform:translateX(-100%)}90%,100%{transform:translateX(100%)}}
+.logo .ic{width:24px;height:24px;animation:dig 1.8s ease-in-out infinite}
+@keyframes dig{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg) translateY(1px)}}
+.brand-txt{min-width:0}
+.brand h1{font-size:19px;font-weight:900;line-height:1.1;white-space:nowrap}
+.brand h1 b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.brand small{display:block;font-size:11px;color:var(--mut);font-weight:600;margin-top:1px;white-space:nowrap}
+.hstatus{display:flex;align-items:center;gap:7px;margin-right:auto}
+.led{width:9px;height:9px;border-radius:50%;background:var(--warn);box-shadow:0 0 0 3px var(--warn-soft);flex:none;animation:pulse 2s infinite}
+.led.on{background:var(--ok);box-shadow:0 0 0 3px var(--ok-soft)}
+.led.err{background:var(--err);box-shadow:0 0 0 3px var(--err-soft)}
+@keyframes pulse{50%{opacity:.5}}
+#netTxt{font-size:11px;color:var(--mut);font-weight:600;white-space:nowrap}
+.hbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--panel);
+  border:1px solid var(--stroke);color:var(--tx);border-radius:12px;padding:9px 13px;cursor:pointer;
+  font-size:13px;font-weight:600;transition:.2s;position:relative;flex:none}
+.hbtn:hover{background:var(--panel-hover);border-color:var(--acc);transform:translateY(-1px)}
+.hbtn:active{transform:scale(.95)}
+.badge{position:absolute;top:-5px;left:-5px;background:var(--acc);color:#0b0d16;font-size:9px;font-weight:800;
+  min-width:16px;height:16px;border-radius:8px;display:grid;place-items:center;padding:0 4px}
+.panel{background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--stroke);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;transition:border-color .25s}
+.panel:hover{border-color:var(--stroke-strong)}
+.p-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px var(--pad);border-bottom:1px solid var(--stroke)}
+.p-head h2{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;color:var(--tx)}
+.p-head h2 .ic{color:var(--acc)}
+.p-tools{margin-right:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.p-body{padding:var(--pad)}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--panel);
+  border:1px solid var(--stroke);color:var(--tx);border-radius:11px;padding:9px 13px;cursor:pointer;
+  font-size:13px;font-weight:600;transition:.2s;white-space:nowrap}
+.tbtn:hover:not(:disabled){background:var(--panel-hover);border-color:var(--acc);transform:translateY(-1px)}
+.tbtn:active:not(:disabled){transform:scale(.96)}
+.tbtn:disabled{opacity:.35;cursor:not-allowed}
+.tbtn.primary{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;border:none;font-weight:800;box-shadow:var(--shadow-sm)}
+.tbtn.primary:hover:not(:disabled){filter:brightness(1.1);box-shadow:0 6px 20px var(--acc-soft)}
+.tbtn.danger{background:var(--err-soft);border-color:var(--err);color:var(--err)}
+.tbtn.warn{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.tbtn.mini{padding:5px 9px;font-size:12px;border-radius:9px}
+.chip{display:inline-flex;align-items:center;gap:5px;background:var(--panel);border:1px solid var(--stroke);
+  border-radius:99px;padding:3px 11px;font-size:12px;color:var(--mut);font-weight:600;white-space:nowrap}
+.chip b{color:var(--acc);font-weight:800}
+.chip.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.chip.warn{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+.chip.err{border-color:var(--err);color:var(--err);background:var(--err-soft)}
+.chip.acc{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+label{display:block;color:var(--mut);font-size:12px;font-weight:700;margin:10px 0 5px}
+input[type=text],input[type=number],input[type=url],select,textarea{width:100%;background:rgba(11,13,22,.5);
+  border:1px solid var(--stroke);color:var(--tx);border-radius:11px;padding:10px 13px;font-size:13px;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+input:read-only{color:var(--mut)}
+textarea{resize:vertical;font-family:var(--mono);font-size:12px;line-height:1.7;direction:ltr;text-align:left}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b91a7' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:left 12px center;padding-left:30px}
+.row{display:flex;gap:9px;flex-wrap:wrap}.row>*{flex:1;min-width:110px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;cursor:pointer}
+.chk input{width:17px;height:17px;accent-color:var(--acc);cursor:pointer}
+.hiddenEl{display:none!important}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vault-search{position:relative;margin-bottom:12px}
+.vault-search input{padding-right:40px}
+.vault-search .sic{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none;display:flex}
+.vault-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.vault-toolbar{display:flex;gap:8px;overflow-x:auto;flex-wrap:nowrap;padding:2px 2px 10px;margin-bottom:8px;
+  scrollbar-width:thin;scrollbar-color:var(--acc) rgba(255,255,255,.07)}
+.vault-toolbar::-webkit-scrollbar{height:7px}
+.vault-toolbar::-webkit-scrollbar-track{background:rgba(255,255,255,.07);border-radius:4px}
+.vault-toolbar::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:4px}
+.vault-toolbar .tbtn{flex:0 0 auto}
+.port-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;max-height:0;overflow:hidden;transition:max-height .3s}
+.port-filter.open{max-height:220px;overflow-y:auto}
+.port-filter button{background:var(--panel);border:1px solid var(--stroke);color:var(--mut);border-radius:99px;
+  padding:3px 10px;font-size:11px;cursor:pointer;font-family:var(--mono);direction:ltr;transition:.15s}
+.port-filter button.on{background:var(--acc-soft);border-color:var(--acc);color:var(--acc)}
+.vault-list{border:1px solid var(--stroke);border-radius:var(--rad-s);overflow-y:auto;background:rgba(11,13,22,.35);
+  max-height:420px;scrollbar-width:thin;scrollbar-color:var(--acc) rgba(255,255,255,.05)}
+.vault-list::-webkit-scrollbar{width:7px}
+.vault-list::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}
+.vault-list::-webkit-scrollbar-thumb{background:linear-gradient(var(--acc),var(--acc2));border-radius:4px}
+.vhead{display:grid;grid-template-columns:18px 28px 1fr auto auto;gap:8px;align-items:center;
+  padding:9px 12px;position:sticky;top:0;background:var(--panel-solid);z-index:2;
+  font-size:11px;color:var(--mut);font-weight:700;border-bottom:1px solid var(--stroke)}
+.vhead .hact{text-align:center}
+.vrow{display:grid;grid-template-columns:18px 28px 1fr auto auto;gap:8px;align-items:center;
+  padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04);transition:.15s}
+.vrow:last-child{border-bottom:none}
+.vrow:nth-child(even){background:rgba(255,255,255,.02)}
+.vrow:hover{background:var(--panel-hover)}
+.vrow.selected{background:var(--acc-soft)}
+.vrow input[type=checkbox]{width:16px;height:16px;accent-color:var(--acc);cursor:pointer}
+.vstar{background:none;border:none;cursor:pointer;color:var(--mut2);transition:.15s;padding:2px;display:flex;align-items:center}
+.vstar:hover{transform:scale(1.2)}
+.vstar.on{color:var(--star)}
+.vstar.on .ic{fill:var(--star);stroke:var(--star)}
+.vep{font-family:var(--mono);font-size:13px;direction:ltr;text-align:left;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vep b{color:var(--acc2);font-weight:700}
+.vport{font-family:var(--mono);font-size:11px;color:var(--acc2);background:var(--acc2-soft);padding:2px 8px;border-radius:99px;direction:ltr}
+.vacts{display:flex;gap:4px;justify-content:flex-end}
+.vacts .tbtn{padding:5px 7px;font-size:12px;min-width:30px}
+.vault-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px;border-top:1px solid var(--stroke)}
+.vault-empty{padding:34px;text-align:center;color:var(--mut);font-size:13px}
+.ep-row{display:flex;gap:9px;align-items:stretch}
+.ep-row input{flex:1;min-width:0}
+.auto-btn{flex:none;display:inline-flex;align-items:center;gap:6px;padding:0 16px}
+#endpoint{direction:ltr;text-align:center;font-family:var(--mono);font-size:16px;color:var(--acc2);
+  background:rgba(11,13,22,.6);border:2px solid var(--stroke-strong);padding:13px;border-radius:14px;font-weight:700}
+.seg{display:flex;background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:13px;padding:4px;gap:4px;margin-top:6px}
+.seg button{flex:1;border:none;background:transparent;color:var(--mut);border-radius:10px;padding:10px 6px;
+  cursor:pointer;font-size:13px;font-weight:700;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.seg button.on{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;box-shadow:var(--shadow-sm)}
+.seg button:not(.on):hover{color:var(--tx);background:var(--panel)}
+.presets{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.presets button{background:var(--panel);border:1px solid var(--stroke);border-radius:12px;padding:11px 4px;
+  color:var(--tx);cursor:pointer;font-size:12px;font-weight:700;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.presets button .ic{width:20px;height:20px}
+.presets button:hover,.presets button.on{border-color:var(--acc);background:var(--acc-soft);transform:translateY(-1px)}
+.presets small{color:var(--mut);font-weight:400;font-size:10px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;padding:0;border:none;
+  background:linear-gradient(90deg,var(--acc),rgba(255,255,255,.1));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:#fff;box-shadow:0 0 0 4px var(--acc-soft),0 2px 8px rgba(0,0,0,.3);cursor:pointer}
+.sl-row{display:grid;grid-template-columns:120px 1fr 46px;align-items:center;gap:12px;margin-top:12px}
+.sl-row span{font-size:12px;color:var(--mut);font-weight:600}
+.sl-row b{font-family:var(--mono);color:var(--acc);font-size:14px;text-align:center}
+.i-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px;margin-top:7px}
+.forge-btn{width:100%;margin-top:16px;padding:15px;font-size:16px;font-weight:900;border:none;border-radius:14px;
+  background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;cursor:pointer;box-shadow:var(--shadow-sm);
+  transition:.2s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px}
+.forge-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .6s}
+.forge-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--acc-soft)}
+.forge-btn:hover::after{transform:translateX(100%)}
+.forge-btn:active{transform:scale(.98)}
+.acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+#out{min-height:230px;background:rgba(11,13,22,.6);border:1px solid var(--stroke-strong);color:var(--ok);border-radius:14px}
+#sanity{font-size:11px;font-weight:800;padding:4px 11px;border-radius:99px;border:1px solid var(--stroke);display:inline-flex;align-items:center;gap:5px}
+#sanity.pass{color:var(--ok);border-color:var(--ok);background:var(--ok-soft)}
+#sanity.warn{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
+#sanity.fail{color:var(--err);border-color:var(--err);background:var(--err-soft)}
+.flash{animation:fl .9s}@keyframes fl{0%{box-shadow:0 0 0 4px var(--acc-soft)}100%{box-shadow:var(--shadow)}}
+.qr-single-box{display:grid;place-items:center;padding:18px;background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:16px;margin-top:14px;animation:fadeUp .4s}
+.qr-single-box canvas{border-radius:12px;max-width:100%;height:auto}
+.qr-actions{display:flex;gap:9px;margin-top:12px}
+.mbk{position:fixed;inset:0;background:rgba(10,12,20,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.mbk.open{display:flex}
+.modal{width:min(640px,96vw);max-height:86vh;max-height:86dvh;overflow:hidden;display:flex;flex-direction:column;
+  background:var(--panel-solid);border:1px solid var(--stroke-strong);border-radius:20px;box-shadow:var(--shadow);animation:pop .3s cubic-bezier(.22,1.2,.3,1)}
+.modal.wide{width:min(1000px,96vw)}
+@keyframes pop{from{transform:scale(.92) translateY(16px);opacity:0}}
+.m-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:15px 18px;border-bottom:1px solid var(--stroke);flex:none}
+.m-head h3{font-size:15px;font-weight:800;color:var(--acc);display:flex;align-items:center;gap:8px}
+.m-close{margin-right:auto;background:var(--panel);border:1px solid var(--stroke);color:var(--tx);width:32px;height:32px;
+  border-radius:10px;cursor:pointer;flex:none;transition:.15s;display:grid;place-items:center}
+.m-close:hover{background:var(--err-soft);border-color:var(--err);color:var(--err)}
+.m-body{padding:18px;overflow-y:auto}
+.cat{display:flex;align-items:center;gap:12px;margin:22px 0 10px;font-size:12px;font-weight:800;color:var(--acc);letter-spacing:1px}
+.cat:first-child{margin-top:0}
+.cat .ic{width:16px;height:16px}
+.cat::before,.cat::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--acc-soft))}
+.cat::after{background:linear-gradient(90deg,var(--acc-soft),transparent)}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 4px;border-bottom:1px dashed rgba(255,255,255,.06)}
+.set-row label{margin:0;flex:1;color:var(--tx);font-size:13px;font-weight:600}
+.set-row small{display:block;color:var(--mut);font-weight:400;font-size:11px;margin-top:2px}
+.set-row input[type=checkbox]{width:19px;height:19px;accent-color:var(--acc);flex:none;cursor:pointer}
+.set-row select,.set-row input[type=number],.set-row input[type=text],.set-row input[type=url]{width:170px;flex:none}
+.set-row input[type=range]{width:150px;flex:none}
+.swatches{display:flex;gap:9px}
+.sw{width:34px;height:34px;border-radius:11px;cursor:pointer;border:2px solid transparent;transition:.2s;flex:none}
+.sw:hover{transform:scale(1.1)}
+.sw.on{border-color:#fff;box-shadow:0 0 0 3px var(--acc-soft)}
+.log-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.log-filters{display:flex;gap:6px;flex-wrap:wrap}
+.log-filters button{background:var(--panel);border:1px solid var(--stroke);color:var(--mut);border-radius:99px;
+  padding:4px 11px;font-size:11px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.log-filters button.on{color:#0b0d16;font-weight:700}
+.log-filters button.on[data-f=i]{background:var(--info);border-color:var(--info)}
+.log-filters button.on[data-f=o]{background:var(--ok);border-color:var(--ok)}
+.log-filters button.on[data-f=w]{background:var(--warn);border-color:var(--warn)}
+.log-filters button.on[data-f=e]{background:var(--err);border-color:var(--err)}
+#logBox{font-family:var(--mono);font-size:12px;direction:ltr;text-align:left;background:rgba(11,13,22,.6);
+  border:1px solid var(--stroke);border-radius:12px;padding:13px;min-height:240px;max-height:46vh;overflow-y:auto;line-height:1.9}
+.log-row{animation:logIn .3s both}@keyframes logIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1}}
+.lv{display:inline-block;width:16px;font-weight:800}
+.lv.o{color:var(--ok)}.lv.i{color:var(--info)}.lv.w{color:var(--warn)}.lv.e{color:var(--err)}
+#logBox .t{color:var(--mut2);font-size:10px}
+.log-stats{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.help h4{color:var(--acc);margin:16px 0 7px;font-size:14px;font-weight:800;display:flex;align-items:center;gap:7px}
+.help p,.help li{color:#c5c9d8;font-size:13px;line-height:2}
+.help code{background:rgba(11,13,22,.6);border:1px solid var(--stroke);border-radius:6px;padding:1px 7px;font-size:11px;direction:ltr;display:inline-block;font-family:var(--mono);color:var(--ok)}
+.bulk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px}
+.bcard{background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:14px;padding:13px;border-top:3px solid var(--acc);transition:.2s;animation:fadeUp .4s both}
+.bcard:hover{transform:translateY(-2px);border-color:var(--stroke-strong)}
+.bcard-h{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.rank{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:800}
+.bcard-h .ep{font-family:var(--mono);font-size:12px;direction:ltr;color:var(--acc2)}
+.qr-box{background:#fff;border-radius:12px;padding:8px;display:grid;place-items:center;margin:5px 0}
+.qr-box canvas{display:block;width:100%;max-width:190px;height:auto;border-radius:6px}
+.bcfg summary{cursor:pointer;color:var(--acc);font-size:11px;margin-top:9px;user-select:none;font-weight:600;display:flex;align-items:center;gap:5px}
+.bcfg textarea{margin-top:6px;font-size:10px;line-height:1.5}
+.bcard-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:9px}
+.bcard-btns .tbtn{padding:7px 3px;font-size:12px}
+.wiw-list{max-height:56vh;overflow-y:auto;border:1px solid var(--stroke);border-radius:12px;background:rgba(11,13,22,.35);margin-top:12px}
+.wiw-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:.15s}
+.wiw-item:hover{background:var(--panel-hover)}
+.wiw-item.disabled{opacity:.4;cursor:not-allowed}
+.wiw-item .ep{font-family:var(--mono);font-size:13px;direction:ltr;text-align:left}
+#toasts{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;max-width:340px;width:calc(100% - 32px);align-items:center}
+.toast{background:var(--panel-solid);border:1px solid var(--acc);border-radius:13px;padding:11px 18px;font-size:13px;
+  box-shadow:var(--shadow);animation:tin .3s cubic-bezier(.22,1.2,.3,1);display:flex;align-items:center;gap:9px;color:var(--tx);font-weight:600;max-width:100%}
+.toast.err{border-color:var(--err)}.toast.ok{border-color:var(--ok)}.toast.info{border-color:var(--info)}
+@keyframes tin{from{opacity:0;transform:translateY(14px) scale(.95)}}
+.devbar{text-align:center;padding:10px 16px 34px}
+.devbar-links{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-bottom:18px}
+.devlink{display:flex;align-items:center;gap:9px;padding:11px 20px;background:var(--panel);border:1px solid var(--stroke);
+  border-radius:13px;color:var(--tx);text-decoration:none;font-size:13px;font-weight:700;transition:.2s}
+.devlink:hover{border-color:var(--acc);background:var(--acc-soft);transform:translateY(-2px);color:var(--acc)}
+.devlink .ic{width:18px;height:18px}
+.devbar-sign{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;margin-top:6px;
+  background:linear-gradient(120deg,var(--acc-soft),var(--acc2-soft));
+  border:1px solid var(--stroke-strong);border-radius:99px;font-size:14px;font-weight:700;box-shadow:var(--shadow-sm)}
+.devbar-sign .ic{color:var(--acc)}
+.devbar-sign b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;letter-spacing:.5px}
+.devbar-sign .flag{color:var(--acc2)}.devbar-sign .heart{color:var(--err)}
+.devbar-copy{color:var(--mut2);font-size:11px;margin-top:10px}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:var(--acc)}
+::-webkit-scrollbar-track{background:transparent}
+@media(min-width:900px){.wrap{padding:24px 24px 60px}}
+@media(max-width:760px){
+  body{font-size:13.5px}
+  .wrap{padding:12px 12px 30px}
+  header{flex-wrap:nowrap;gap:7px;padding:9px 12px;top:8px;border-radius:16px}
+  .logo{width:38px;height:38px;border-radius:11px}
+  .logo .ic{width:20px;height:20px}
+  .brand h1{font-size:15px}
+  .brand small{display:none}
+  .hstatus{gap:5px}
+  #netTxt{display:none}
+  .hbtn{width:36px;height:36px;padding:0}
+  .hbtn .tx-label{display:none}
+  .p-body{padding:14px}.p-head{padding:13px 14px}
+  .grid2{grid-template-columns:1fr;gap:14px}
+  .presets{grid-template-columns:1fr 1fr}
+  .sl-row{grid-template-columns:80px 1fr 36px;gap:8px}.sl-row span{font-size:11px}
+  .acc-grid{grid-template-columns:1fr 1fr}
+  .i-grid{grid-template-columns:1fr 1fr}
+  #endpoint{font-size:13px;padding:11px}
+  .ep-row{gap:7px}
+  .auto-btn{padding:0 12px;font-size:12px}
+  .auto-btn .lbl{display:none}
+  .mbk{padding:0;align-items:flex-end}
+  .modal{width:100%;max-height:92dvh;border-radius:20px 20px 0 0;border-left:none;border-right:none;border-bottom:none}
+  .m-body{padding:16px}
+  .vault-toolbar .tbtn{font-size:12px;padding:8px 10px}
+  .vault-list{max-height:300px}
+  .vrow{grid-template-columns:16px 26px 1fr auto auto;gap:6px;padding:7px 10px}
+  .vacts .tbtn{padding:4px 6px;min-width:27px}
+  .vport{font-size:10px;padding:1px 6px}
+  #toasts{bottom:14px}
+  .devbar-links{flex-direction:column;align-items:stretch}
+  .devlink{justify-content:center}
+  .devbar-sign{font-size:13px;padding:11px 18px;flex-wrap:wrap;justify-content:center}
+  .set-row select,.set-row input[type=number],.set-row input[type=text],.set-row input[type=url],.set-row input[type=range]{width:128px}
+  .forge-btn{font-size:15px;padding:14px}
+  .bulk-grid{grid-template-columns:1fr}
+}
+@media(min-width:761px) and (max-width:1000px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-theme="violet" lang="fa" dir="rtl">
+
+<!-- ═══ اسپرایت آیکون‌ها ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="i-pick" viewBox="0 0 24 24"><path d="M12.9 3.4c3.6.3 6.6 3 7.7 7.6-1.9-1.3-3.9-2-5.9-2.1"/><path d="M12.9 3.4c-.3 3.6-3 6.6-7.6 7.7 1.3-1.9 2-3.9 2.1-5.9"/><line x1="3.5" y1="20.5" x2="12.5" y2="11.5"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+<symbol id="i-sort" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
+<symbol id="i-shuffle" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></symbol>
+<symbol id="i-xcircle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></symbol>
+<symbol id="i-dice" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-feather" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4.4 0 8-3.1 8-7.5 0-3.5-2.5-6.2-4.5-8.5-.7 1.8-1.7 2.8-2.8 3.6C11.6 7.6 11 5.6 11.2 3 8.5 5.5 6 8.6 6 13c0 4.9 2.6 9 6 9z"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></symbol>
+<symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M20 14v2"/><path d="M14 20h2"/><path d="M19 19h2v2h-2z"/></symbol>
+<symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M12 22L8 9l4-6 4 6-4 13"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+</defs>
+</svg>
+
+<div class="wrap">
+<header>
+  <div class="brand">
+    <div class="logo"><svg class="ic"><use href="#i-pick"/></svg></div>
+    <div class="brand-txt">
+      <h1><b>WarpMiner</b></h1>
+      <small data-t="subtitle">نسخه 0.6.8 · ققنوس</small>
+    </div>
+  </div>
+  <div class="hstatus">
+    <span class="led" id="netLed"></span>
+    <span id="netTxt" data-t="standby">آماده</span>
+  </div>
+  <button class="hbtn" onclick="openM('m-settings')" title="تنظیمات"><svg class="ic"><use href="#i-sliders"/></svg><span class="tx-label" data-t="set">تنظیمات</span></button>
+  <button class="hbtn" onclick="openM('m-log')" title="لاگ"><svg class="ic"><use href="#i-list"/></svg><span class="tx-label" data-t="log">لاگ</span><b class="badge" id="logBadge">0</b></button>
+  <button class="hbtn" onclick="openM('m-help')" title="راهنما"><svg class="ic"><use href="#i-help"/></svg><span class="tx-label" data-t="help">راهنما</span></button>
+</header>
+
+<section class="panel" style="--d:0ms">
+  <div class="p-head">
+    <h2><svg class="ic"><use href="#i-box"/></svg> <span data-t="vaultTitle">مخزن آی‌پی‌ها</span></h2>
+    <div class="p-tools">
+      <span class="chip acc"><span data-t="total">کل</span> <b id="stTotal">0</b></span>
+      <span class="chip"><span data-t="unique">یکتا</span> <b id="stUnique">0</b></span>
+      <span class="chip warn"><svg class="ic sm"><use href="#i-star"/></svg> <b id="stStar">0</b></span>
+      <span class="chip ok"><span data-t="ports">پورت</span> <b id="stPorts">0</b></span>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="vault-search">
+      <input type="text" id="vSearch" data-t-ph="searchPh" placeholder="جستجوی آی‌پی یا پورت…" oninput="renderVault()">
+      <span class="sic"><svg class="ic sm"><use href="#i-search"/></svg></span>
+    </div>
+    <div class="port-filter" id="portFilter"></div>
+    <div class="vault-toolbar">
+      <button class="tbtn primary" onclick="openM('m-add')"><svg class="ic sm"><use href="#i-plus"/></svg><span data-t="add">افزودن</span></button>
+      <button class="tbtn" onclick="togglePortFilter()"><svg class="ic sm"><use href="#i-filter"/></svg><span data-t="filterPort">فیلتر پورت</span></button>
+      <button class="tbtn" onclick="sortVault('ip')"><svg class="ic sm"><use href="#i-sort"/></svg><span data-t="sortIp">مرتب‌سازی آی‌پی</span></button>
+      <button class="tbtn" onclick="sortVault('port')"><svg class="ic sm"><use href="#i-sort"/></svg><span data-t="sortPort">مرتب‌سازی پورت</span></button>
+      <button class="tbtn" onclick="shuffleVault()"><svg class="ic sm"><use href="#i-shuffle"/></svg><span data-t="shuffle">بر زدن</span></button>
+      <button class="tbtn warn" onclick="dedupeVault()"><svg class="ic sm"><use href="#i-xcircle"/></svg><span data-t="dedupe">حذف تکراری</span></button>
+      <button class="tbtn" onclick="copyVault()"><svg class="ic sm"><use href="#i-copy"/></svg><span data-t="copyList">کپی لیست</span></button>
+      <button class="tbtn" onclick="openM('m-import')"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="importList">ایمپورت</span></button>
+      <button class="tbtn" onclick="exportVault()"><svg class="ic sm"><use href="#i-upload"/></svg><span data-t="exportList">خروجی</span></button>
+      <button class="tbtn" onclick="openM('m-slots')"><svg class="ic sm"><use href="#i-grid"/></svg><span data-t="slots">اسلات‌ها</span></button>
+      <button class="tbtn danger" onclick="resetVault()"><svg class="ic sm"><use href="#i-refresh"/></svg><span data-t="resetDefault">پیش‌فرض</span></button>
+    </div>
+    <div class="vault-list" id="vaultList"></div>
+    <div class="vault-foot">
+      <label class="chk" style="margin:0"><input type="checkbox" id="selAll" onchange="toggleSelAll()"><span data-t="selAll">انتخاب همه</span></label>
+      <span class="chip"><span data-t="selected">انتخاب‌شده</span> <b id="selCount">0</b></span>
+      <div class="p-tools">
+        <button class="tbtn mini" onclick="pickRandom()"><svg class="ic sm"><use href="#i-dice"/></svg><span data-t="random">تصادفی</span></button>
+        <button class="tbtn mini" onclick="useFirstAsTarget()"><svg class="ic sm"><use href="#i-target"/></svg><span data-t="useFirst">اولی → هدف</span></button>
+        <button class="tbtn mini danger" onclick="deleteSelected()"><svg class="ic sm"><use href="#i-trash"/></svg><span data-t="delSel">حذف انتخاب‌شده</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid2">
+<section class="panel" style="--d:90ms">
+  <div class="p-head">
+    <h2><svg class="ic"><use href="#i-tool"/></svg> <span data-t="forgeTitle">فورج کانفیگ</span></h2>
+    <div class="p-tools">
+      <button class="tbtn mini" onclick="useFirstAsTarget()" title="Target"><svg class="ic sm"><use href="#i-target"/></svg></button>
+      <button class="tbtn mini" onclick="pickRandom()" title="Random"><svg class="ic sm"><use href="#i-dice"/></svg></button>
+    </div>
+  </div>
+  <div class="p-body">
+    <label data-t="targetEp">اندپوینت هدف</label>
+    <div class="ep-row">
+      <input id="endpoint" data-t-ph="noneSel" placeholder="— انتخاب نشده —" spellcheck="false" autocomplete="off">
+      <button class="tbtn primary auto-btn" onclick="autoSelect()" title="Auto Select">
+        <svg class="ic sm"><use href="#i-spark"/></svg><span class="lbl" data-t="autoSelect">Auto Select</span>
+      </button>
+    </div>
+    <label data-t="protocolVer">نسخه پروتکل</label>
+    <div class="seg" id="verSeg">
+      <button data-v="1.5" class="on">v1.5</button>
+      <button data-v="2.0">v2.0</button>
+      <button data-v="3.1">v3.1</button>
+    </div>
+    <label data-t="outputMode">حالت خروجی</label>
+    <div class="seg" id="modeSeg">
+      <button data-m="obfs" class="on"><svg class="ic sm"><use href="#i-shield"/></svg> <span data-t="antiFilter">ضد فیلتر</span></button>
+      <button data-m="raw"><svg class="ic sm"><use href="#i-zap"/></svg> FAST (WARP)</button>
+    </div>
+    <div id="obfsBox">
+      <div class="presets">
+        <button onclick="setPreset('warp',this)" class="on" data-p="warp"><svg class="ic"><use href="#i-zap"/></svg><span data-t="presetWarp">وارپ</span><small>Jc=8</small></button>
+        <button onclick="setPreset('light',this)" data-p="light"><svg class="ic"><use href="#i-feather"/></svg><span data-t="presetLight">سبک</span><small>Jc=3</small></button>
+        <button onclick="setPreset('heavy',this)" data-p="heavy"><svg class="ic"><use href="#i-flame"/></svg><span data-t="presetHeavy">سنگین</span><small>Jc=12</small></button>
+        <button onclick="setPreset('custom',this)" data-p="custom"><svg class="ic"><use href="#i-sliders"/></svg><span data-t="presetCustom">دلخواه</span><small><span data-t="sliders">اسلایدر</span></small></button>
+      </div>
+      <div class="sl-row"><span>Jc</span><input type="range" id="jc" min="1" max="30" value="8"><b id="jcv">8</b></div>
+      <div class="sl-row"><span>Jmin</span><input type="range" id="jmin" min="8" max="100" value="55"><b id="jminv">55</b></div>
+      <div class="sl-row"><span>Jmax</span><input type="range" id="jmax" min="40" max="200" value="140"><b id="jmaxv">140</b></div>
+      <div id="i15Box">
+        <label style="color:var(--acc)" data-t="magicI">پکت‌های جادویی I1–I5</label>
+        <div class="row" style="margin-top:6px">
+          <button class="tbtn mini primary" onclick="magicGen()"><svg class="ic sm"><use href="#i-spark"/></svg><span data-t="magic">جادویی</span></button>
+          <button class="tbtn mini" onclick="clearI()"><svg class="ic sm"><use href="#i-x"/></svg><span data-t="clearI">پاک‌کردن</span></button>
+        </div>
+        <div class="i-grid">
+          <div><label>I1</label><input id="i1" type="text" dir="ltr" placeholder="hex" spellcheck="false"></div>
+          <div><label>I2</label><input id="i2" type="text" dir="ltr" placeholder="hex" spellcheck="false"></div>
+          <div><label>I3</label><input id="i3" type="text" dir="ltr" placeholder="hex" spellcheck="false"></div>
+          <div><label>I4</label><input id="i4" type="text" dir="ltr" placeholder="hex" spellcheck="false"></div>
+          <div><label>I5</label><input id="i5" type="text" dir="ltr" placeholder="hex" spellcheck="false"></div>
+        </div>
+      </div>
+    </div>
+    <label class="chk"><input type="checkbox" id="wiw"><span><svg class="ic sm"><use href="#i-layers"/></svg> <span data-t="wiw">وارپ در وارپ (دو لایه)</span></span></label>
+    <div class="row hiddenEl" id="wiwRow" style="margin-top:9px">
+      <input id="endpoint2" type="text" dir="ltr" data-t-ph="layer2Ph" placeholder="اندپوینت لایه دوم" spellcheck="false" readonly>
+      <button class="tbtn primary" onclick="openWiWPicker()"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="import">ایمپورت</span></button>
+    </div>
+    <button class="forge-btn" onclick="buildConfig()"><svg class="ic lg"><use href="#i-tool"/></svg><span data-t="forgeBtn">ساخت کانفیگ AmneziaWG</span></button>
+  </div>
+</section>
+
+<section class="panel hiddenEl" id="sec-account" style="--d:140ms">
+  <div class="p-head">
+    <h2><svg class="ic"><use href="#i-user"/></svg> <span data-t="accountTitle">حساب وارپ</span></h2>
+    <div class="p-tools"><span class="chip" id="apiStateChip">API: <b>idle</b></span></div>
+  </div>
+  <div class="p-body">
+    <div class="row">
+      <select id="proxySel">
+        <option value="auto">خودکار</option>
+        <option value="direct-json">مستقیم</option>
+        <option value="direct-simple">بدون پری‌فلایت</option>
+        <option value="corsproxy">corsproxy.io</option>
+        <option value="custom">ورکر دلخواه</option>
+      </select>
+      <button class="tbtn primary" id="accBtn" onclick="getAccount()"><svg class="ic sm"><use href="#i-key"/></svg><span data-t="getAcct">دریافت حساب</span></button>
+    </div>
+    <input id="proxyCustom" class="hiddenEl" type="url" dir="ltr" placeholder="https://your-worker.workers.dev" style="margin-top:9px" spellcheck="false">
+    <div class="acc-grid">
+      <div><label data-t="privKey">کلید خصوصی</label><input id="priv" type="text" dir="ltr" readonly></div>
+      <div><label data-t="pubKey">کلید عمومی</label><input id="pub" type="text" dir="ltr" readonly></div>
+      <div><label data-t="reserved">رزرو</label><input id="cid" type="text" dir="ltr" readonly></div>
+      <div><label data-t="acctId">شناسه حساب</label><input id="accid" type="text" dir="ltr" readonly></div>
+      <div><label>IPv4</label><input id="ip4" type="text" dir="ltr" readonly></div>
+      <div><label>IPv6</label><input id="ip6" type="text" dir="ltr" readonly></div>
+    </div>
+    <p style="font-size:11px;color:var(--mut);margin-top:10px" data-t="apiInfo">۴+ روش دسترسی به کلادفلر. روش موفق ذخیره می‌شود.</p>
+  </div>
+</section>
+</div>
+
+<section class="panel" style="--d:180ms">
+  <div class="p-head">
+    <h2><svg class="ic"><use href="#i-upload"/></svg> <span data-t="outTitle">تونل خروجی</span></h2>
+    <div class="p-tools">
+      <span id="sanity">SANITY: —</span>
+      <span class="chip acc" id="verChip">v1.5</span>
+      <button class="tbtn mini" onclick="bulkForge()"><svg class="ic sm"><use href="#i-diamond"/></svg><span data-t="bulkBtn">فورج انبوه</span></button>
+    </div>
+  </div>
+  <div class="p-body">
+    <textarea id="out" rows="14" spellcheck="false" placeholder="// FORGE CONFIG"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="tbtn primary" onclick="copyCfg()"><svg class="ic sm"><use href="#i-copy"/></svg><span data-t="copy">کپی</span></button>
+      <button class="tbtn primary" onclick="dlCfg()"><svg class="ic sm"><use href="#i-download"/></svg> .CONF</button>
+      <button class="tbtn warn" onclick="showQRSingle()"><svg class="ic sm"><use href="#i-qr"/></svg><span data-t="showQR">QR کد</span></button>
+      <span style="flex:2;font-size:11px;color:var(--mut);align-self:center" id="outHint" data-t="outHint">فرمول طلایی · اتصال فوری در Amnezia.</span>
+    </div>
+    <div class="qr-single-box hiddenEl" id="qrSingleBox">
+      <canvas id="qrSingle"></canvas>
+      <div class="qr-actions">
+        <button class="tbtn primary mini" onclick="downloadQrSingle()"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="downloadPng">دانلود PNG</span></button>
+        <button class="tbtn mini" onclick="hideQRSingle()"><svg class="ic sm"><use href="#i-x"/></svg><span data-t="close">بستن</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="devbar">
+  <div class="devbar-links">
+    <a class="devlink" href="https://t.me/the-saz" target="_blank" rel="noopener"><svg class="ic"><use href="#i-send"/></svg><span>Telegram</span></a>
+    <a class="devlink" href="https://github.com/THE-SAZ" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg><span>GitHub</span></a>
+    <a class="devlink" href="https://zaya.io/thesaz" target="_blank" rel="noopener"><svg class="ic"><use href="#i-globe"/></svg><span>Website</span></a>
+  </div>
+  <div class="devbar-sign">
+    <svg class="ic"><use href="#i-pick"/></svg>
+    <span data-t="developedBy">ساخته‌شده توسط</span>
+    <b>THE SAZ</b>
+    <svg class="ic flag"><use href="#i-flag"/></svg>
+    <svg class="ic heart"><use href="#i-heart"/></svg>
+  </div>
+  <div class="devbar-copy">© 2026 · WarpMiner · AmneziaWG Config Forge</div>
+</div>
+</div>
+
+<!-- ═══ مودال‌ها ═══ -->
+<div class="mbk" id="m-add"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-plus"/></svg><span data-t="addIpTitle">افزودن آی‌پی</span></h3><button class="m-close" onclick="closeM('m-add')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <label data-t="addIpLabel">آی‌پی:پورت (هر خط یک مورد)</label>
+    <textarea id="addIpText" rows="5" placeholder="1.2.3.4:500&#10;5.6.7.8:880"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="tbtn primary" onclick="addIPs()"><svg class="ic sm"><use href="#i-plus"/></svg><span data-t="add">افزودن</span></button>
+      <button class="tbtn" onclick="closeM('m-add')"><svg class="ic sm"><use href="#i-x"/></svg><span data-t="cancel">انصراف</span></button>
+    </div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-import"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-download"/></svg><span data-t="importTitle">ایمپورت لیست</span></h3><button class="m-close" onclick="closeM('m-import')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <label data-t="importLabel">متن لیست را بچسبانید (فرمت آی‌پی:پورت)</label>
+    <textarea id="importText" rows="7"></textarea>
+    <label class="chk"><input type="checkbox" id="importReplace"><span data-t="importReplace">جایگزینی کامل (به‌جای افزودن)</span></label>
+    <div class="row" style="margin-top:12px">
+      <button class="tbtn primary" onclick="doImport()"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="importList">ایمپورت</span></button>
+      <button class="tbtn" onclick="importFromClipboard()"><svg class="ic sm"><use href="#i-copy"/></svg><span data-t="fromClip">از کلیپ‌بورد</span></button>
+    </div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-slots"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-grid"/></svg><span data-t="slotsTitle">اسلات‌های ذخیره</span></h3><button class="m-close" onclick="closeM('m-slots')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <p style="font-size:12px;color:var(--mut);margin-bottom:12px" data-t="slotsInfo">تا ۳ لیست جداگانه ذخیره و بازیابی کنید.</p>
+    <div id="slotsList"></div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-wiw"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-layers"/></svg><span data-t="wiwPickTitle">انتخاب اندپوینت لایه دوم</span></h3><button class="m-close" onclick="closeM('m-wiw')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <p style="font-size:12px;color:var(--mut)" data-t="wiwPickInfo">اندپوینتی متفاوت از لایه ۱ انتخاب کنید. بررسی تکراری فعال است.</p>
+    <div class="chip warn" style="margin-top:9px"><span data-t="layer1Is">لایه ۱</span>: <b id="wiwLayer1">—</b></div>
+    <div class="wiw-list" id="wiwList"></div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-bulk"><div class="modal wide">
+  <div class="m-head">
+    <h3><svg class="ic"><use href="#i-diamond"/></svg><span data-t="bulkTitle">فورج انبوه</span></h3>
+    <div class="p-tools">
+      <button class="tbtn mini primary" onclick="copyAll()"><svg class="ic sm"><use href="#i-copy"/></svg><span data-t="copyAll">کپی همه</span></button>
+      <button class="tbtn mini primary" onclick="downloadAll()"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="dlAll">دانلود همه</span></button>
+    </div>
+    <button class="m-close" onclick="closeM('m-bulk')"><svg class="ic sm"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="m-body"><div id="bulkGrid" class="bulk-grid"></div></div>
+</div></div>
+
+<div class="mbk" id="m-settings"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-sliders"/></svg><span data-t="controlPanel">پنل تنظیمات</span></h3><button class="m-close" onclick="closeM('m-settings')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <div class="cat"><svg class="ic"><use href="#i-eye"/></svg><span data-t="catTheme">ظاهر</span></div>
+    <div class="set-row"><label data-t="lang">زبان رابط</label>
+      <select data-k="lang"><option value="fa">فارسی</option><option value="en">English</option><option value="ru">Русский</option></select></div>
+    <div class="set-row"><label data-t="theme">تم رنگی</label>
+      <div class="swatches">
+        <div class="sw" data-t2="violet" style="background:linear-gradient(135deg,#a78bfa,#67e8f9)" title="یاسی"></div>
+        <div class="sw" data-t2="ocean" style="background:linear-gradient(135deg,#60a5fa,#67e8f9)" title="اقیانوس"></div>
+        <div class="sw" data-t2="sunset" style="background:linear-gradient(135deg,#f9a8d4,#fcd34d)" title="غروب"></div>
+        <div class="sw" data-t2="forest" style="background:linear-gradient(135deg,#6ee7b7,#a7f3d0)" title="جنگل"></div>
+      </div></div>
+    <div class="set-row"><label data-t="fontSize">اندازه فونت</label><input type="range" data-k="fsize" min="12" max="17"></div>
+    <div class="set-row"><label data-t="density">حالت فشرده</label><input type="checkbox" data-k="dense"></div>
+    <div class="set-row"><label data-t="animations">انیمیشن‌ها</label><input type="checkbox" data-k="anim"></div>
+    <div class="set-row"><label data-t="auroraBg">پس‌زمینه شفق متحرک</label><input type="checkbox" data-k="aurora"></div>
+    <div class="cat"><svg class="ic"><use href="#i-tool"/></svg><span data-t="catConfig">پیش‌فرض کانفیگ</span></div>
+    <div class="set-row"><label data-t="outputMode">حالت خروجی</label>
+      <select data-k="cfgMode"><option value="obfs">ضد فیلتر</option><option value="raw">FAST</option></select></div>
+    <div class="set-row"><label data-t="protocolVer">نسخه پروتکل</label>
+      <select data-k="ver"><option value="1.5">v1.5</option><option value="2.0">v2.0</option><option value="3.1">v3.1</option></select></div>
+    <div class="set-row"><label data-t="presetDefault">پریست پیش‌فرض</label>
+      <select data-k="preset"><option value="warp">وارپ</option><option value="light">سبک</option><option value="heavy">سنگین</option><option value="custom">دلخواه</option></select></div>
+    <div class="set-row"><label>MTU</label><select data-k="mtu"><option>1280</option><option>1320</option><option>1400</option></select></div>
+    <div class="set-row"><label>DNS</label>
+      <select data-k="dns"><option value="8.8.8.8,8.8.4.4">Google</option><option value="1.1.1.1,1.0.0.1">Cloudflare</option><option value="9.9.9.9">Quad9</option></select></div>
+    <div class="set-row"><label data-t="ipv6">شامل IPv6</label><input type="checkbox" data-k="ipv6"></div>
+    <div class="set-row"><label data-t="keepalive">Keepalive</label><select data-k="ka"><option>25</option><option>15</option><option>45</option><option>0</option></select></div>
+    <div class="set-row"><label data-t="comment">کامنت هدر</label><input type="checkbox" data-k="comment"></div>
+    <div class="cat"><svg class="ic"><use href="#i-box"/></svg><span data-t="catVault">مخزن آی‌پی</span></div>
+    <div class="set-row"><label data-t="maxRows">حداکثر ردیف نمایشی</label><input type="number" data-k="maxRows" min="10" max="500"></div>
+    <div class="set-row"><label data-t="listHeight">ارتفاع لیست (پیکسل)</label><input type="number" data-k="listHeight" min="150" max="800"></div>
+    <div class="set-row"><label data-t="showPortChip">نمایش چیپ پورت</label><input type="checkbox" data-k="showPort"></div>
+    <div class="set-row"><label data-t="confirmDel">تأیید قبل از حذف</label><input type="checkbox" data-k="confirmDel"></div>
+    <div class="cat"><svg class="ic"><use href="#i-key"/></svg><span data-t="catApi">API وارپ</span></div>
+    <div class="set-row"><label data-t="apiMethod">روش اتصال</label>
+      <select data-k="proxy"><option value="auto">خودکار</option><option value="direct-json">مستقیم</option><option value="direct-simple">بدون پری‌فلایت</option><option value="corsproxy">corsproxy.io</option><option value="custom">ورکر دلخواه</option></select></div>
+    <div class="set-row"><label data-t="workerUrl">آدرس ورکر</label><input type="url" data-k="proxyCustom" dir="ltr" placeholder="https://…"></div>
+    <div class="cat"><svg class="ic"><use href="#i-list"/></svg><span data-t="catLog">لاگ</span></div>
+    <div class="set-row"><label data-t="maxLog">حداکثر تعداد لاگ</label><input type="number" data-k="maxLog" min="50" max="1000"></div>
+    <div class="set-row"><label data-t="logTime">نمایش زمان در لاگ</label><input type="checkbox" data-k="logTime"></div>
+    <div class="cat"><svg class="ic"><use href="#i-zap"/></svg><span data-t="catAdv">پیشرفته</span></div>
+    <div class="set-row"><label data-t="autoCopy">کپی خودکار بعد از ساخت</label><input type="checkbox" data-k="autocopy"></div>
+    <div class="set-row"><label data-t="beep">صدای بیپ موفقیت</label><input type="checkbox" data-k="beep"></div>
+    <div class="set-row"><label data-t="vibrate">لرزش موبایل</label><input type="checkbox" data-k="vibrate"></div>
+    <div class="set-row" style="border:none;padding-top:14px">
+      <div class="row">
+        <button class="tbtn primary" onclick="saveS();toast(t('saved'),'ok')"><svg class="ic sm"><use href="#i-check"/></svg><span data-t="save">ذخیره</span></button>
+        <button class="tbtn" onclick="exportSettings()"><svg class="ic sm"><use href="#i-upload"/></svg><span data-t="expSet">خروجی تنظیمات</span></button>
+        <button class="tbtn" onclick="importSettings()"><svg class="ic sm"><use href="#i-download"/></svg><span data-t="impSet">ورودی تنظیمات</span></button>
+        <button class="tbtn danger" onclick="resetS()"><svg class="ic sm"><use href="#i-refresh"/></svg><span data-t="reset">بازنشانی</span></button>
+      </div></div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-log"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-list"/></svg><span data-t="systemLog">لاگ سیستم</span></h3>
+    <div class="p-tools">
+      <button class="tbtn mini" onclick="exportLog()" title="Export"><svg class="ic sm"><use href="#i-upload"/></svg></button>
+      <button class="tbtn mini" onclick="copyLog()" title="Copy"><svg class="ic sm"><use href="#i-copy"/></svg></button>
+      <button class="tbtn mini danger" onclick="clearLog()" title="Clear"><svg class="ic sm"><use href="#i-trash"/></svg></button>
+    </div>
+    <button class="m-close" onclick="closeM('m-log')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body">
+    <div class="log-toolbar">
+      <div class="log-filters" id="logFilters">
+        <button data-f="all" class="on" onclick="setLogFilter('all')" data-t="all">همه</button>
+        <button data-f="i" onclick="setLogFilter('i')">Info</button>
+        <button data-f="o" onclick="setLogFilter('o')">OK</button>
+        <button data-f="w" onclick="setLogFilter('w')">Warn</button>
+        <button data-f="e" onclick="setLogFilter('e')">Error</button>
+      </div>
+      <div class="vault-search" style="flex:1;min-width:120px;margin:0">
+        <input type="text" id="logSearch" data-t-ph="logSearchPh" placeholder="جستجو در لاگ…" oninput="renderLog()">
+        <span class="sic"><svg class="ic sm"><use href="#i-search"/></svg></span>
+      </div>
+    </div>
+    <div id="logBox"></div>
+    <div class="log-stats" id="logStats"></div>
+  </div>
+</div></div>
+
+<div class="mbk" id="m-help"><div class="modal">
+  <div class="m-head"><h3><svg class="ic"><use href="#i-help"/></svg><span data-t="helpManual">راهنما</span></h3><button class="m-close" onclick="closeM('m-help')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-body help">
+    <h4><svg class="ic sm"><use href="#i-target"/></svg><span data-t="helpPurpose">هدف برنامه</span></h4>
+    <p data-t="helpPurposeText">WarpMiner فقط کانفیگ AmneziaWG با فرمت سازگار وارپ می‌سازد که فوراً متصل می‌شود.</p>
+    <h4><svg class="ic sm"><use href="#i-zap"/></svg><span data-t="helpFormula">فرمول طلایی</span></h4>
+    <p><code>S1=0, S2=0</code> · <code>H1=1..H4=4</code> · <code>Jc=8, Jmin=55, Jmax=140</code> · <code>AllowedIPs = 0.0.0.0/0, ::/0</code></p>
+    <h4><svg class="ic sm"><use href="#i-box"/></svg><span data-t="helpVault">مخزن آی‌پی</span></h4>
+    <p data-t="helpVaultText">آی‌پی‌ها را اضافه، جستجو، فیلتر، مرتب و ستاره‌دار کنید.</p>
+    <h4><svg class="ic sm"><use href="#i-qr"/></svg><span data-t="helpQR">موتور QR</span></h4>
+    <p data-t="helpQRText">موتور QR کاملاً داخلی و آفلاین است و در هر مرورگری کار می‌کند.</p>
+    <h4><svg class="ic sm"><use href="#i-user"/></svg><span data-t="helpDev">توسعه‌دهنده</span></h4>
+    <p>THE SAZ · <a href="https://t.me/the-saz" style="color:var(--acc)">@the-saz</a></p>
+  </div>
+</div></div>
+
+<div id="toasts"></div>
+
+<script>
+'use strict';
+/* ══════════════════════════════════════════════════════════════
+   WarpMiner v0.6.8 — PHOENIX  ·  Developed by THE SAZ 🏴‍☠️
+   Golden formula preserved (no Connecting-stuck).
+   ══════════════════════════════════════════════════════════════ */
+const $=id=>document.getElementById(id);
+const CF_PUB='bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=';
+const ic=(n,c)=>`<svg class="ic${c?' '+c:''}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+
+/* ═══ موتور QR داخلی و آفلاین ═══ */
+const QR=(()=>{
+  const ECL={
+    L:{f:1,e:[7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],b:[1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25]},
+    M:{f:0,e:[10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28],b:[1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49]},
+    Q:{f:3,e:[13,22,18,26,18,24,18,22,20,24,28,26,24,20,30,24,28,28,26,30,28,30,30,30,30,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],b:[1,1,2,2,4,4,6,6,8,8,8,10,12,16,12,17,16,18,21,20,23,23,25,27,29,34,34,35,38,40,43,45,48,51,53,56,59,62,65,68]},
+    H:{f:2,e:[17,28,22,16,22,28,26,26,24,28,24,28,22,24,24,30,28,28,26,28,30,24,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30],b:[1,1,2,4,4,4,5,6,8,8,11,11,16,16,18,16,19,21,25,25,25,34,30,32,35,37,40,42,45,48,51,54,57,60,63,66,70,74,77,81]}
+  };
+  const numRaw=v=>{let r=(16*v+128)*v+64;if(v>=2){const a=Math.floor(v/7)+2;r-=(25*a-10)*a-55;if(v>=7)r-=36;}return r;};
+  const numData=(v,e)=>Math.floor(numRaw(v)/8)-ECL[e].e[v-1]*ECL[e].b[v-1];
+  const gfMul=(x,y)=>{let z=0;for(let i=7;i>=0;i--){z=(z<<1)^((z>>>7)*0x11d);z^=((y>>>i)&1)*x;}return z;};
+  function rsDiv(deg){let r=[];for(let i=0;i<deg-1;i++)r.push(0);r.push(1);let root=1;
+    for(let i=0;i<deg;i++){for(let j=0;j<r.length;j++){r[j]=gfMul(r[j],root);if(j+1<r.length)r[j]^=r[j+1];}root=gfMul(root,2);}return r;}
+  function rsRem(data,div){let r=div.map(()=>0);for(const b of data){const f=b^r.shift();r.push(0);div.forEach((c,i)=>r[i]^=gfMul(c,f));}return r;}
+  function toBytes(s){if(window.TextEncoder)return Array.from(new TextEncoder().encode(s));
+    const o=[];for(let i=0;i<s.length;i++){let c=s.charCodeAt(i);
+      if(c<0x80)o.push(c);else if(c<0x800)o.push(0xc0|(c>>6),0x80|(c&63));
+      else if(c<0xd800||c>=0xe000)o.push(0xe0|(c>>12),0x80|((c>>6)&63),0x80|(c&63));
+      else{i++;const c2=s.charCodeAt(i),cp=0x10000+(((c&0x3ff)<<10)|(c2&0x3ff));
+        o.push(0xf0|(cp>>18),0x80|((cp>>12)&63),0x80|((cp>>6)&63),0x80|(cp&63));}}return o;}
+  const getBit=(x,i)=>((x>>>i)&1)!==0;
+  function alignPos(v){if(v===1)return[];const n=Math.floor(v/7)+2;
+    const step=v===32?26:Math.ceil((v*4+4)/(n*2-2))*2;const r=[6];
+    for(let p=v*4+10;r.length<n;p-=step)r.splice(1,0,p);return r;}
+  function make(text,eclName){
+    const data=toBytes(text);let ver=-1;
+    for(let v=1;v<=40;v++){const bits=4+(v<10?8:16)+data.length*8;
+      if(Math.ceil(bits/8)<=numData(v,eclName)){ver=v;break;}}
+    if(ver===-1)throw new Error('QR: data too long');
+    const bb=[],push=(val,n)=>{for(let i=n-1;i>=0;i--)bb.push((val>>>i)&1);};
+    push(4,4);push(data.length,ver<10?8:16);data.forEach(b=>push(b,8));
+    const capBits=numData(ver,eclName)*8;
+    push(0,Math.min(4,capBits-bb.length));
+    while(bb.length%8)bb.push(0);
+    const pads=[0xEC,0x11];let pi=0;
+    while(bb.length<capBits){push(pads[pi],8);pi^=1;}
+    const dc=[];for(let i=0;i<bb.length;i+=8){let b=0;for(let j=0;j<8;j++)b=(b<<1)|bb[i+j];dc.push(b);}
+    return encode(dc,ver,eclName);
+  }
+  function encode(data,ver,eclName){
+    const nb=ECL[eclName].b[ver-1],bel=ECL[eclName].e[ver-1];
+    const raw=Math.floor(numRaw(ver)/8),nsb=nb-raw%nb,sbl=Math.floor(raw/nb);
+    const blocks=[],rsd=rsDiv(bel);let k=0;
+    for(let i=0;i<nb;i++){const dat=data.slice(k,k+sbl-bel+(i<nsb?0:1));k+=dat.length;
+      const ecc=rsRem(dat,rsd);const blk=dat.slice();if(i<nsb)blk.push(0);blocks.push(blk.concat(ecc));}
+    const res=[];for(let i=0;i<blocks[0].length;i++)
+      blocks.forEach((blk,j)=>{if(i!==sbl-bel||j>=nsb)res.push(blk[i]);});
+    return draw(res,ver,eclName);
+  }
+  function draw(cw,ver,eclName){
+    const size=ver*4+17;
+    const M=Array.from({length:size},()=>new Array(size).fill(false));
+    const F=Array.from({length:size},()=>new Array(size).fill(false));
+    const set=(x,y,d)=>{M[y][x]=d;F[y][x]=true;};
+    for(let i=0;i<size;i++){set(6,i,i%2===0);set(i,6,i%2===0);}
+    const finder=(x,y)=>{for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){
+      const xx=x+dx,yy=y+dy;if(xx<0||xx>=size||yy<0||yy>=size)continue;
+      const d=Math.max(Math.abs(dx),Math.abs(dy));set(xx,yy,d!==2&&d!==4);}};
+    finder(3,3);finder(size-4,3);finder(3,size-4);
+    const ap=alignPos(ver),n=ap.length;
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+      if((i===0&&j===0)||(i===0&&j===n-1)||(i===n-1&&j===0))continue;
+      for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)
+        set(ap[i]+dx,ap[j]+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1);}
+    const drawFormat=mask=>{const d=ECL[eclName].f<<3|mask;let rem=d;
+      for(let i=0;i<10;i++)rem=(rem<<1)^((rem>>>9)*0x537);
+      const bits=(d<<10|rem)^0x5412;
+      for(let i=0;i<=5;i++)set(8,i,getBit(bits,i));
+      set(8,7,getBit(bits,6));set(8,8,getBit(bits,7));set(7,8,getBit(bits,8));
+      for(let i=9;i<15;i++)set(14-i,8,getBit(bits,i));
+      for(let i=0;i<8;i++)set(size-1-i,8,getBit(bits,i));
+      for(let i=8;i<15;i++)set(8,size-15+i,getBit(bits,i));
+      set(8,size-8,true);};
+    drawFormat(0);
+    if(ver>=7){let rem=ver;for(let i=0;i<12;i++)rem=(rem<<1)^((rem>>>11)*0x1F25);
+      const bits=ver<<12|rem;
+      for(let i=0;i<18;i++){const bit=getBit(bits,i),a=size-11+i%3,b=Math.floor(i/3);set(a,b,bit);set(b,a,bit);}}
+    let idx=0;
+    for(let right=size-1;right>=1;right-=2){
+      if(right===6)right=5;
+      for(let vert=0;vert<size;vert++){
+        for(let j=0;j<2;j++){const x=right-j;
+          const up=((right+1)&2)===0,y=up?size-1-vert:vert;
+          if(!F[y][x]&&idx<cw.length*8){M[y][x]=getBit(cw[idx>>>3],7-(idx&7));idx++;}}}}
+    const applyMask=m=>{for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+      if(F[y][x])continue;let c;switch(m){
+        case 0:c=(x+y)%2===0;break;case 1:c=y%2===0;break;case 2:c=x%3===0;break;
+        case 3:c=(x+y)%3===0;break;case 4:c=(Math.floor(x/3)+Math.floor(y/2))%2===0;break;
+        case 5:c=x*y%2+x*y%3===0;break;case 6:c=(x*y%2+x*y%3)%2===0;break;
+        default:c=((x+y)%2+x*y%3)%2===0;}
+      if(c)M[y][x]=!M[y][x];}};
+    const penalty=()=>{let sc=0;
+      for(let y=0;y<size;y++){let run=1;for(let x=1;x<size;x++){
+        if(M[y][x]===M[y][x-1]){run++;if(run===5)sc+=3;else if(run>5)sc++;}else run=1;}}
+      for(let x=0;x<size;x++){let run=1;for(let y=1;y<size;y++){
+        if(M[y][x]===M[y-1][x]){run++;if(run===5)sc+=3;else if(run>5)sc++;}else run=1;}}
+      for(let y=0;y<size-1;y++)for(let x=0;x<size-1;x++){const c=M[y][x];
+        if(c===M[y][x+1]&&c===M[y+1][x]&&c===M[y+1][x+1])sc+=3;}
+      let dark=0;for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(M[y][x])dark++;
+      sc+=Math.floor(Math.abs(dark*20-size*size*10)/(size*size))*10;return sc;};
+    let best=0,bp=Infinity;
+    for(let m=0;m<8;m++){applyMask(m);drawFormat(m);const p=penalty();
+      if(p<bp){bp=p;best=m;}applyMask(m);}
+    applyMask(best);drawFormat(best);
+    return{size,M};
+  }
+  function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function drawCanvas(canvas,text,o){
+    o=o||{};const ecl=o.ecl||'M',px=o.size||280,margin=o.margin!=null?o.margin:2;
+    const{size,M}=make(text,ecl);
+    canvas.width=px;canvas.height=px;
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle=o.light||'#ffffff';ctx.fillRect(0,0,px,px);
+    const scale=px/(size+margin*2);
+    ctx.fillStyle=o.dark||'#101322';
+    for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(M[y][x])
+      ctx.fillRect((x+margin)*scale,(y+margin)*scale,scale+.5,scale+.5);
+    const g=ctx.createLinearGradient(0,0,px,px);
+    g.addColorStop(0,'#a78bfa');g.addColorStop(.5,'#67e8f9');g.addColorStop(1,'#fcd34d');
+    ctx.strokeStyle=g;ctx.lineWidth=6;ctx.strokeRect(3,3,px-6,px-6);
+    const s=px*.16,cx=px/2,cy=px/2;
+    ctx.fillStyle='#fff';roundRect(ctx,cx-s/2,cy-s/2,s,s,s*.22);ctx.fill();
+    ctx.strokeStyle='#101322';ctx.lineWidth=s*.1;ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(cx-s*.28,cy+s*.28);ctx.lineTo(cx+s*.05,cy-s*.05);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx-s*.1,cy-s*.3);ctx.quadraticCurveTo(cx+s*.15,cy-s*.35,cx+s*.3,cy-s*.08);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx-s*.3,cy-s*.1);ctx.quadraticCurveTo(cx-s*.35,cy+s*.15,cx-s*.08,cy+s*.3);ctx.stroke();
+    return true;
+  }
+  return{drawCanvas,make};
+})();
+
+/* ═══ i18n ═══ */
+const I18N={
+fa:{subtitle:'نسخه 0.6.8 · ققنوس',standby:'آماده',set:'تنظیمات',log:'لاگ',help:'راهنما',
+vaultTitle:'مخزن آی‌پی‌ها',total:'کل',unique:'یکتا',ports:'پورت',searchPh:'جستجوی آی‌پی یا پورت…',
+filterPort:'فیلتر پورت',sortIp:'مرتب‌سازی آی‌پی',sortPort:'مرتب‌سازی پورت',shuffle:'بر زدن',
+dedupe:'حذف تکراری',copyList:'کپی لیست',importList:'ایمپورت',exportList:'خروجی',slots:'اسلات‌ها',
+resetDefault:'پیش‌فرض',add:'افزودن',selAll:'انتخاب همه',selected:'انتخاب‌شده',random:'تصادفی',
+useFirst:'اولی → هدف',delSel:'حذف انتخاب‌شده',forgeTitle:'فورج کانفیگ',targetEp:'اندپوینت هدف',
+noneSel:'— انتخاب نشده —',autoSelect:'انتخاب خودکار',protocolVer:'نسخه پروتکل',outputMode:'حالت خروجی',
+antiFilter:'ضد فیلتر',presetWarp:'وارپ',presetLight:'سبک',presetHeavy:'سنگین',presetCustom:'دلخواه',
+sliders:'اسلایدر',magicI:'پکت‌های جادویی I1–I5',magic:'جادویی',clearI:'پاک‌کردن',
+wiw:'وارپ در وارپ (دو لایه)',layer2Ph:'اندپوینت لایه دوم',import:'ایمپورت',
+forgeBtn:'ساخت کانفیگ AmneziaWG',accountTitle:'حساب وارپ',getAcct:'دریافت حساب',
+privKey:'کلید خصوصی',pubKey:'کلید عمومی',reserved:'رزرو',acctId:'شناسه حساب',
+apiInfo:'۴+ روش دسترسی به کلادفلر. روش موفق ذخیره می‌شود.',outTitle:'تونل خروجی',copy:'کپی',
+showQR:'QR کد',bulkBtn:'فورج انبوه',outHint:'فرمول طلایی · اتصال فوری در Amnezia.',
+downloadPng:'دانلود PNG',close:'بستن',developedBy:'ساخته‌شده توسط',addIpTitle:'افزودن آی‌پی',
+addIpLabel:'آی‌پی:پورت (هر خط یک مورد)',cancel:'انصراف',importTitle:'ایمپورت لیست',
+importLabel:'متن لیست را بچسبانید',importReplace:'جایگزینی کامل',fromClip:'از کلیپ‌بورد',
+slotsTitle:'اسلات‌های ذخیره',slotsInfo:'تا ۳ لیست جداگانه ذخیره و بازیابی کنید.',
+wiwPickTitle:'انتخاب اندپوینت لایه دوم',wiwPickInfo:'اندپوینتی متفاوت از لایه ۱ انتخاب کنید.',
+layer1Is:'لایه ۱',bulkTitle:'فورج انبوه',copyAll:'کپی همه',dlAll:'دانلود همه',
+controlPanel:'پنل تنظیمات',catTheme:'ظاهر',lang:'زبان رابط',theme:'تم رنگی',fontSize:'اندازه فونت',
+density:'حالت فشرده',animations:'انیمیشن‌ها',auroraBg:'پس‌زمینه شفق متحرک',catConfig:'پیش‌فرض کانفیگ',
+presetDefault:'پریست پیش‌فرض',ipv6:'شامل IPv6',keepalive:'Keepalive',comment:'کامنت هدر',
+catVault:'مخزن آی‌پی',maxRows:'حداکثر ردیف نمایشی',listHeight:'ارتفاع لیست (پیکسل)',
+showPortChip:'نمایش چیپ پورت',confirmDel:'تأیید قبل از حذف',catApi:'API وارپ',apiMethod:'روش اتصال',
+workerUrl:'آدرس ورکر',catLog:'لاگ',maxLog:'حداکثر تعداد لاگ',logTime:'نمایش زمان در لاگ',
+catAdv:'پیشرفته',autoCopy:'کپی خودکار بعد از ساخت',beep:'صدای بیپ',vibrate:'لرزش موبایل',
+save:'ذخیره',expSet:'خروجی تنظیمات',impSet:'ورودی تنظیمات',reset:'بازنشانی',systemLog:'لاگ سیستم',
+all:'همه',logSearchPh:'جستجو در لاگ…',helpManual:'راهنما',helpPurpose:'هدف برنامه',
+helpPurposeText:'WarpMiner فقط کانفیگ AmneziaWG با فرمت سازگار وارپ می‌سازد که فوراً متصل می‌شود.',
+helpFormula:'فرمول طلایی',helpVault:'مخزن آی‌پی',
+helpVaultText:'آی‌پی‌ها را اضافه، جستجو، فیلتر، مرتب و ستاره‌دار کنید.',
+helpQR:'موتور QR',helpQRText:'موتور QR کاملاً داخلی و آفلاین است و در هر مرورگری کار می‌کند.',
+helpDev:'توسعه‌دهنده',saved:'ذخیره شد',imported:'ایمپورت شد',added:'اضافه شد',removed:'حذف شد',
+dedupeDone:'تکراری‌ها حذف شدند',shuffled:'بر زده شد',sorted:'مرتب شد',copied:'کپی شد',
+copyFailed:'کپی ناموفق',longPress:'متن را نگه دارید و کپی کنید',imported2:'به عنوان هدف ثبت شد',
+layer2Set:'لایه ۲ ثبت شد',duplicateErr:'تکراری است! اندپوینت دیگری انتخاب کنید',
+noKey:'کلید خصوصی نداریم',badEp:'اندپوینت نامعتبر',forged:'ساخته شد',noSel:'چیزی انتخاب نشده',
+nothingCopy:'چیزی برای کپی نیست',listCopied:'لیست کپی شد',listExported:'لیست دانلود شد',
+slotSaved:'در اسلات ذخیره شد',slotLoaded:'از اسلات بارگذاری شد',resetDone:'به پیش‌فرض برگشت',
+logCleared:'لاگ پاک شد',logExported:'لاگ دانلود شد',confirmDelete:'حذف شود؟',empty:'لیست خالی است',
+bulkBuilt:'کانفیگ‌های انبوه ساخته شد',acctOk:'حساب دریافت شد',acctFail:'خطا در دریافت حساب',
+randomSet:'اندپوینت تصادفی ثبت شد',needItems:'حداقل یک آی‌پی لازم است',
+settingsExported:'تنظیمات دانلود شد',settingsImported:'تنظیمات بارگذاری شد',
+keyReady:'کلید خصوصی آماده شد',autoSelDone:'انتخاب خودکار انجام شد',ip:'IP',port:'پورت',actions:'عملیات'},
+en:{subtitle:'v0.6.8 · Phoenix',standby:'READY',set:'Settings',log:'Log',help:'Help',
+vaultTitle:'IP Vault',total:'Total',unique:'Unique',ports:'Ports',searchPh:'Search IP or port…',
+filterPort:'Filter port',sortIp:'Sort by IP',sortPort:'Sort by port',shuffle:'Shuffle',
+dedupe:'Dedupe',copyList:'Copy list',importList:'Import',exportList:'Export',slots:'Slots',
+resetDefault:'Default',add:'Add',selAll:'Select all',selected:'Selected',random:'Random',
+useFirst:'First → Target',delSel:'Delete selected',forgeTitle:'Config Forge',targetEp:'Target endpoint',
+noneSel:'— none selected —',autoSelect:'Auto Select',protocolVer:'Protocol version',outputMode:'Output mode',
+antiFilter:'Anti-filter',presetWarp:'WARP',presetLight:'Light',presetHeavy:'Heavy',presetCustom:'Custom',
+sliders:'Sliders',magicI:'I1–I5 Magic Packets',magic:'Magic',clearI:'Clear',
+wiw:'Warp-in-Warp (double layer)',layer2Ph:'Layer 2 endpoint',import:'Import',
+forgeBtn:'Forge AmneziaWG Config',accountTitle:'WARP Account',getAcct:'Get Account',
+privKey:'Private Key',pubKey:'Public Key',reserved:'Reserved',acctId:'Account ID',
+apiInfo:'4+ methods to reach Cloudflare.',outTitle:'Output Tunnel',copy:'Copy',showQR:'QR Code',
+bulkBtn:'Bulk Forge',outHint:'Golden formula · instant connect.',downloadPng:'Download PNG',close:'Close',
+developedBy:'Developed by',addIpTitle:'Add IP',addIpLabel:'IP:Port (one per line)',cancel:'Cancel',
+importTitle:'Import List',importLabel:'Paste list text',importReplace:'Replace all',fromClip:'From clipboard',
+slotsTitle:'Save Slots',slotsInfo:'Save and restore up to 3 lists.',wiwPickTitle:'Select Layer 2 Endpoint',
+wiwPickInfo:'Pick a different endpoint than layer 1.',layer1Is:'Layer 1',bulkTitle:'Bulk Forge',
+copyAll:'Copy all',dlAll:'Download all',controlPanel:'Settings Panel',catTheme:'Appearance',lang:'Language',
+theme:'Color theme',fontSize:'Font size',density:'Compact mode',animations:'Animations',
+auroraBg:'Animated aurora background',catConfig:'Config Defaults',presetDefault:'Default preset',
+ipv6:'Include IPv6',keepalive:'Keepalive',comment:'Header comment',catVault:'IP Vault',
+maxRows:'Max rows shown',listHeight:'List height (px)',showPortChip:'Show port chip',
+confirmDel:'Confirm delete',catApi:'WARP API',apiMethod:'Method',workerUrl:'Worker URL',catLog:'Log',
+maxLog:'Max log entries',logTime:'Show timestamps',catAdv:'Advanced',autoCopy:'Auto-copy after forge',
+beep:'Success beep',vibrate:'Mobile vibration',save:'Save',expSet:'Export settings',
+impSet:'Import settings',reset:'Reset',systemLog:'System Log',all:'All',logSearchPh:'Search logs…',
+helpManual:'Help',helpPurpose:'Purpose',helpPurposeText:'WarpMiner builds WARP-compatible AmneziaWG configs.',
+helpFormula:'Golden Formula',helpVault:'IP Vault',helpVaultText:'Add, search, filter and star IPs.',
+helpQR:'QR Engine',helpQRText:'Fully offline internal QR engine works in every browser.',
+helpDev:'Developer',saved:'Saved',imported:'Imported',added:'Added',removed:'Removed',
+dedupeDone:'Duplicates removed',shuffled:'Shuffled',sorted:'Sorted',copied:'Copied',
+copyFailed:'Copy failed',longPress:'Long-press and copy',imported2:'Set as target',
+layer2Set:'Layer 2 set',duplicateErr:'Duplicate! Pick another.',noKey:'No private key',
+badEp:'Invalid endpoint',forged:'Forged',noSel:'Nothing selected',nothingCopy:'Nothing to copy',
+listCopied:'List copied',listExported:'List downloaded',slotSaved:'Saved to slot',
+slotLoaded:'Loaded from slot',resetDone:'Reset to default',logCleared:'Log cleared',
+logExported:'Log downloaded',confirmDelete:'Delete?',empty:'List is empty',
+bulkBuilt:'Bulk configs built',acctOk:'Account received',acctFail:'Account failed',
+randomSet:'Random endpoint set',needItems:'Need at least one IP',settingsExported:'Settings exported',
+settingsImported:'Settings imported',keyReady:'Private key ready',autoSelDone:'Auto-selected',ip:'IP',port:'Port',actions:'Actions'},
+ru:{subtitle:'v0.6.8 · Феникс',standby:'ГОТОВ',set:'Настройки',log:'Лог',help:'Помощь',
+vaultTitle:'Хранилище IP',total:'Всего',unique:'Уникальных',ports:'Портов',searchPh:'Поиск IP или порта…',
+filterPort:'Фильтр порта',sortIp:'Сорт. по IP',sortPort:'Сорт. по порту',shuffle:'Перемешать',
+dedupe:'Убрать дубли',copyList:'Копировать',importList:'Импорт',exportList:'Экспорт',slots:'Слоты',
+resetDefault:'Сброс',add:'Добавить',selAll:'Выбрать все',selected:'Выбрано',random:'Случайный',
+useFirst:'Первый → Цель',delSel:'Удалить выбранное',forgeTitle:'Сборка конфига',targetEp:'Целевой эндпоинт',
+noneSel:'— не выбран —',autoSelect:'Auto Select',protocolVer:'Версия протокола',outputMode:'Режим выхода',
+antiFilter:'Анти-фильтр',presetWarp:'WARP',presetLight:'Легкий',presetHeavy:'Тяжелый',presetCustom:'Свой',
+sliders:'Слайдеры',magicI:'I1–I5 Магические пакеты',magic:'Магия',clearI:'Очистить',
+wiw:'Warp-in-Warp (2 слоя)',layer2Ph:'Эндпоинт слоя 2',import:'Импорт',
+forgeBtn:'Собрать AmneziaWG конфиг',accountTitle:'Аккаунт WARP',getAcct:'Получить',
+privKey:'Приватный',pubKey:'Публичный',reserved:'Резерв',acctId:'ID аккаунта',
+apiInfo:'4+ методов к Cloudflare.',outTitle:'Выходной туннель',copy:'Копировать',showQR:'QR код',
+bulkBtn:'Массовая сборка',outHint:'Золотая формула.',downloadPng:'Скачать PNG',close:'Закрыть',
+developedBy:'Разработано',addIpTitle:'Добавить IP',addIpLabel:'IP:Port (по одному)',cancel:'Отмена',
+importTitle:'Импорт списка',importLabel:'Вставьте текст',importReplace:'Заменить все',fromClip:'Из буфера',
+slotsTitle:'Слоты сохранения',slotsInfo:'До 3 отдельных списков.',wiwPickTitle:'Выбрать эндпоинт слоя 2',
+wiwPickInfo:'Выберите отличный от слоя 1.',layer1Is:'Слой 1',bulkTitle:'Массовая сборка',
+copyAll:'Копировать все',dlAll:'Скачать все',controlPanel:'Панель настроек',catTheme:'Внешний вид',
+lang:'Язык',theme:'Тема',fontSize:'Размер шрифта',density:'Компактный',animations:'Анимации',
+auroraBg:'Анимированный фон',catConfig:'Настройки конфига',presetDefault:'Пресет',ipv6:'IPv6',
+keepalive:'Keepalive',comment:'Комментарий',catVault:'Хранилище IP',maxRows:'Макс. строк',
+listHeight:'Высота списка (px)',showPortChip:'Показ порта',confirmDel:'Подтверждение удаления',
+catApi:'WARP API',apiMethod:'Метод',workerUrl:'URL воркера',catLog:'Лог',maxLog:'Макс. записей',
+logTime:'Показ времени',catAdv:'Продвинутое',autoCopy:'Авто-копирование',beep:'Звук',vibrate:'Вибрация',
+save:'Сохранить',expSet:'Экспорт настроек',impSet:'Импорт настроек',reset:'Сброс',systemLog:'Системный лог',
+all:'Все',logSearchPh:'Поиск в логах…',helpManual:'Помощь',helpPurpose:'Цель',
+helpPurposeText:'WarpMiner собирает WARP-совместимые AmneziaWG конфиги.',helpFormula:'Золотая формула',
+helpVault:'Хранилище IP',helpVaultText:'Добавляйте, ищите и помечайте IP.',helpQR:'Движок QR',
+helpQRText:'Полностью оффлайн движок QR работает в любом браузере.',helpDev:'Разработчик',
+saved:'Сохранено',imported:'Импортировано',added:'Добавлено',removed:'Удалено',
+dedupeDone:'Дубли удалены',shuffled:'Перемешано',sorted:'Отсортировано',copied:'Скопировано',
+copyFailed:'Не скопировано',longPress:'Зажмите и скопируйте',imported2:'Установлено как цель',
+layer2Set:'Слой 2 установлен',duplicateErr:'Дубликат!',noKey:'Нет приватного ключа',
+badEp:'Неверный эндпоинт',forged:'Собрано',noSel:'Ничего не выбрано',nothingCopy:'Нечего копировать',
+listCopied:'Список скопирован',listExported:'Список скачан',slotSaved:'Сохранено в слот',
+slotLoaded:'Загружено',resetDone:'Сброшено',logCleared:'Лог очищен',logExported:'Лог скачан',
+confirmDelete:'Удалить?',empty:'Список пуст',bulkBuilt:'Собрано',acctOk:'Аккаунт получен',
+acctFail:'Ошибка аккаунта',randomSet:'Случайный установлен',needItems:'Нужен хотя бы один IP',
+settingsExported:'Экспортировано',settingsImported:'Импортировано',keyReady:'Ключ готов',
+autoSelDone:'Авто-выбор',ip:'IP',port:'Порт',actions:'Действия'}};
+function t(k){return(I18N[S.lang]&&I18N[S.lang][k])||I18N.fa[k]||k}
+function applyI18n(){
+  document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=t(el.dataset.t)});
+  document.querySelectorAll('[data-t-ph]').forEach(el=>{el.placeholder=t(el.dataset.tPh)});
+  const rtl=S.lang==='fa';
+  document.documentElement.lang=S.lang;document.documentElement.dir=rtl?'rtl':'ltr';
+  document.body.lang=S.lang;document.body.dir=rtl?'rtl':'ltr';
+}
+function setLang(l){S.lang=l;saveS();applyI18n();syncSettings();log('i','Language: '+l)}
+
+/* ═══ لیست پیش‌فرض از IP.txt ═══ */
+const DEFAULT_IPS=["8.6.112.148:891","8.6.112.135:864","8.6.112.87:946","8.6.112.120:1010","8.6.112.165:928","8.6.112.139:7281","8.6.112.178:942","8.6.112.205:3581","8.6.112.176:8319","8.6.112.190:5279","8.6.112.121:500","8.6.112.202:878","8.6.112.223:7559","8.6.112.230:1843","8.6.112.200:4198","8.6.112.233:7152","8.6.112.4:4233","8.6.112.159:878","8.6.112.4:859","8.6.112.233:880","8.6.112.93:942","8.6.112.93:945","8.6.112.182:945","8.6.112.133:968","8.6.112.52:928","8.6.112.121:1180","8.6.112.78:859","8.6.112.205:891","8.6.112.248:903","8.6.112.246:894","8.6.112.230:878","8.6.112.246:859","8.6.112.172:878","8.6.112.104:4233","8.6.112.249:891","8.6.112.46:4198","8.6.112.234:3854","8.6.112.136:4177","8.6.112.224:8886","8.6.112.251:1387","8.6.112.127:4198","8.6.112.200:1010","8.6.112.237:946","8.6.112.82:891","8.6.112.170:1180","8.6.112.29:7152","8.6.112.7:1180","8.6.112.182:891","8.6.112.67:7103","188.114.97.6:7281","8.6.112.235:1070","8.6.112.228:1843","8.6.112.19:908","8.6.112.184:7281","8.6.112.51:2506","188.114.97.6:859","8.6.112.8:1014","8.6.112.253:854","8.6.112.221:500","8.6.112.96:903","8.6.112.174:1014","8.6.112.212:880","8.6.112.154:7281","8.6.112.65:2506","8.6.112.171:946","8.6.112.160:3854","8.6.112.86:1387","8.6.112.163:7281","8.6.112.29:3581","8.6.112.122:4177","8.6.112.154:891","8.6.112.174:939","8.6.112.70:945","8.6.112.53:7156","8.6.112.165:7281","8.6.112.181:7152","8.6.112.122:894","8.6.112.191:908","8.6.112.79:8854","8.6.112.180:928","8.6.112.61:3581","8.6.112.224:854","8.6.112.77:1070","8.6.112.107:3138","8.6.112.106:3138","8.6.112.60:8854"];
+let vault=[],portFilterSet=null;
+
+/* ═══ تنظیمات ═══ */
+const DEF={lang:'fa',theme:'violet',fsize:14,dense:false,anim:true,aurora:true,
+cfgMode:'obfs',ver:'1.5',preset:'warp',mtu:1280,dns:'8.8.8.8,8.8.4.4',ipv6:true,ka:25,comment:true,
+maxRows:200,listHeight:420,showPort:true,confirmDel:true,proxy:'auto',proxyCustom:'',
+maxLog:300,logTime:true,autocopy:false,beep:true,vibrate:true};
+let S={...DEF};
+try{Object.assign(S,JSON.parse(localStorage.getItem('wm8')||'{}'))}catch(e){}
+function saveS(){try{localStorage.setItem('wm8',JSON.stringify(S))}catch(e){}}
+function resetS(){if(S.confirmDel&&!confirm(t('confirmDelete')))return;S={...DEF};saveS();syncSettings();applyAll();toast(t('resetDone'),'ok');log('w','Settings reset')}
+function applyTheme(){document.body.dataset.theme=S.theme;
+  document.querySelectorAll('.sw').forEach(w=>w.classList.toggle('on',w.dataset.t2===S.theme))}
+function applyAll(){
+  applyTheme();applyI18n();
+  document.body.classList.toggle('noanim',!S.anim);
+  document.body.classList.toggle('dense',S.dense);
+  document.body.classList.toggle('noaurora',!S.aurora);
+  document.body.style.fontSize=S.fsize+'px';
+  $('sec-account').classList.toggle('hiddenEl',curMode!=='raw');
+  $('proxySel').value=S.proxy;
+  $('proxyCustom').classList.toggle('hiddenEl',S.proxy!=='custom');
+  if(S.proxyCustom)$('proxyCustom').value=S.proxyCustom;
+  $('verChip').textContent='v'+curVer;
+  setSeg('modeSeg',curMode,'m');setSeg('verSeg',curVer,'v');
+  $('obfsBox').classList.toggle('hiddenEl',curMode!=='obfs');
+  applyListHeight();
+}
+function applyListHeight(){
+  const h=(S.listHeight||420);
+  $('vaultList').style.maxHeight=(window.innerWidth<761?Math.min(h,300):h)+'px';
+}
+function syncSettings(){
+  document.querySelectorAll('#m-settings [data-k]').forEach(el=>{
+    const k=el.dataset.k;if(el.type==='checkbox')el.checked=!!S[k];else el.value=S[k];});
+  document.querySelectorAll('.sw').forEach(w=>w.classList.toggle('on',w.dataset.t2===S.theme));
+}
+function bindSettings(){
+  document.querySelectorAll('#m-settings [data-k]').forEach(el=>{
+    el.addEventListener('change',()=>{const k=el.dataset.k;
+      S[k]=el.type==='checkbox'?el.checked:(el.type==='number'||el.type==='range')?+el.value:el.value;
+      saveS();applyAll();log('i',k+' ← '+S[k]);
+      if(k==='lang')toast('🌐 '+S.lang,'ok',1200);});});
+  document.querySelectorAll('.sw').forEach(w=>w.onclick=()=>{S.theme=w.dataset.t2;saveS();applyAll();});
+}
+function exportSettings(){dl('warpminer-settings.json',JSON.stringify(S,null,2),'application/json');toast(t('settingsExported'),'ok')}
+function importSettings(){
+  const inp=document.createElement('input');inp.type='file';inp.accept='.json';
+  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+    r.onload=()=>{try{Object.assign(S,JSON.parse(r.result));saveS();syncSettings();applyAll();toast(t('settingsImported'),'ok')}catch(err){toast('Invalid JSON','err')}};
+    r.readAsText(f);};
+  inp.click();
+}
+
+/* ═══ X25519 ═══ */
+const X25519=(()=>{
+  const P=(1n<<255n)-19n,A24=121665n;
+  const md=a=>{a%=P;return a<0n?a+P:a};
+  const pw=(a,e)=>{let r=1n;a=md(a);while(e){if(e&1n)r=md(r*a);a=md(a*a);e>>=1n}return r};
+  const bi=b=>{let x=0n;for(let i=31;i>=0;i--)x=(x<<8n)|BigInt(b[i]);return x};
+  const lb=x=>{const b=new Uint8Array(32);for(let i=0;i<32;i++){b[i]=Number(x&0xffn);x>>=8n}return b};
+  function mul(k,u){k=k.slice();k[0]&=248;k[31]&=127;k[31]|=64;
+    const kk=bi(k);let x1=bi(u)&((1n<<255n)-1n);
+    let x2=1n,z2=0n,x3=x1,z3=1n,sw=0n;
+    for(let t=254n;t>=0n;t--){const kt=(kk>>t)&1n;sw^=kt;
+      if(sw){[x2,x3]=[x3,x2];[z2,z3]=[z3,z2]}sw=kt;
+      const A=md(x2+z2),AA=md(A*A),B=md(x2-z2),BB=md(B*B),E=md(AA-BB);
+      const C=md(x3+z3),D=md(x3-z3),DA=md(D*A),CB=md(C*B);
+      const t1=md(DA+CB);x3=md(t1*t1);const t2=md(DA-CB);z3=md(x1*md(t2*t2));
+      x2=md(AA*BB);z2=md(E*md(AA+A24*E));}
+    if(sw){[x2,x3]=[x3,x2];[z2,z3]=[z3,z2]}
+    return lb(md(x2*pw(z2,P-2n)));}
+  const b64e=u=>btoa(String.fromCharCode(...u));
+  function genKeypair(){const sk=crypto.getRandomValues(new Uint8Array(32));
+    const base=new Uint8Array(32);base[0]=9;return{priv:b64e(sk),pub:b64e(mul(sk,base))};}
+  function selfTest(){const h=s=>Uint8Array.from(s.match(/../g).map(x=>parseInt(x,16)));
+    try{const out=mul(h('a546e36bf0527c9d3b16154b82465edd62144c0ac1fc5a18506a2244ba449ac4'),
+      h('e6db6867583030db3594c1a424b15f7c726624ec26b3353b10a903a6d0ab1c4c'));
+      return[...out].map(b=>b.toString(16).padStart(2,'0')).join('')===
+        'c3da55379de9c6908e94ea4df28d084f32eccf03491c71f754b4075577a28552';}catch(e){return false}}
+  return{genKeypair,selfTest,b64e};
+})();
+
+/* ═══ AmneziaParams — فرمول طلایی ═══ */
+const AmneziaParams=(()=>{
+  const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+  const PRESETS={warp:{Jc:8,Jmin:55,Jmax:140},light:{Jc:3,Jmin:8,Jmax:30},heavy:{Jc:12,Jmin:40,Jmax:180}};
+  function getJunk(p){if(PRESETS[p])return{...PRESETS[p]};
+    return{Jc:Math.max(1,Math.min(128,+$('jc').value||8)),
+      Jmin:Math.max(8,+$('jmin').value||55),
+      Jmax:Math.max(+($('jmin').value||55)+10,+$('jmax').value||140)};}
+  function genI(){const rh=n=>[...crypto.getRandomValues(new Uint8Array(n))].map(b=>b.toString(16).padStart(2,'0').toUpperCase()).join('');
+    return{I1:rh(rnd(4,6)),I2:rh(rnd(4,6)),I3:rh(rnd(2,4)),I4:rh(rnd(2,4)),I5:rh(rnd(2,3))};}
+  function golden(p){return{...getJunk(p),S1:0,S2:0,H1:1,H2:2,H3:3,H4:4}}
+  return{golden,genI,PRESETS};
+})();
+
+/* ═══ اعتبارسنجی ═══ */
+const ConfigValidator=(()=>{
+  const validEndpoint=ep=>/^(\d{1,3}(?:\.\d{1,3}){3}):(\d{1,6})$/.test(ep);
+  const validPrivKey=k=>{try{return atob(k).length===32}catch(e){return false}};
+  const validReserved=c=>{try{return c&&atob(c).length===3}catch(e){return false}};
+  const validHex=s=>{if(!s)return true;const c=s.replace(/^0x/i,'').replace(/[^0-9a-fA-F]/gi,'');return c.length>0&&c.length%2===0};
+  function runChecks(cfg){const issues=[];
+    if(!validEndpoint(cfg.endpoint))issues.push('Endpoint');
+    if(!validPrivKey(cfg.privKey))issues.push('PrivKey');
+    if(cfg.reserved&&!validReserved(cfg.reserved))issues.push('Reserved');
+    if(cfg.params)for(const k of['I1','I2','I3','I4','I5'])
+      if(cfg.params[k]&&!validHex(cfg.params[k]))issues.push(k+' hex');
+    return{valid:issues.length===0,issues};}
+  return{runChecks,validEndpoint,validPrivKey,validReserved,validHex};
+})();
+
+/* ═══ کلیپ‌بورد ۴لایه ═══ */
+async function copyText(text){
+  if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);return true}catch(e){}}
+  try{const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:0;left:0;opacity:0;width:1px;height:1px;z-index:-9999';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{ta.setSelectionRange(0,ta.value.length)}catch(e){}
+    const ok=document.execCommand('copy');document.body.removeChild(ta);if(ok)return true;}catch(e){}
+  try{const ta=document.createElement('textarea');ta.value=text;
+    ta.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;max-width:480px;height:180px;background:#171b2e;color:#e8eaf3;border:2px solid #a78bfa;padding:12px;font-family:monospace;font-size:12px;z-index:10000;border-radius:12px';
+    document.body.appendChild(ta);ta.focus();ta.select();toast(t('longPress'),'warn',4000);
+    setTimeout(()=>{if(document.body.contains(ta))document.body.removeChild(ta)},8000);return true;}catch(e){}
+  try{prompt('Copy:',text);return true}catch(e){}
+  return false;
+}
+
+/* ═══ سازنده کانفیگ — ترتیب دقیق ═══ */
+const AmneziaConfig=(()=>{
+  function build(o){const L=[];
+    if(o.addComment){L.push('# ═══════════════════════════════════════');
+      L.push('# WarpMiner · AmneziaWG v'+o.version);
+      L.push('# Mode: '+(o.mode==='raw'?'FAST (WARP)':'ANTI-FILTER'));
+      L.push('# '+new Date().toISOString());L.push('# Developer: THE SAZ');
+      L.push('# ═══════════════════════════════════════');L.push('');}
+    L.push('[Interface]');L.push('PrivateKey = '+o.privKey);
+    const v4=o.ipv4||'172.16.0.2',v6=o.ipv6||'2606:4700:110:8482:317d:a018:9443:c7b6';
+    L.push('Address = '+v4+'/32, '+v6+'/128');
+    L.push('DNS = '+o.dns);L.push('MTU = '+o.mtu);
+    if(o.reserved&&ConfigValidator.validReserved(o.reserved))L.push('Reserved = '+o.reserved);
+    if(o.params){L.push('Jc = '+o.params.Jc);L.push('Jmin = '+o.params.Jmin);L.push('Jmax = '+o.params.Jmax);
+      L.push('S1 = '+o.params.S1);L.push('S2 = '+o.params.S2);
+      L.push('H1 = '+o.params.H1);L.push('H2 = '+o.params.H2);L.push('H3 = '+o.params.H3);L.push('H4 = '+o.params.H4);
+      if((o.version==='2.0'||o.version==='3.1')&&o.params.S3!==undefined){L.push('S3 = '+o.params.S3);L.push('S4 = '+o.params.S4);}
+      for(const k of['I1','I2','I3','I4','I5'])if(o.params[k]){
+        const up=o.params[k].toUpperCase();if(ConfigValidator.validHex(up))L.push(k+' = '+up);}}
+    L.push('');
+    const allowed='0.0.0.0/0, ::/0';
+    const peer=(ep,al,tag)=>{if(tag)L.push(tag);L.push('[Peer]');L.push('PublicKey = '+CF_PUB);
+      L.push('AllowedIPs = '+al);L.push('Endpoint = '+ep);L.push('PersistentKeepalive = '+o.keepalive);L.push('');};
+    if(o.wiw&&o.endpoint2&&ConfigValidator.validEndpoint(o.endpoint2)){
+      peer(o.endpoint,o.endpoint2.split(':')[0]+'/32','# inner hop');
+      peer(o.endpoint2,allowed,'# outer tunnel');
+    }else peer(o.endpoint,allowed);
+    return L.join('\n');}
+  return{build};
+})();
+
+/* ═══ WarpApi ═══ */
+const WarpApi=(()=>{
+  function attempts(pubKey,mode,custom){
+    const url='https://api.cloudflareclient.com/v0a1951/reg';
+    const body=JSON.stringify({key:pubKey,install_id:'',fcm_token:'',tos:new Date().toISOString(),type:'Android',model:'PC',locale:'en_US'});
+    const std={'Content-Type':'application/json','CF-Client-Version':'a-6.30-3596','User-Agent':'okhttp/3.12.1'};
+    const A=[{id:'direct-json',name:'direct',run:()=>fetch(url,{method:'POST',headers:std,body})},
+      {id:'direct-simple',name:'no-preflight',run:()=>fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body})},
+      {id:'corsproxy',name:'corsproxy',run:()=>fetch('https://corsproxy.io/?url='+encodeURIComponent(url),{method:'POST',headers:std,body})}];
+    const c=(custom||'').trim();
+    if(c)A.push({id:'custom',name:'worker',run:()=>fetch(c,{method:'POST',headers:{'Content-Type':'application/json'},body})});
+    if(mode&&mode!=='auto'){const f=A.find(x=>x.id===mode);return f?[f]:A;}
+    let rem=null;try{rem=localStorage.getItem('wm8-api')}catch(e){}
+    if(rem){const i=A.findIndex(x=>x.id===rem);if(i>0)A.unshift(A.splice(i,1)[0]);}
+    return A;}
+  async function register(pubKey,mode,custom,onTry){
+    const att=attempts(pubKey,mode,custom);let err='';
+    for(const m of att){try{if(onTry)onTry(m.name);
+      const res=await m.run();if(!res.ok)throw new Error('HTTP '+res.status);
+      const j=await res.json();const root=j.result||j;
+      if(!root.client_id&&!root.config)throw new Error('bad response');
+      try{localStorage.setItem('wm8-api',m.id)}catch(e){}
+      return{ok:true,method:m.name,data:root};}catch(e){err=e.message}}
+    return{ok:false,error:err};}
+  return{register};
+})();
+
+/* ═══ UI کمکی ═══ */
+function toast(msg,type='',ms=3000){const d=document.createElement('div');d.className='toast '+type;
+  d.textContent=msg;$('toasts').appendChild(d);setTimeout(()=>d.remove(),ms)}
+function vibrate(ms){if(S.vibrate&&navigator.vibrate)navigator.vibrate(ms||30)}
+function openM(id){$(id).classList.add('open');if(id==='m-log')renderLog()}
+function closeM(id){$(id).classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mbk.open').forEach(m=>m.classList.remove('open'))});
+document.querySelectorAll('.mbk').forEach(b=>b.addEventListener('click',e=>{if(e.target===b)b.classList.remove('open')}));
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const fmtEP=o=>o.ip+':'+o.port;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function beep(){if(!S.beep)return;try{const c=new AudioContext(),o=c.createOscillator(),g=c.createGain();
+  o.frequency.value=880;g.gain.value=.06;o.connect(g);g.connect(c.destination);o.start();
+  g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.12);o.stop(c.currentTime+.13)}catch(e){}}
+function setLed(cls,txt){$('netLed').className='led '+cls;$('netTxt').textContent=txt}
+function setSeg(id,val,attr){document.querySelectorAll('#'+id+' button').forEach(b=>b.classList.toggle('on',b.dataset[attr]===val))}
+function flash(id){const p=$(id).closest('.panel');p.classList.remove('flash');void p.offsetWidth;p.classList.add('flash')}
+function dl(name,text,mime){const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([text],{type:mime||'text/plain'}));a.download=name;
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1200)}
+
+/* ═══ لاگ ═══ */
+const LOG=[];let logN=0,logFilter='all';
+function log(lv,msg){LOG.push({t:new Date(),lv,msg});const max=S.maxLog||300;
+  if(LOG.length>max)LOG.shift();logN++;$('logBadge').textContent=logN>99?'99+':logN;renderLog()}
+function renderLog(){const q=($('logSearch').value||'').toLowerCase();
+  const f=LOG.filter(e=>{if(logFilter!=='all'&&e.lv!==logFilter)return false;
+    if(q&&!e.msg.toLowerCase().includes(q))return false;return true;});
+  const box=$('logBox');
+  box.innerHTML=f.map(e=>'<div class="log-row">'+(S.logTime?'<span class="t">'+e.t.toLocaleTimeString('en-GB')+'</span> ':'')+
+    '<span class="lv '+e.lv+'">'+({i:'▸',o:'✔',w:'⚠',e:'✖'})[e.lv]+'</span> '+esc(e.msg)+'</div>').join('');
+  box.scrollTop=box.scrollHeight;
+  const c={i:0,o:0,w:0,e:0};LOG.forEach(e=>c[e.lv]++);
+  $('logStats').innerHTML='<span class="chip">Σ <b>'+LOG.length+'</b></span>'+
+    '<span class="chip acc">▸ <b>'+c.i+'</b></span><span class="chip ok">✔ <b>'+c.o+'</b></span>'+
+    '<span class="chip warn">⚠ <b>'+c.w+'</b></span><span class="chip err">✖ <b>'+c.e+'</b></span>';}
+function setLogFilter(f){logFilter=f;
+  document.querySelectorAll('#logFilters button').forEach(b=>b.classList.toggle('on',b.dataset.f===f));renderLog()}
+function clearLog(){LOG.length=0;logN=0;$('logBadge').textContent='0';renderLog();toast(t('logCleared'),'ok')}
+function exportLog(){const txt=LOG.map(e=>'['+e.t.toISOString()+'] ['+({i:'INFO',o:'OK',w:'WARN',e:'ERR'})[e.lv]+'] '+e.msg).join('\n');
+  dl('warpminer-log.txt',txt);toast(t('logExported'),'ok')}
+function copyLog(){const txt=LOG.map(e=>'['+({i:'INFO',o:'OK',w:'WARN',e:'ERR'})[e.lv]+'] '+e.msg).join('\n');
+  copyText(txt).then(ok=>toast(ok?t('copied'):t('copyFailed'),ok?'ok':'err',1600))}
+
+/* ═══ مخزن آی‌پی ═══ */
+function parseEPList(text){const out=[],seen=new Set();
+  String(text).split(/[\n,;]+/).forEach(l=>{
+    const m=l.trim().match(/^(\d{1,3}(?:\.\d{1,3}){3})\s*[: ]\s*(\d{1,6})$/);
+    if(m){const key=m[1]+':'+m[2];if(!seen.has(key)){seen.add(key);out.push({ip:m[1],port:+m[2],star:false,sel:false});}}});
+  return out;}
+function saveVault(){try{localStorage.setItem('wm8-vault',JSON.stringify(vault))}catch(e){}}
+function loadVault(){let saved=null;try{saved=JSON.parse(localStorage.getItem('wm8-vault')||'null')}catch(e){}
+  vault=(saved&&saved.length)?saved:parseEPList(DEFAULT_IPS.join('\n'));}
+function resetVault(){if(S.confirmDel&&!confirm(t('confirmDelete')))return;
+  vault=parseEPList(DEFAULT_IPS.join('\n'));portFilterSet=null;saveVault();renderVault();
+  toast(t('resetDone'),'ok');log('i','Vault reset ('+vault.length+')')}
+function vaultStats(){const uniq=new Set(vault.map(v=>v.ip)),ports=new Set(vault.map(v=>v.port));
+  return{total:vault.length,unique:uniq.size,ports:ports.size,stars:vault.filter(v=>v.star).length}}
+function animateNum(el,val){const from=+el.dataset.v||0;el.dataset.v=val;
+  if(from===val){el.textContent=val;return}
+  const t0=performance.now(),dur=400;
+  (function step(now){const p=Math.min(1,(now-t0)/dur);
+    el.textContent=Math.round(from+(val-from)*p);if(p<1)requestAnimationFrame(step)})(t0)}
+function updateStats(){const s=vaultStats();
+  animateNum($('stTotal'),s.total);animateNum($('stUnique'),s.unique);
+  animateNum($('stStar'),s.stars);animateNum($('stPorts'),s.ports)}
+function renderPortFilter(){const ports=[...new Set(vault.map(v=>v.port))].sort((a,b)=>a-b);
+  $('portFilter').innerHTML='<button class="'+(portFilterSet===null?'on':'')+'" onclick="setPortFilter(null)">'+t('all')+'</button>'+
+    ports.map(p=>'<button class="'+(portFilterSet===p?'on':'')+'" onclick="setPortFilter('+p+')">'+p+'</button>').join('')}
+function setPortFilter(p){portFilterSet=p;renderVault()}
+function togglePortFilter(){$('portFilter').classList.toggle('open');renderPortFilter()}
+function getFiltered(){const q=($('vSearch').value||'').trim().toLowerCase();
+  return vault.filter(v=>{if(portFilterSet!==null&&v.port!==portFilterSet)return false;
+    if(q&&!(v.ip+':'+v.port).toLowerCase().includes(q))return false;return true;})}
+function renderVault(){const filtered=getFiltered(),max=S.maxRows||200,shown=filtered.slice(0,max);
+  const list=$('vaultList');
+  let html='<div class="vhead"><span></span><span></span><span>'+t('ip')+'</span><span>'+t('port')+'</span><span class="hact">'+t('actions')+'</span></div>';
+  if(!shown.length){html+='<div class="vault-empty">'+t('empty')+'</div>';}
+  else{html+=shown.map(v=>{const realIdx=vault.indexOf(v);
+    return '<div class="vrow'+(v.sel?' selected':'')+'">'+
+      '<input type="checkbox" '+(v.sel?'checked':'')+' onchange="toggleSel('+realIdx+',this.checked)">'+
+      '<button class="vstar'+(v.star?' on':'')+'" onclick="toggleStar('+realIdx+')">'+ic('star','sm')+'</button>'+
+      '<span class="vep">'+v.ip+'<b>:'+v.port+'</b></span>'+
+      (S.showPort?'<span class="vport">'+v.port+'</span>':'<span></span>')+
+      '<div class="vacts">'+
+        '<button class="tbtn" title="Target" onclick="setTarget('+realIdx+')">'+ic('target','sm')+'</button>'+
+        '<button class="tbtn" title="Layer 2" onclick="setLayer2('+realIdx+')">'+ic('layers','sm')+'</button>'+
+        '<button class="tbtn danger" title="Delete" onclick="deleteOne('+realIdx+')">'+ic('trash','sm')+'</button>'+
+      '</div></div>';}).join('');}
+  list.innerHTML=html;
+  const selN=vault.filter(v=>v.sel).length;
+  $('selCount').textContent=selN;
+  $('selAll').checked=selN>0&&selN===vault.length;
+  updateStats();renderPortFilter();applyListHeight();}
+function toggleSel(i,val){vault[i].sel=val;renderVault()}
+function toggleSelAll(){const c=$('selAll').checked;vault.forEach(v=>v.sel=c);renderVault()}
+function toggleStar(i){vault[i].star=!vault[i].star;saveVault();renderVault()}
+function deleteOne(i){if(S.confirmDel&&!confirm(t('confirmDelete')))return;
+  vault.splice(i,1);saveVault();renderVault();log('w','Removed item')}
+function deleteSelected(){const n=vault.filter(v=>v.sel).length;
+  if(!n)return toast(t('noSel'),'err');
+  if(S.confirmDel&&!confirm(t('confirmDelete')+' ('+n+')'))return;
+  vault=vault.filter(v=>!v.sel);saveVault();renderVault();
+  toast(t('removed')+' ('+n+')','ok');log('w','Removed '+n+' selected')}
+function sortVault(by){if(by==='ip')vault.sort((a,b)=>{
+    const pa=a.ip.split('.').map(Number),pb=b.ip.split('.').map(Number);
+    for(let i=0;i<4;i++)if(pa[i]!==pb[i])return pa[i]-pb[i];return a.port-b.port;});
+  else vault.sort((a,b)=>a.port-b.port);
+  saveVault();renderVault();toast(t('sorted'),'ok',1400);log('i','Sorted by '+by)}
+function shuffleVault(){for(let i=vault.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));
+    [vault[i],vault[j]]=[vault[j],vault[i]];}
+  saveVault();renderVault();toast(t('shuffled'),'ok',1400);log('i','Shuffled')}
+function dedupeVault(){const seen=new Set(),before=vault.length;
+  vault=vault.filter(v=>{const k=v.ip+':'+v.port;if(seen.has(k))return false;seen.add(k);return true;});
+  saveVault();renderVault();toast(t('dedupeDone')+' ('+(before-vault.length)+')','ok');
+  log('o','Dedupe: '+(before-vault.length)+' removed')}
+function addIPs(){const items=parseEPList($('addIpText').value);
+  if(!items.length)return toast(t('badEp'),'err');
+  vault=vault.concat(items);saveVault();renderVault();$('addIpText').value='';
+  closeM('m-add');toast(t('added')+' ('+items.length+')','ok');log('o','Added '+items.length)}
+function copyVault(){copyText(vault.map(v=>v.ip+':'+v.port).join('\n')).then(ok=>toast(ok?t('listCopied'):t('copyFailed'),ok?'ok':'err',1800))}
+function exportVault(){dl('warpminer-ips.txt',vault.map(v=>v.ip+':'+v.port).join('\n'));
+  toast(t('listExported'),'ok');log('o','Vault exported')}
+function doImport(){const replace=$('importReplace').checked,items=parseEPList($('importText').value);
+  if(!items.length)return toast(t('badEp'),'err');
+  if(replace)vault=items;
+  else{const ex=new Set(vault.map(v=>v.ip+':'+v.port));
+    items.forEach(it=>{if(!ex.has(it.ip+':'+it.port))vault.push(it)});}
+  saveVault();renderVault();$('importText').value='';closeM('m-import');
+  toast(t('imported')+' ('+items.length+')','ok');log('o','Imported '+items.length)}
+async function importFromClipboard(){try{$('importText').value=await navigator.clipboard.readText()}catch(e){toast(t('copyFailed'),'err')}}
+function renderSlots(){$('slotsList').innerHTML=[1,2,3].map(n=>{
+    let cnt=0;try{const s=localStorage.getItem('wm8-slot'+n);if(s)cnt=JSON.parse(s).length}catch(e){}
+    return '<div class="set-row"><label>'+t('slots')+' '+n+'<small>'+cnt+' items</small></label>'+
+      '<div class="row" style="flex:none">'+
+      '<button class="tbtn mini primary" onclick="saveSlot('+n+')">'+ic('download','sm')+'</button>'+
+      '<button class="tbtn mini" onclick="loadSlot('+n+')">'+ic('upload','sm')+'</button>'+
+      '<button class="tbtn mini danger" onclick="clearSlot('+n+')">'+ic('trash','sm')+'</button>'+
+      '</div></div>';}).join('')}
+function saveSlot(n){localStorage.setItem('wm8-slot'+n,JSON.stringify(vault));renderSlots();toast(t('slotSaved')+' '+n,'ok');log('o','Vault → slot '+n)}
+function loadSlot(n){const s=localStorage.getItem('wm8-slot'+n);if(!s)return toast(t('empty'),'err');
+  vault=JSON.parse(s);saveVault();renderVault();closeM('m-slots');toast(t('slotLoaded')+' '+n,'ok');log('o','Slot '+n+' → vault')}
+function clearSlot(n){localStorage.removeItem('wm8-slot'+n);renderSlots()}
+function pickRandom(){if(!vault.length)return toast(t('needItems'),'err');
+  const v=vault[rnd(0,vault.length-1)];$('endpoint').value=fmtEP(v);flash('sec-forge');
+  toast(t('randomSet'),'ok',1600);log('i','Random target: '+fmtEP(v))}
+function autoSelect(){if(!vault.length)return toast(t('needItems'),'err');
+  const v=vault[rnd(0,vault.length-1)];$('endpoint').value=fmtEP(v);flash('sec-forge');
+  toast(t('autoSelDone')+': '+fmtEP(v),'ok',1600);log('i','Auto-selected: '+fmtEP(v));vibrate(20)}
+function setTarget(i){const v=vault[i];if(!v)return;$('endpoint').value=fmtEP(v);flash('sec-forge');
+  toast(t('imported2'),'ok',1600);log('o','Target: '+fmtEP(v));vibrate(20)}
+function useFirstAsTarget(){if(!vault.length)return toast(t('needItems'),'err');setTarget(0)}
+function setLayer2(i){const v=vault[i];if(!v)return;const ep=fmtEP(v);
+  if(ep===$('endpoint').value.trim())return toast(t('duplicateErr'),'warn',2500);
+  $('endpoint2').value=ep;$('wiw').checked=true;$('wiwRow').classList.remove('hiddenEl');
+  toast(t('layer2Set'),'ok',1600);log('o','Layer2: '+ep)}
+
+/* ═══ انتخاب لایه۲ ═══ */
+function openWiWPicker(){const ep1=$('endpoint').value.trim();
+  if(!ep1)return toast(t('badEp'),'err');
+  if(!vault.length)return toast(t('needItems'),'err');
+  $('wiwLayer1').textContent=ep1;
+  $('wiwList').innerHTML=vault.map((v,i)=>{const ep=fmtEP(v),dup=ep===ep1;
+    return '<div class="wiw-item'+(dup?' disabled':'')+'" onclick="'+(dup?'rejectDup()':'selectWiW('+i+')')+'">'+
+      '<span class="ep">'+ep+'</span><span class="vport">'+v.port+'</span>'+
+      '<button class="tbtn mini primary" '+(dup?'disabled':'')+'>'+ic('download','sm')+'</button></div>';}).join('');
+  openM('m-wiw')}
+function rejectDup(){toast(t('duplicateErr'),'warn',2500)}
+function selectWiW(i){const v=vault[i];if(!v)return;const ep=fmtEP(v);
+  if(ep===$('endpoint').value.trim())return toast(t('duplicateErr'),'warn',2500);
+  $('endpoint2').value=ep;closeM('m-wiw');toast(t('layer2Set'),'ok',1800);log('o','WiW Layer2: '+ep)}
+
+/* ═══ حساب وارپ ═══ */
+async function getAccount(){const btn=$('accBtn');btn.disabled=true;
+  $('apiStateChip').innerHTML='API: <b>working</b>';$('apiStateChip').className='chip warn';
+  setLed('blink','API…');
+  const kp=X25519.genKeypair();$('priv').value=kp.priv;$('pub').value=kp.pub;saveKeys();
+  log('i','Generating keys…');
+  const r=await WarpApi.register(kp.pub,$('proxySel').value,$('proxyCustom').value,n=>log('i','Try: '+n));
+  if(r.ok){const d=r.data;$('cid').value=d.client_id||'';
+    $('accid').value=(d.account&&d.account.id)||d.id||'';
+    $('ip4').value=(d.config&&d.config.interface&&d.config.interface.addresses&&d.config.interface.addresses.v4)||'';
+    $('ip6').value=(d.config&&d.config.interface&&d.config.interface.addresses&&d.config.interface.addresses.v6)||'';
+    saveKeys();$('apiStateChip').innerHTML='API: <b>OK</b>';$('apiStateChip').className='chip ok';
+    setLed('on','ONLINE');toast(t('acctOk'),'ok');log('o','Account: '+String($('accid').value).slice(0,10)+'…');}
+  else{$('apiStateChip').innerHTML='API: <b>FAIL</b>';$('apiStateChip').className='chip err';
+    setLed('err','BLOCKED');toast(t('acctFail'),'err',5000);log('e','API: '+r.error);}
+  btn.disabled=false;return r.ok;}
+async function ensureKeys(){
+  if($('priv').value.trim())return;
+  try{await getAccount();}catch(e){}
+  if(!$('priv').value.trim()){
+    const kp=X25519.genKeypair();$('priv').value=kp.priv;$('pub').value=kp.pub;saveKeys();
+    log('w','Local keypair generated (not registered)');
+  }
+  toast(t('keyReady'),'ok',1500);
+}
+
+/* ═══ فورج ═══ */
+let curMode=S.cfgMode||'obfs',curVer=S.ver||'1.5',curPreset=S.preset||'warp';
+document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{
+  curMode=b.dataset.m;setSeg('modeSeg',curMode,'m');
+  $('obfsBox').classList.toggle('hiddenEl',curMode!=='obfs');
+  $('sec-account').classList.toggle('hiddenEl',curMode!=='raw');
+  log('i','Mode ← '+curMode);
+  if(curMode==='obfs'&&!$('priv').value.trim())ensureKeys();
+});
+document.querySelectorAll('#verSeg button').forEach(b=>b.onclick=()=>{
+  curVer=b.dataset.v;setSeg('verSeg',curVer,'v');$('verChip').textContent='v'+curVer;log('i','Ver ← v'+curVer)});
+['jc','jmin','jmax'].forEach(id=>$(id).addEventListener('input',()=>$(id+'v').textContent=$(id).value));
+$('wiw').addEventListener('change',()=>$('wiwRow').classList.toggle('hiddenEl',!$('wiw').checked));
+function uncheckPresets(){document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('on'))}
+function setPreset(p,btn){curPreset=p;
+  if(p!=='custom'){const j=AmneziaParams.PRESETS[p];
+    $('jc').value=j.Jc;$('jmin').value=j.Jmin;$('jmax').value=j.Jmax;
+    $('jcv').textContent=j.Jc;$('jminv').textContent=j.Jmin;$('jmaxv').textContent=j.Jmax;}
+  uncheckPresets();btn.classList.add('on');log('i','Preset ← '+p)}
+function magicGen(){const p=AmneziaParams.genI();
+  $('i1').value=p.I1;$('i2').value=p.I2;$('i3').value=p.I3;$('i4').value=p.I4;$('i5').value=p.I5;
+  log('i','I1-I5 generated')}
+function clearI(){['i1','i2','i3','i4','i5'].forEach(id=>$(id).value='');log('i','I params cleared')}
+function collectParams(){
+  const junk={Jc:Math.max(1,Math.min(128,+$('jc').value||8)),
+    Jmin:Math.max(8,+$('jmin').value||55),
+    Jmax:Math.max(+($('jmin').value||55)+10,+$('jmax').value||140)};
+  const p={...junk,S1:0,S2:0,H1:1,H2:2,H3:3,H4:4};
+  if(curVer==='2.0'||curVer==='3.1'){p.S3=rnd(10,32);p.S4=rnd(10,20);}
+  for(const k of['i1','i2','i3','i4','i5']){const val=$(k).value.trim();
+    if(val&&ConfigValidator.validHex(val))p[k.toUpperCase()]=val.toUpperCase();}
+  return p;}
+function buildCfgText(ep,mode,opts){opts=opts||{};
+  const priv=$('priv').value.trim(),wiw=opts.wiw!==undefined?opts.wiw:$('wiw').checked,
+    ep2=opts.ep2||$('endpoint2').value.trim();
+  const params=mode==='raw'?{Jc:8,Jmin:55,Jmax:140,S1:0,S2:0,H1:1,H2:2,H3:3,H4:4}:(opts.params||collectParams());
+  return AmneziaConfig.build({privKey:priv,endpoint:ep,version:curVer,mode,wiw,endpoint2:ep2,
+    ipv4:$('ip4').value.trim(),ipv6:S.ipv6?($('ip6').value.trim()||'2606:4700:110:8482:317d:a018:9443:c7b6'):'',
+    reserved:$('cid').value.trim(),dns:S.dns,mtu:S.mtu,keepalive:S.ka,addComment:S.comment,params});}
+async function buildConfig(forceMode){
+  const mode=forceMode||curMode;
+  await ensureKeys();
+  const priv=$('priv').value.trim(),ep=$('endpoint').value.trim();
+  if(!priv){toast(t('noKey'),'err',4000);log('e','No key');return false}
+  if(!ConfigValidator.validEndpoint(ep)){toast(t('badEp'),'err');log('e','Bad EP: '+ep);return false}
+  if($('wiw').checked){const ep2=$('endpoint2').value.trim();
+    if(ep2&&ep2===ep){toast(t('duplicateErr'),'warn',2500);log('w','WiW duplicate');return false}}
+  const cfg=buildCfgText(ep,mode);$('out').value=cfg;
+  const v=ConfigValidator.runChecks({endpoint:ep,privKey:priv,reserved:$('cid').value.trim(),params:collectParams()});
+  if(v.valid){$('sanity').innerHTML=ic('check','sm')+' SANITY: PASS';$('sanity').className='pass';}
+  else{$('sanity').innerHTML=ic('alert','sm')+' SANITY: '+v.issues.length;
+    $('sanity').className=v.issues.length>2?'fail':'warn';log('w','Issues: '+v.issues.join(', '));}
+  $('outHint').textContent=mode==='raw'?'FAST · H1-4=1..4 · instant connect.':'Anti-filter v'+curVer+' · golden formula.';
+  flash('sec-out');if(S.autocopy)copyText(cfg).catch(()=>{});beep();vibrate(30);
+  log('o',t('forged')+' · '+(mode==='raw'?'FAST':'ANTI v'+curVer)+' · '+cfg.length+'B');return true;}
+function copyCfg(){if(!$('out').value)return toast(t('nothingCopy'),'err');
+  copyText($('out').value).then(ok=>{toast(ok?t('copied'):t('copyFailed'),ok?'ok':'err',1600);if(ok)log('o','Copied')})}
+function dlCfg(){if(!$('out').value)return toast(t('nothingCopy'),'err');
+  dl('warpminer.conf',$('out').value);log('o','Downloaded .conf')}
+
+/* ═══ QR ═══ */
+function showQRSingle(){if(!$('out').value)return toast(t('nothingCopy'),'err');
+  try{QR.drawCanvas($('qrSingle'),$('out').value,{size:340,ecl:'M',margin:2});
+    $('qrSingleBox').classList.remove('hiddenEl');
+    $('qrSingleBox').scrollIntoView({behavior:'smooth',block:'center'});
+    log('o','QR generated (offline engine)');}
+  catch(e){toast('QR: '+e.message,'err');log('e','QR error: '+e.message)}}
+function hideQRSingle(){$('qrSingleBox').classList.add('hiddenEl')}
+function downloadQrSingle(){const cv=$('qrSingle');if(!cv)return;
+  const a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download='warpminer-qr.png';a.click();log('o','QR downloaded')}
+
+/* ═══ فورج انبوه ═══ */
+let bulkData=[];
+function bulkForge(){
+  if(!$('priv').value.trim()){ensureKeys().then(()=>bulkForge());return;}
+  let selected=vault.filter(v=>v.sel);
+  if(!selected.length)selected=vault.slice(0,10);
+  selected=selected.slice(0,10);
+  if(!selected.length)return toast(t('needItems'),'err');
+  openM('m-bulk');
+  bulkData=selected.map(v=>({v,text:buildCfgText(fmtEP(v),curMode,{params:collectParams()})}));
+  $('bulkGrid').innerHTML=bulkData.map((c,i)=>
+    '<div class="bcard"><div class="bcard-h"><span class="rank">#'+(i+1)+'</span><span class="ep">'+fmtEP(c.v)+'</span></div>'+
+    '<div class="qr-box"><canvas id="qr-'+i+'"></canvas></div>'+
+    '<details class="bcfg"><summary>'+ic('eye','sm')+' '+t('showQR')+'</summary><textarea readonly rows="7">'+esc(c.text)+'</textarea></details>'+
+    '<div class="bcard-btns">'+
+    '<button class="tbtn primary" onclick="bulkCopy('+i+')">'+ic('copy','sm')+'</button>'+
+    '<button class="tbtn primary" onclick="bulkDl('+i+')">'+ic('download','sm')+'</button>'+
+    '<button class="tbtn warn" onclick="bulkQrDl('+i+')">'+ic('qr','sm')+'</button>'+
+    '</div></div>').join('');
+  let okN=0;
+  for(let i=0;i<bulkData.length;i++){
+    try{QR.drawCanvas($('qr-'+i),bulkData[i].text,{size:220,ecl:'M',margin:1});okN++;}catch(e){}}
+  log('o','Bulk: '+okN+'/'+bulkData.length+' QR built');
+  toast(t('bulkBuilt')+' ('+okN+' QR)','ok');
+}
+function bulkCopy(i){copyText(bulkData[i].text).then(ok=>toast(ok?'#'+(i+1)+' '+t('copied'):t('copyFailed'),ok?'ok':'err',1400))}
+function bulkDl(i){const c=bulkData[i];dl('warpminer-'+(i+1)+'-'+c.v.ip+'.conf',c.text)}
+function bulkQrDl(i){const cv=$('qr-'+i);if(!cv)return;
+  const a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download='warpminer-qr-'+(i+1)+'.png';a.click()}
+function copyAll(){if(!bulkData.length)return;
+  copyText(bulkData.map((c,i)=>'# ─── '+(i+1)+' · '+fmtEP(c.v)+' ───\n'+c.text).join('\n'))
+    .then(ok=>toast(ok?t('copied'):t('copyFailed'),ok?'ok':'err'))}
+function downloadAll(){if(!bulkData.length)return;
+  bulkData.forEach((c,i)=>setTimeout(()=>bulkDl(i),i*400));toast('×'+bulkData.length,'ok',3000)}
+
+/* ═══ کلیدها ═══ */
+function saveKeys(){try{localStorage.setItem('wm8-keys',JSON.stringify({
+    priv:$('priv').value,pub:$('pub').value,cid:$('cid').value,accid:$('accid').value,
+    ip4:$('ip4').value,ip6:$('ip6').value,ep:$('endpoint').value}))}catch(e){}}
+function loadKeys(){try{const k=JSON.parse(localStorage.getItem('wm8-keys')||'null');if(!k)return;
+    $('priv').value=k.priv||'';$('pub').value=k.pub||'';$('cid').value=k.cid||'';
+    $('accid').value=k.accid||'';$('ip4').value=k.ip4||'';$('ip6').value=k.ip6||'';
+    if(k.ep)$('endpoint').value=k.ep;if(k.priv)log('i','Keys restored');}catch(e){}}
+$('endpoint').addEventListener('change',saveKeys);
+$('proxySel').addEventListener('change',()=>{S.proxy=$('proxySel').value;saveS();applyAll()});
+$('proxyCustom').addEventListener('change',()=>{S.proxyCustom=$('proxyCustom').value.trim();saveS()});
+window.addEventListener('resize',applyListHeight);
+
+/* ═══ Init ═══ */
+loadVault();bindSettings();syncSettings();applyAll();loadKeys();renderVault();
+(function(){const btn=document.querySelector('.presets button[data-p="'+(S.preset||'warp')+'"]');
+  if(btn)setPreset(S.preset||'warp',btn);})();
+setSeg('modeSeg',curMode,'m');setSeg('verSeg',curVer,'v');
+$('verChip').textContent='v'+curVer;
+$('sec-account').classList.toggle('hiddenEl',curMode!=='raw');
+if(curMode==='obfs'&&!$('priv').value.trim())ensureKeys();
+log('i','WarpMiner v0.6.8 · Phoenix');
+log(X25519.selfTest()?'o':'e','X25519 self-test: '+(X25519.selfTest()?'PASS':'FAIL'));
+log('i','IPs: '+vault.length+' · lang: '+S.lang+' · theme: '+S.theme);
+log('i','Golden formula: H1=1..H4=4, S1=S2=0, Jc=8, Jmin=55, Jmax=140');
+log('i','QR engine: internal offline · icons: SVG sprite');
+log('i','Developer: THE SAZ');
+
+/* ═══ ثبت سرویس‌ورکر (PWA) ═══ */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./sw.js')
+      .then(()=>log('o','Service Worker registered (PWA ready)'))
+      .catch(e=>log('w','SW registration failed: '+e.message));
+  });
+}
+</script>
+</body>
+</html>
