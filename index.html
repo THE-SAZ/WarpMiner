@@ -3,52 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>⛏ WarpMiner — AmneziaWG Config Forge</title>
-<meta name="description" content="Forge WARP-compatible AmneziaWG configs instantly. Offline PWA by THE SAZ.">
-<meta name="theme-color" content="#101322">
+<title>⛏ WarpMiner — جهانگرد · AmneziaWG Forge</title>
+<meta name="description" content="WarpMiner جهانگرد — Forge universal AmneziaWG configs for WARP. Offline PWA by THE SAZ.">
+<meta name="theme-color" content="#0a192f">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="WarpMiner">
-<meta name="application-name" content="WarpMiner">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23101322'/%3E%3Cpath d='M54 14c15 1 27 12 32 31-8-5-16-8-24-8M54 14c-1 15-12 27-31 32 5-8 8-16 8-24M14 85l38-38' stroke='%23a78bfa' stroke-width='9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230a192f'/%3E%3Cpath d='M54 14c15 1 27 12 32 31-8-5-16-8-24-8M54 14c-1 15-12 27-31 32 5-8 8-16 8-24M14 85l38-38' stroke='%232dd4bf' stroke-width='9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" onerror="this.remove()">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#101322;--panel:rgba(255,255,255,.045);--panel-solid:#171b2e;--panel-hover:rgba(255,255,255,.07);
+  --bg:#0a192f;--panel:rgba(255,255,255,.045);--panel-solid:#0f2440;--panel-hover:rgba(255,255,255,.07);
   --stroke:rgba(255,255,255,.09);--stroke-strong:rgba(255,255,255,.16);
-  --tx:#e8eaf3;--mut:#8b91a7;--mut2:#5d6376;
-  --acc:#a78bfa;--acc-soft:rgba(167,139,250,.16);
-  --acc2:#67e8f9;--acc2-soft:rgba(103,232,249,.14);
-  --ok:#6ee7b7;--ok-soft:rgba(110,231,183,.14);
-  --warn:#fcd34d;--warn-soft:rgba(252,211,77,.14);
-  --err:#fda4af;--err-soft:rgba(253,164,175,.14);
-  --info:#93c5fd;--info-soft:rgba(147,197,253,.14);
-  --star:#fcd34d;
+  --tx:#e6f1ff;--mut:#8b9bb4;--mut2:#5d6d8a;
+  --acc:#2dd4bf;--acc-soft:rgba(45,212,191,.16);
+  --acc2:#38bdf8;--acc2-soft:rgba(56,189,248,.14);
+  --gold:#f59e0b;--gold-soft:rgba(245,158,11,.14);
+  --ok:#34d399;--ok-soft:rgba(52,211,153,.14);
+  --warn:#fbbf24;--warn-soft:rgba(251,191,36,.14);
+  --err:#fb7185;--err-soft:rgba(251,113,133,.14);
+  --info:#60a5fa;--info-soft:rgba(96,165,250,.14);
+  --star:#fbbf24;
   --rad:18px;--rad-s:12px;--pad:18px;
-  --ff:'Vazirmatn','Estedad','IRANSansX','Segoe UI',Tahoma,Arial,sans-serif;
+  --ff:'Vazirmatn','Estedad','Segoe UI',Tahoma,Arial,sans-serif;
   --mono:'Vazirmatn',ui-monospace,'Cascadia Code',Consolas,monospace;
-  --shadow:0 8px 30px rgba(0,0,0,.28);--shadow-sm:0 4px 14px rgba(0,0,0,.2);
+  --shadow:0 8px 30px rgba(0,0,0,.35);--shadow-sm:0 4px 14px rgba(0,0,0,.25);
 }
-body[data-theme=ocean]{--acc:#60a5fa;--acc-soft:rgba(96,165,250,.16);--acc2:#67e8f9;--acc2-soft:rgba(103,232,249,.14)}
-body[data-theme=sunset]{--acc:#f9a8d4;--acc-soft:rgba(249,168,212,.16);--acc2:#fcd34d;--acc2-soft:rgba(252,211,77,.14)}
-body[data-theme=forest]{--acc:#6ee7b7;--acc-soft:rgba(110,231,183,.16);--acc2:#a7f3d0;--acc2-soft:rgba(167,243,208,.14)}
+body[data-theme=ocean]{--acc:#38bdf8;--acc-soft:rgba(56,189,248,.16);--acc2:#2dd4bf;--acc2-soft:rgba(45,212,191,.14);--gold:#f59e0b;--gold-soft:rgba(245,158,11,.14)}
+body[data-theme=sunset]{--acc:#fb923c;--acc-soft:rgba(251,146,60,.16);--acc2:#f472b6;--acc2-soft:rgba(244,114,182,.14);--gold:#fbbf24;--gold-soft:rgba(251,191,36,.14)}
+body[data-theme=compass]{--acc:#34d399;--acc-soft:rgba(52,211,153,.16);--acc2:#60a5fa;--acc2-soft:rgba(96,165,250,.14);--gold:#fbbf24;--gold-soft:rgba(251,191,36,.14)}
+body[data-theme=dawn]{--acc:#fbbf24;--acc-soft:rgba(251,191,36,.16);--acc2:#fb7185;--acc2-soft:rgba(251,113,133,.14);--gold:#f59e0b;--gold-soft:rgba(245,158,11,.14)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--ff);font-size:14px;color:var(--tx);background:var(--bg);min-height:100vh;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:-10%;z-index:-2;pointer-events:none;
-  background:radial-gradient(600px 400px at 15% 15%,var(--acc-soft),transparent 60%),
-  radial-gradient(700px 500px at 85% 85%,var(--acc2-soft),transparent 60%);
-  animation:aurora 30s ease-in-out infinite alternate}
-@keyframes aurora{0%{transform:translate(0,0)}50%{transform:translate(2%,-2%) scale(1.04)}100%{transform:translate(-1%,2%)}}
+  background:radial-gradient(600px 420px at 12% 12%,var(--acc-soft),transparent 62%),
+  radial-gradient(720px 520px at 88% 88%,var(--acc2-soft),transparent 62%),
+  radial-gradient(500px 380px at 70% 15%,var(--gold-soft),transparent 55%);
+  animation:aurora 32s ease-in-out infinite alternate}
+@keyframes aurora{0%{transform:translate(0,0)}50%{transform:translate(2%,-2%) scale(1.05)}100%{transform:translate(-1%,2%)}}
 body.noaurora::before{animation:none;opacity:.5}
 body.dense{--pad:12px;font-size:13px}
 body.noanim *,body.noanim *::before,body.noanim *::after{animation:none!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-::selection{background:var(--acc);color:#0b0d16}
+::selection{background:var(--acc);color:#06121f}
 button{font-family:inherit}input,select,textarea{font-family:inherit}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-3px}
@@ -56,13 +58,14 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .panel{animation:fadeUp .6s cubic-bezier(.22,.8,.3,1) both;animation-delay:var(--d,0ms)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .wrap{max-width:1080px;margin:0 auto;padding:16px 16px 40px}
+.codename{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(120deg,var(--gold-soft),var(--acc-soft));border:1px solid var(--gold);color:var(--gold);border-radius:99px;padding:2px 12px;font-size:11px;font-weight:800;letter-spacing:1px}
 header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  padding:13px 18px;margin-bottom:20px;background:rgba(23,27,46,.75);
+  padding:13px 18px;margin-bottom:20px;background:rgba(15,36,64,.78);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow)}
 .brand{display:flex;align-items:center;gap:11px;min-width:0}
 .logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--acc);
-  background:linear-gradient(135deg,var(--acc-soft),var(--acc2-soft));
+  background:linear-gradient(135deg,var(--acc-soft),var(--gold-soft));
   border:1px solid var(--stroke-strong);position:relative;overflow:hidden;flex:none}
 .logo::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
   transform:translateX(-100%);animation:sheen 4s ease-in-out infinite}
@@ -71,7 +74,7 @@ header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:1
 @keyframes dig{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg) translateY(1px)}}
 .brand-txt{min-width:0}
 .brand h1{font-size:19px;font-weight:900;line-height:1.1;white-space:nowrap}
-.brand h1 b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.brand h1 b{background:linear-gradient(120deg,var(--acc),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .brand small{display:block;font-size:11px;color:var(--mut);font-weight:600;margin-top:1px;white-space:nowrap}
 .hstatus{display:flex;align-items:center;gap:7px;margin-right:auto}
 .led{width:9px;height:9px;border-radius:50%;background:var(--warn);box-shadow:0 0 0 3px var(--warn-soft);flex:none;animation:pulse 2s infinite}
@@ -84,7 +87,7 @@ header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:1
   font-size:13px;font-weight:600;transition:.2s;position:relative;flex:none}
 .hbtn:hover{background:var(--panel-hover);border-color:var(--acc);transform:translateY(-1px)}
 .hbtn:active{transform:scale(.95)}
-.badge{position:absolute;top:-5px;left:-5px;background:var(--acc);color:#0b0d16;font-size:9px;font-weight:800;
+.badge{position:absolute;top:-5px;left:-5px;background:var(--acc);color:#06121f;font-size:9px;font-weight:800;
   min-width:16px;height:16px;border-radius:8px;display:grid;place-items:center;padding:0 4px}
 .panel{background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border:1px solid var(--stroke);border-radius:var(--rad);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;transition:border-color .25s}
@@ -100,8 +103,9 @@ header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:1
 .tbtn:hover:not(:disabled){background:var(--panel-hover);border-color:var(--acc);transform:translateY(-1px)}
 .tbtn:active:not(:disabled){transform:scale(.96)}
 .tbtn:disabled{opacity:.35;cursor:not-allowed}
-.tbtn.primary{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;border:none;font-weight:800;box-shadow:var(--shadow-sm)}
+.tbtn.primary{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#06121f;border:none;font-weight:800;box-shadow:var(--shadow-sm)}
 .tbtn.primary:hover:not(:disabled){filter:brightness(1.1);box-shadow:0 6px 20px var(--acc-soft)}
+.tbtn.gold{background:linear-gradient(120deg,var(--gold),var(--acc));color:#06121f;border:none;font-weight:800;box-shadow:var(--shadow-sm)}
 .tbtn.danger{background:var(--err-soft);border-color:var(--err);color:var(--err)}
 .tbtn.warn{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
 .tbtn.mini{padding:5px 9px;font-size:12px;border-radius:9px}
@@ -112,13 +116,14 @@ header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:1
 .chip.warn{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
 .chip.err{border-color:var(--err);color:var(--err);background:var(--err-soft)}
 .chip.acc{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+.chip.gold{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
 label{display:block;color:var(--mut);font-size:12px;font-weight:700;margin:10px 0 5px}
-input[type=text],input[type=number],input[type=url],select,textarea{width:100%;background:rgba(11,13,22,.5);
+input[type=text],input[type=number],input[type=url],select,textarea{width:100%;background:rgba(6,18,31,.5);
   border:1px solid var(--stroke);color:var(--tx);border-radius:11px;padding:10px 13px;font-size:13px;outline:none;transition:.2s}
 input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
 input:read-only{color:var(--mut)}
 textarea{resize:vertical;font-family:var(--mono);font-size:12px;line-height:1.7;direction:ltr;text-align:left}
-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b91a7' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b9bb4' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:left 12px center;padding-left:30px}
 .row{display:flex;gap:9px;flex-wrap:wrap}.row>*{flex:1;min-width:110px}
 .chk{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;cursor:pointer}
@@ -128,23 +133,22 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .vault-search{position:relative;margin-bottom:12px}
 .vault-search input{padding-right:40px}
 .vault-search .sic{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none;display:flex}
-.vault-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .vault-toolbar{display:flex;gap:8px;overflow-x:auto;flex-wrap:nowrap;padding:2px 2px 10px;margin-bottom:8px;
   scrollbar-width:thin;scrollbar-color:var(--acc) rgba(255,255,255,.07)}
 .vault-toolbar::-webkit-scrollbar{height:7px}
 .vault-toolbar::-webkit-scrollbar-track{background:rgba(255,255,255,.07);border-radius:4px}
-.vault-toolbar::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:4px}
+.vault-toolbar::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--acc),var(--gold));border-radius:4px}
 .vault-toolbar .tbtn{flex:0 0 auto}
 .port-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;max-height:0;overflow:hidden;transition:max-height .3s}
 .port-filter.open{max-height:220px;overflow-y:auto}
 .port-filter button{background:var(--panel);border:1px solid var(--stroke);color:var(--mut);border-radius:99px;
   padding:3px 10px;font-size:11px;cursor:pointer;font-family:var(--mono);direction:ltr;transition:.15s}
 .port-filter button.on{background:var(--acc-soft);border-color:var(--acc);color:var(--acc)}
-.vault-list{border:1px solid var(--stroke);border-radius:var(--rad-s);overflow-y:auto;background:rgba(11,13,22,.35);
+.vault-list{border:1px solid var(--stroke);border-radius:var(--rad-s);overflow-y:auto;background:rgba(6,18,31,.35);
   max-height:420px;scrollbar-width:thin;scrollbar-color:var(--acc) rgba(255,255,255,.05)}
 .vault-list::-webkit-scrollbar{width:7px}
 .vault-list::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}
-.vault-list::-webkit-scrollbar-thumb{background:linear-gradient(var(--acc),var(--acc2));border-radius:4px}
+.vault-list::-webkit-scrollbar-thumb{background:linear-gradient(var(--acc),var(--gold));border-radius:4px}
 .vhead{display:grid;grid-template-columns:18px 28px 1fr auto auto;gap:8px;align-items:center;
   padding:9px 12px;position:sticky;top:0;background:var(--panel-solid);z-index:2;
   font-size:11px;color:var(--mut);font-weight:700;border-bottom:1px solid var(--stroke)}
@@ -170,12 +174,12 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .ep-row{display:flex;gap:9px;align-items:stretch}
 .ep-row input{flex:1;min-width:0}
 .auto-btn{flex:none;display:inline-flex;align-items:center;gap:6px;padding:0 16px}
-#endpoint{direction:ltr;text-align:center;font-family:var(--mono);font-size:16px;color:var(--acc2);
-  background:rgba(11,13,22,.6);border:2px solid var(--stroke-strong);padding:13px;border-radius:14px;font-weight:700}
-.seg{display:flex;background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:13px;padding:4px;gap:4px;margin-top:6px}
+#endpoint{direction:ltr;text-align:center;font-family:var(--mono);font-size:16px;color:var(--acc);
+  background:rgba(6,18,31,.6);border:2px solid var(--stroke-strong);padding:13px;border-radius:14px;font-weight:700}
+.seg{display:flex;background:rgba(6,18,31,.4);border:1px solid var(--stroke);border-radius:13px;padding:4px;gap:4px;margin-top:6px}
 .seg button{flex:1;border:none;background:transparent;color:var(--mut);border-radius:10px;padding:10px 6px;
   cursor:pointer;font-size:13px;font-weight:700;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:5px}
-.seg button.on{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;box-shadow:var(--shadow-sm)}
+.seg button.on{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#06121f;box-shadow:var(--shadow-sm)}
 .seg button:not(.on):hover{color:var(--tx);background:var(--panel)}
 .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
 .presets button{background:var(--panel);border:1px solid var(--stroke);border-radius:12px;padding:11px 4px;
@@ -192,7 +196,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .sl-row b{font-family:var(--mono);color:var(--acc);font-size:14px;text-align:center}
 .i-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px;margin-top:7px}
 .forge-btn{width:100%;margin-top:16px;padding:15px;font-size:16px;font-weight:900;border:none;border-radius:14px;
-  background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;cursor:pointer;box-shadow:var(--shadow-sm);
+  background:linear-gradient(120deg,var(--acc),var(--gold));color:#06121f;cursor:pointer;box-shadow:var(--shadow-sm);
   transition:.2s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px}
 .forge-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
   transform:translateX(-100%);transition:transform .6s}
@@ -200,16 +204,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .forge-btn:hover::after{transform:translateX(100%)}
 .forge-btn:active{transform:scale(.98)}
 .acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
-#out{min-height:230px;background:rgba(11,13,22,.6);border:1px solid var(--stroke-strong);color:var(--ok);border-radius:14px}
+#out{min-height:230px;background:rgba(6,18,31,.6);border:1px solid var(--stroke-strong);color:var(--ok);border-radius:14px}
 #sanity{font-size:11px;font-weight:800;padding:4px 11px;border-radius:99px;border:1px solid var(--stroke);display:inline-flex;align-items:center;gap:5px}
 #sanity.pass{color:var(--ok);border-color:var(--ok);background:var(--ok-soft)}
 #sanity.warn{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
 #sanity.fail{color:var(--err);border-color:var(--err);background:var(--err-soft)}
 .flash{animation:fl .9s}@keyframes fl{0%{box-shadow:0 0 0 4px var(--acc-soft)}100%{box-shadow:var(--shadow)}}
-.qr-single-box{display:grid;place-items:center;padding:18px;background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:16px;margin-top:14px;animation:fadeUp .4s}
+.qr-single-box{display:grid;place-items:center;padding:18px;background:rgba(6,18,31,.4);border:1px solid var(--stroke);border-radius:16px;margin-top:14px;animation:fadeUp .4s}
 .qr-single-box canvas{border-radius:12px;max-width:100%;height:auto}
 .qr-actions{display:flex;gap:9px;margin-top:12px}
-.mbk{position:fixed;inset:0;background:rgba(10,12,20,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.mbk{position:fixed;inset:0;background:rgba(6,14,26,.65);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
 .mbk.open{display:flex}
 .modal{width:min(640px,96vw);max-height:86vh;max-height:86dvh;overflow:hidden;display:flex;flex-direction:column;
   background:var(--panel-solid);border:1px solid var(--stroke-strong);border-radius:20px;box-shadow:var(--shadow);animation:pop .3s cubic-bezier(.22,1.2,.3,1)}
@@ -240,12 +244,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .log-filters{display:flex;gap:6px;flex-wrap:wrap}
 .log-filters button{background:var(--panel);border:1px solid var(--stroke);color:var(--mut);border-radius:99px;
   padding:4px 11px;font-size:11px;cursor:pointer;transition:.15s;font-weight:600;display:inline-flex;align-items:center;gap:4px}
-.log-filters button.on{color:#0b0d16;font-weight:700}
+.log-filters button.on{color:#06121f;font-weight:700}
 .log-filters button.on[data-f=i]{background:var(--info);border-color:var(--info)}
 .log-filters button.on[data-f=o]{background:var(--ok);border-color:var(--ok)}
 .log-filters button.on[data-f=w]{background:var(--warn);border-color:var(--warn)}
 .log-filters button.on[data-f=e]{background:var(--err);border-color:var(--err)}
-#logBox{font-family:var(--mono);font-size:12px;direction:ltr;text-align:left;background:rgba(11,13,22,.6);
+#logBox{font-family:var(--mono);font-size:12px;direction:ltr;text-align:left;background:rgba(6,18,31,.6);
   border:1px solid var(--stroke);border-radius:12px;padding:13px;min-height:240px;max-height:46vh;overflow-y:auto;line-height:1.9}
 .log-row{animation:logIn .3s both}@keyframes logIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1}}
 .lv{display:inline-block;width:16px;font-weight:800}
@@ -253,13 +257,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 #logBox .t{color:var(--mut2);font-size:10px}
 .log-stats{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
 .help h4{color:var(--acc);margin:16px 0 7px;font-size:14px;font-weight:800;display:flex;align-items:center;gap:7px}
-.help p,.help li{color:#c5c9d8;font-size:13px;line-height:2}
-.help code{background:rgba(11,13,22,.6);border:1px solid var(--stroke);border-radius:6px;padding:1px 7px;font-size:11px;direction:ltr;display:inline-block;font-family:var(--mono);color:var(--ok)}
+.help p,.help li{color:#c5d2e8;font-size:13px;line-height:2}
+.help code{background:rgba(6,18,31,.6);border:1px solid var(--stroke);border-radius:6px;padding:1px 7px;font-size:11px;direction:ltr;display:inline-block;font-family:var(--mono);color:var(--ok)}
 .bulk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px}
-.bcard{background:rgba(11,13,22,.4);border:1px solid var(--stroke);border-radius:14px;padding:13px;border-top:3px solid var(--acc);transition:.2s;animation:fadeUp .4s both}
+.bcard{background:rgba(6,18,31,.4);border:1px solid var(--stroke);border-radius:14px;padding:13px;border-top:3px solid var(--acc);transition:.2s;animation:fadeUp .4s both}
 .bcard:hover{transform:translateY(-2px);border-color:var(--stroke-strong)}
 .bcard-h{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.rank{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#0b0d16;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:800}
+.rank{background:linear-gradient(120deg,var(--acc),var(--gold));color:#06121f;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:800}
 .bcard-h .ep{font-family:var(--mono);font-size:12px;direction:ltr;color:var(--acc2)}
 .qr-box{background:#fff;border-radius:12px;padding:8px;display:grid;place-items:center;margin:5px 0}
 .qr-box canvas{display:block;width:100%;max-width:190px;height:auto;border-radius:6px}
@@ -267,7 +271,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .bcfg textarea{margin-top:6px;font-size:10px;line-height:1.5}
 .bcard-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:9px}
 .bcard-btns .tbtn{padding:7px 3px;font-size:12px}
-.wiw-list{max-height:56vh;overflow-y:auto;border:1px solid var(--stroke);border-radius:12px;background:rgba(11,13,22,.35);margin-top:12px}
+.wiw-list{max-height:56vh;overflow-y:auto;border:1px solid var(--stroke);border-radius:12px;background:rgba(6,18,31,.35);margin-top:12px}
 .wiw-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:.15s}
 .wiw-item:hover{background:var(--panel-hover)}
 .wiw-item.disabled{opacity:.4;cursor:not-allowed}
@@ -284,10 +288,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .devlink:hover{border-color:var(--acc);background:var(--acc-soft);transform:translateY(-2px);color:var(--acc)}
 .devlink .ic{width:18px;height:18px}
 .devbar-sign{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;margin-top:6px;
-  background:linear-gradient(120deg,var(--acc-soft),var(--acc2-soft));
+  background:linear-gradient(120deg,var(--acc-soft),var(--gold-soft));
   border:1px solid var(--stroke-strong);border-radius:99px;font-size:14px;font-weight:700;box-shadow:var(--shadow-sm)}
 .devbar-sign .ic{color:var(--acc)}
-.devbar-sign b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;letter-spacing:.5px}
+.devbar-sign b{background:linear-gradient(120deg,var(--acc),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;letter-spacing:.5px}
 .devbar-sign .flag{color:var(--acc2)}.devbar-sign .heart{color:var(--err)}
 .devbar-copy{color:var(--mut2);font-size:11px;margin-top:10px}
 ::-webkit-scrollbar{width:9px;height:9px}
@@ -303,6 +307,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   .logo .ic{width:20px;height:20px}
   .brand h1{font-size:15px}
   .brand small{display:none}
+  .codename{font-size:9px;padding:1px 8px}
   .hstatus{gap:5px}
   #netTxt{display:none}
   .hbtn{width:36px;height:36px;padding:0}
@@ -336,12 +341,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 @media(min-width:761px) and (max-width:1000px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
-<body data-theme="violet" lang="fa" dir="rtl">
+<body data-theme="voyager" lang="fa" dir="rtl">
 
 <!-- ═══ اسپرایت آیکون‌ها ═══ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <defs>
 <symbol id="i-pick" viewBox="0 0 24 24"><path d="M12.9 3.4c3.6.3 6.6 3 7.7 7.6-1.9-1.3-3.9-2-5.9-2.1"/><path d="M12.9 3.4c-.3 3.6-3 6.6-7.6 7.7 1.3-1.9 2-3.9 2.1-5.9"/><line x1="3.5" y1="20.5" x2="12.5" y2="11.5"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
 <symbol id="i-sliders" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
 <symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
 <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
@@ -381,16 +387,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></symbol>
 <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
 <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
 </defs>
 </svg>
 
 <div class="wrap">
 <header>
   <div class="brand">
-    <div class="logo"><svg class="ic"><use href="#i-pick"/></svg></div>
+    <div class="logo"><svg class="ic"><use href="#i-compass"/></svg></div>
     <div class="brand-txt">
       <h1><b>WarpMiner</b></h1>
-      <small data-t="subtitle">نسخه 0.6.8 · ققنوس</small>
+      <small><span class="codename" data-t="codename">جهانگرد · 0.9.0</span></small>
     </div>
   </div>
   <div class="hstatus">
@@ -404,11 +411,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
 <section class="panel" style="--d:0ms">
   <div class="p-head">
-    <h2><svg class="ic"><use href="#i-box"/></svg> <span data-t="vaultTitle">مخزن آی‌پی‌ها</span></h2>
+    <h2><svg class="ic"><use href="#i-box"/></svg> <span data-t="vaultTitle">مخزن آی‌پی‌های جهانگرد</span></h2>
     <div class="p-tools">
       <span class="chip acc"><span data-t="total">کل</span> <b id="stTotal">0</b></span>
       <span class="chip"><span data-t="unique">یکتا</span> <b id="stUnique">0</b></span>
-      <span class="chip warn"><svg class="ic sm"><use href="#i-star"/></svg> <b id="stStar">0</b></span>
+      <span class="chip gold"><svg class="ic sm"><use href="#i-star"/></svg> <b id="stStar">0</b></span>
       <span class="chip ok"><span data-t="ports">پورت</span> <b id="stPorts">0</b></span>
     </div>
   </div>
@@ -419,7 +426,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
     <div class="port-filter" id="portFilter"></div>
     <div class="vault-toolbar">
-      <button class="tbtn primary" onclick="openM('m-add')"><svg class="ic sm"><use href="#i-plus"/></svg><span data-t="add">افزودن</span></button>
+      <button class="tbtn primary" onclick="openM('m-add')"><svg class="ic sm"><use href="#i-plus"/></svg><span data-t="add">افزودن آی‌پی</span></button>
       <button class="tbtn" onclick="togglePortFilter()"><svg class="ic sm"><use href="#i-filter"/></svg><span data-t="filterPort">فیلتر پورت</span></button>
       <button class="tbtn" onclick="sortVault('ip')"><svg class="ic sm"><use href="#i-sort"/></svg><span data-t="sortIp">مرتب‌سازی آی‌پی</span></button>
       <button class="tbtn" onclick="sortVault('port')"><svg class="ic sm"><use href="#i-sort"/></svg><span data-t="sortPort">مرتب‌سازی پورت</span></button>
@@ -457,8 +464,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <label data-t="targetEp">اندپوینت هدف</label>
     <div class="ep-row">
       <input id="endpoint" data-t-ph="noneSel" placeholder="— انتخاب نشده —" spellcheck="false" autocomplete="off">
-      <button class="tbtn primary auto-btn" onclick="autoSelect()" title="Auto Select">
-        <svg class="ic sm"><use href="#i-spark"/></svg><span class="lbl" data-t="autoSelect">Auto Select</span>
+      <button class="tbtn gold auto-btn" onclick="autoSelect()" title="Auto Select">
+        <svg class="ic sm"><use href="#i-spark"/></svg><span class="lbl" data-t="autoSelect">انتخاب خودکار</span>
       </button>
     </div>
     <label data-t="protocolVer">نسخه پروتکل</label>
@@ -469,21 +476,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
     <label data-t="outputMode">حالت خروجی</label>
     <div class="seg" id="modeSeg">
-      <button data-m="obfs" class="on"><svg class="ic sm"><use href="#i-shield"/></svg> <span data-t="antiFilter">ضد فیلتر</span></button>
-      <button data-m="raw"><svg class="ic sm"><use href="#i-zap"/></svg> FAST (WARP)</button>
+      <button data-m="raw" class="on"><svg class="ic sm"><use href="#i-leaf"/></svg> <span data-t="rawMode">خام جهانی</span></button>
+      <button data-m="obfs"><svg class="ic sm"><use href="#i-shield"/></svg> <span data-t="antiFilter">ضد فیلتر</span></button>
     </div>
-    <div id="obfsBox">
+    <div id="obfsBox" class="hiddenEl">
       <div class="presets">
-        <button onclick="setPreset('warp',this)" class="on" data-p="warp"><svg class="ic"><use href="#i-zap"/></svg><span data-t="presetWarp">وارپ</span><small>Jc=8</small></button>
+        <button onclick="setPreset('stable',this)" class="on" data-p="stable"><svg class="ic"><use href="#i-compass"/></svg><span data-t="presetStable">پایدار</span><small>Jc=10</small></button>
         <button onclick="setPreset('light',this)" data-p="light"><svg class="ic"><use href="#i-feather"/></svg><span data-t="presetLight">سبک</span><small>Jc=3</small></button>
-        <button onclick="setPreset('heavy',this)" data-p="heavy"><svg class="ic"><use href="#i-flame"/></svg><span data-t="presetHeavy">سنگین</span><small>Jc=12</small></button>
-        <button onclick="setPreset('custom',this)" data-p="custom"><svg class="ic"><use href="#i-sliders"/></svg><span data-t="presetCustom">دلخواه</span><small><span data-t="sliders">اسلایدر</span></small></button>
+        <button onclick="setPreset('heavy',this)" data-p="heavy"><svg class="ic"><use href="#i-flame"/></svg><span data-t="presetHeavy">سنگین</span><small>Jc=15</small></button>
+        <button onclick="setPreset('stealth',this)" data-p="stealth"><svg class="ic"><use href="#i-eye"/></svg><span data-t="presetStealth">مخفی</span><small>Jc=20</small></button>
       </div>
-      <div class="sl-row"><span>Jc</span><input type="range" id="jc" min="1" max="30" value="8"><b id="jcv">8</b></div>
-      <div class="sl-row"><span>Jmin</span><input type="range" id="jmin" min="8" max="100" value="55"><b id="jminv">55</b></div>
-      <div class="sl-row"><span>Jmax</span><input type="range" id="jmax" min="40" max="200" value="140"><b id="jmaxv">140</b></div>
+      <div class="sl-row"><span>Jc</span><input type="range" id="jc" min="1" max="30" value="10"><b id="jcv">10</b></div>
+      <div class="sl-row"><span>Jmin</span><input type="range" id="jmin" min="8" max="100" value="40"><b id="jminv">40</b></div>
+      <div class="sl-row"><span>Jmax</span><input type="range" id="jmax" min="40" max="200" value="100"><b id="jmaxv">100</b></div>
       <div id="i15Box">
-        <label style="color:var(--acc)" data-t="magicI">پکت‌های جادویی I1–I5</label>
+        <label style="color:var(--acc)" data-t="magicI">پکت‌های جادویی I1–I5 (اختیاری)</label>
         <div class="row" style="margin-top:6px">
           <button class="tbtn mini primary" onclick="magicGen()"><svg class="ic sm"><use href="#i-spark"/></svg><span data-t="magic">جادویی</span></button>
           <button class="tbtn mini" onclick="clearI()"><svg class="ic sm"><use href="#i-x"/></svg><span data-t="clearI">پاک‌کردن</span></button>
@@ -542,6 +549,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="p-tools">
       <span id="sanity">SANITY: —</span>
       <span class="chip acc" id="verChip">v1.5</span>
+      <span class="chip gold" id="modeChip" data-t="rawMode">خام جهانی</span>
       <button class="tbtn mini" onclick="bulkForge()"><svg class="ic sm"><use href="#i-diamond"/></svg><span data-t="bulkBtn">فورج انبوه</span></button>
     </div>
   </div>
@@ -551,7 +559,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <button class="tbtn primary" onclick="copyCfg()"><svg class="ic sm"><use href="#i-copy"/></svg><span data-t="copy">کپی</span></button>
       <button class="tbtn primary" onclick="dlCfg()"><svg class="ic sm"><use href="#i-download"/></svg> .CONF</button>
       <button class="tbtn warn" onclick="showQRSingle()"><svg class="ic sm"><use href="#i-qr"/></svg><span data-t="showQR">QR کد</span></button>
-      <span style="flex:2;font-size:11px;color:var(--mut);align-self:center" id="outHint" data-t="outHint">فرمول طلایی · اتصال فوری در Amnezia.</span>
+      <span style="flex:2;font-size:11px;color:var(--mut);align-self:center" id="outHint" data-t="outHint">حالت خام جهانی · سازگار با همه نسخه‌های Amnezia.</span>
     </div>
     <div class="qr-single-box hiddenEl" id="qrSingleBox">
       <canvas id="qrSingle"></canvas>
@@ -570,13 +578,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <a class="devlink" href="https://zaya.io/thesaz" target="_blank" rel="noopener"><svg class="ic"><use href="#i-globe"/></svg><span>Website</span></a>
   </div>
   <div class="devbar-sign">
-    <svg class="ic"><use href="#i-pick"/></svg>
+    <svg class="ic"><use href="#i-compass"/></svg>
     <span data-t="developedBy">ساخته‌شده توسط</span>
     <b>THE SAZ</b>
     <svg class="ic flag"><use href="#i-flag"/></svg>
     <svg class="ic heart"><use href="#i-heart"/></svg>
   </div>
-  <div class="devbar-copy">© 2026 · WarpMiner · AmneziaWG Config Forge</div>
+  <div class="devbar-copy">© 2026 · WarpMiner جهانگرد · AmneziaWG Forge</div>
 </div>
 </div>
 
@@ -585,7 +593,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="m-head"><h3><svg class="ic"><use href="#i-plus"/></svg><span data-t="addIpTitle">افزودن آی‌پی</span></h3><button class="m-close" onclick="closeM('m-add')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
   <div class="m-body">
     <label data-t="addIpLabel">آی‌پی:پورت (هر خط یک مورد)</label>
-    <textarea id="addIpText" rows="5" placeholder="1.2.3.4:500&#10;5.6.7.8:880"></textarea>
+    <textarea id="addIpText" rows="5" placeholder="162.159.192.1:2408&#10;188.114.97.6:854"></textarea>
     <div class="row" style="margin-top:12px">
       <button class="tbtn primary" onclick="addIPs()"><svg class="ic sm"><use href="#i-plus"/></svg><span data-t="add">افزودن</span></button>
       <button class="tbtn" onclick="closeM('m-add')"><svg class="ic sm"><use href="#i-x"/></svg><span data-t="cancel">انصراف</span></button>
@@ -638,15 +646,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <div class="mbk" id="m-settings"><div class="modal">
   <div class="m-head"><h3><svg class="ic"><use href="#i-sliders"/></svg><span data-t="controlPanel">پنل تنظیمات</span></h3><button class="m-close" onclick="closeM('m-settings')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
   <div class="m-body">
-    <div class="cat"><svg class="ic"><use href="#i-eye"/></svg><span data-t="catTheme">ظاهر</span></div>
+    <div class="cat"><svg class="ic"><use href="#i-eye"/></svg><span data-t="catTheme">ظاهر جهانگرد</span></div>
     <div class="set-row"><label data-t="lang">زبان رابط</label>
       <select data-k="lang"><option value="fa">فارسی</option><option value="en">English</option><option value="ru">Русский</option></select></div>
     <div class="set-row"><label data-t="theme">تم رنگی</label>
       <div class="swatches">
-        <div class="sw" data-t2="violet" style="background:linear-gradient(135deg,#a78bfa,#67e8f9)" title="یاسی"></div>
-        <div class="sw" data-t2="ocean" style="background:linear-gradient(135deg,#60a5fa,#67e8f9)" title="اقیانوس"></div>
-        <div class="sw" data-t2="sunset" style="background:linear-gradient(135deg,#f9a8d4,#fcd34d)" title="غروب"></div>
-        <div class="sw" data-t2="forest" style="background:linear-gradient(135deg,#6ee7b7,#a7f3d0)" title="جنگل"></div>
+        <div class="sw" data-t2="voyager" style="background:linear-gradient(135deg,#2dd4bf,#f59e0b)" title="جهانگرد"></div>
+        <div class="sw" data-t2="ocean" style="background:linear-gradient(135deg,#38bdf8,#2dd4bf)" title="اقیانوس"></div>
+        <div class="sw" data-t2="sunset" style="background:linear-gradient(135deg,#fb923c,#f472b6)" title="غروب"></div>
+        <div class="sw" data-t2="compass" style="background:linear-gradient(135deg,#34d399,#60a5fa)" title="قطب‌نما"></div>
+        <div class="sw" data-t2="dawn" style="background:linear-gradient(135deg,#fbbf24,#fb7185)" title="طلوع"></div>
       </div></div>
     <div class="set-row"><label data-t="fontSize">اندازه فونت</label><input type="range" data-k="fsize" min="12" max="17"></div>
     <div class="set-row"><label data-t="density">حالت فشرده</label><input type="checkbox" data-k="dense"></div>
@@ -654,11 +663,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="set-row"><label data-t="auroraBg">پس‌زمینه شفق متحرک</label><input type="checkbox" data-k="aurora"></div>
     <div class="cat"><svg class="ic"><use href="#i-tool"/></svg><span data-t="catConfig">پیش‌فرض کانفیگ</span></div>
     <div class="set-row"><label data-t="outputMode">حالت خروجی</label>
-      <select data-k="cfgMode"><option value="obfs">ضد فیلتر</option><option value="raw">FAST</option></select></div>
+      <select data-k="cfgMode"><option value="raw">خام جهانی</option><option value="obfs">ضد فیلتر</option></select></div>
     <div class="set-row"><label data-t="protocolVer">نسخه پروتکل</label>
       <select data-k="ver"><option value="1.5">v1.5</option><option value="2.0">v2.0</option><option value="3.1">v3.1</option></select></div>
     <div class="set-row"><label data-t="presetDefault">پریست پیش‌فرض</label>
-      <select data-k="preset"><option value="warp">وارپ</option><option value="light">سبک</option><option value="heavy">سنگین</option><option value="custom">دلخواه</option></select></div>
+      <select data-k="preset"><option value="stable">پایدار</option><option value="light">سبک</option><option value="heavy">سنگین</option><option value="stealth">مخفی</option></select></div>
     <div class="set-row"><label>MTU</label><select data-k="mtu"><option>1280</option><option>1320</option><option>1400</option></select></div>
     <div class="set-row"><label>DNS</label>
       <select data-k="dns"><option value="8.8.8.8,8.8.4.4">Google</option><option value="1.1.1.1,1.0.0.1">Cloudflare</option><option value="9.9.9.9">Quad9</option></select></div>
@@ -719,14 +728,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 </div></div>
 
 <div class="mbk" id="m-help"><div class="modal">
-  <div class="m-head"><h3><svg class="ic"><use href="#i-help"/></svg><span data-t="helpManual">راهنما</span></h3><button class="m-close" onclick="closeM('m-help')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
+  <div class="m-head"><h3><svg class="ic"><use href="#i-help"/></svg><span data-t="helpManual">راهنمای جهانگرد</span></h3><button class="m-close" onclick="closeM('m-help')"><svg class="ic sm"><use href="#i-x"/></svg></button></div>
   <div class="m-body help">
-    <h4><svg class="ic sm"><use href="#i-target"/></svg><span data-t="helpPurpose">هدف برنامه</span></h4>
-    <p data-t="helpPurposeText">WarpMiner فقط کانفیگ AmneziaWG با فرمت سازگار وارپ می‌سازد که فوراً متصل می‌شود.</p>
-    <h4><svg class="ic sm"><use href="#i-zap"/></svg><span data-t="helpFormula">فرمول طلایی</span></h4>
-    <p><code>S1=0, S2=0</code> · <code>H1=1..H4=4</code> · <code>Jc=8, Jmin=55, Jmax=140</code> · <code>AllowedIPs = 0.0.0.0/0, ::/0</code></p>
+    <h4><svg class="ic sm"><use href="#i-compass"/></svg><span data-t="helpPurpose">هدف برنامه</span></h4>
+    <p data-t="helpPurposeText">WarpMiner جهانگرد کانفیگ AmneziaWG سازگار با وارپ می‌سازد. حالت «خام جهانی» در همه نسخه‌های Amnezia کار می‌کند.</p>
+    <h4><svg class="ic sm"><use href="#i-leaf"/></svg><span data-t="helpRaw">حالت خام جهانی</span></h4>
+    <p data-t="helpRawText">حالت خام هیچ پارامتر اضافی ندارد و فقط یک کانفیگ WireGuard خالص با کلید وارپ است. این پایدارترین حالت است و در همه نسخه‌های Amnezia بدون گیر کردن روی Connecting کار می‌کند.</p>
+    <h4><svg class="ic sm"><use href="#i-shield"/></svg><span data-t="helpObfs">حالت ضد فیلتر</span></h4>
+    <p data-t="helpObfsText">پارامترهای استتار (Jc/Jmin/Jmax) اضافه می‌شوند تا الگوی هندشیک از فیلترچی پنهان شود. برای سرور وارپ (که وایرگارد استاندارد است) فقط این پارامترها معنی دارند و S1=0/S2=0 و H1=1..H4=4 باید حفظ شوند.</p>
     <h4><svg class="ic sm"><use href="#i-box"/></svg><span data-t="helpVault">مخزن آی‌پی</span></h4>
-    <p data-t="helpVaultText">آی‌پی‌ها را اضافه، جستجو، فیلتر، مرتب و ستاره‌دار کنید.</p>
+    <p data-t="helpVaultText">لیست شامل رنج‌های متنوع 162.159.192-195، 188.114.96-99، 141.101.112-115 و 104.16/172.67 است. اگر آی‌پی‌ها فیلتر بودند، از «افزودن آی‌پی» یا «ایمپورت» برای وارد کردن آی‌پی‌های جدید استفاده کنید.</p>
     <h4><svg class="ic sm"><use href="#i-qr"/></svg><span data-t="helpQR">موتور QR</span></h4>
     <p data-t="helpQRText">موتور QR کاملاً داخلی و آفلاین است و در هر مرورگری کار می‌کند.</p>
     <h4><svg class="ic sm"><use href="#i-user"/></svg><span data-t="helpDev">توسعه‌دهنده</span></h4>
@@ -739,12 +750,44 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <script>
 'use strict';
 /* ══════════════════════════════════════════════════════════════
-   WarpMiner v0.6.8 — PHOENIX  ·  Developed by THE SAZ 🏴‍☠️
-   Golden formula preserved (no Connecting-stuck).
+   WarpMiner v0.9.0 — codename: جهانگرد (Voyager)
+   Developed by THE SAZ 🏴‍☠️
+   Raw-universal mode = pure WireGuard+WARP key → works on ALL Amnezia versions.
    ══════════════════════════════════════════════════════════════ */
 const $=id=>document.getElementById(id);
 const CF_PUB='bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=';
 const ic=(n,c)=>`<svg class="ic${c?' '+c:''}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+
+/* ═══ لیست جدید و متنوع جهانگرد (4 رنج مختلف) ═══ */
+const DEFAULT_IPS=[
+"162.159.192.1:2408","162.159.192.2:854","162.159.192.3:878","162.159.192.4:928","162.159.192.5:1010",
+"162.159.192.6:4500","162.159.192.7:8854","162.159.192.8:5279","162.159.192.10:500","162.159.192.11:859",
+"162.159.192.12:1074","162.159.192.13:3581","162.159.192.14:4177","162.159.192.15:4198","162.159.192.16:4233",
+"162.159.192.17:7152","162.159.192.18:7281",
+"162.159.193.1:2408","162.159.193.2:854","162.159.193.3:939","162.159.193.4:942","162.159.193.5:945",
+"162.159.193.6:946","162.159.193.7:1070","162.159.193.8:1180","162.159.193.10:500","162.159.193.11:859",
+"162.159.193.12:955","162.159.193.13:987","162.159.193.14:1018","162.159.193.15:2506","162.159.193.16:3476",
+"162.159.193.17:3854","162.159.193.18:5279",
+"162.159.194.1:2408","162.159.194.2:878","162.159.194.3:880","162.159.194.4:891","162.159.194.5:894",
+"162.159.194.6:1387","162.159.194.7:1843","162.159.194.8:3138","162.159.194.10:859","162.159.194.11:955",
+"162.159.194.12:1018","162.159.194.13:1701","162.159.194.14:2371","162.159.194.15:3581","162.159.194.16:4099",
+"162.159.194.17:4500",
+"162.159.195.1:2408","162.159.195.2:854","162.159.195.3:859","162.159.195.4:928","162.159.195.5:955",
+"162.159.195.6:968","162.159.195.7:1002","162.159.195.8:1014","162.159.195.10:500","162.159.195.11:880",
+"162.159.195.12:1002","162.159.195.13:2506","162.159.195.14:3476","162.159.195.15:5500","162.159.195.16:5956",
+"162.159.195.17:8742",
+"188.114.96.1:2408","188.114.96.2:854","188.114.96.3:878","188.114.96.4:928","188.114.96.5:1010",
+"188.114.96.6:4500","188.114.96.7:8854",
+"188.114.97.1:2408","188.114.97.2:859","188.114.97.3:939","188.114.97.4:942","188.114.97.5:946",
+"188.114.97.6:1070","188.114.97.7:2408","188.114.97.8:854",
+"188.114.98.1:2408","188.114.98.2:854","188.114.98.3:880","188.114.98.4:891","188.114.98.5:1387",
+"188.114.99.1:2408","188.114.99.2:878","188.114.99.3:928","188.114.99.4:945","188.114.99.5:1010",
+"141.101.112.1:2408","141.101.112.2:854","141.101.112.3:878","141.101.113.1:2408","141.101.113.2:928",
+"141.101.114.1:2408","141.101.114.2:8854","141.101.115.1:2408","141.101.115.2:854",
+"104.16.60.8:2408","104.16.61.8:854","104.18.20.250:4500","104.18.21.250:878",
+"172.67.135.50:2408","172.67.136.50:854","172.67.170.10:878","172.67.171.10:928"
+];
+let vault=[],portFilterSet=null;
 
 /* ═══ موتور QR داخلی و آفلاین ═══ */
 const QR=(()=>{
@@ -861,15 +904,15 @@ const QR=(()=>{
     const ctx=canvas.getContext('2d');
     ctx.fillStyle=o.light||'#ffffff';ctx.fillRect(0,0,px,px);
     const scale=px/(size+margin*2);
-    ctx.fillStyle=o.dark||'#101322';
+    ctx.fillStyle=o.dark||'#0a192f';
     for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(M[y][x])
       ctx.fillRect((x+margin)*scale,(y+margin)*scale,scale+.5,scale+.5);
     const g=ctx.createLinearGradient(0,0,px,px);
-    g.addColorStop(0,'#a78bfa');g.addColorStop(.5,'#67e8f9');g.addColorStop(1,'#fcd34d');
+    g.addColorStop(0,'#2dd4bf');g.addColorStop(.5,'#38bdf8');g.addColorStop(1,'#f59e0b');
     ctx.strokeStyle=g;ctx.lineWidth=6;ctx.strokeRect(3,3,px-6,px-6);
     const s=px*.16,cx=px/2,cy=px/2;
     ctx.fillStyle='#fff';roundRect(ctx,cx-s/2,cy-s/2,s,s,s*.22);ctx.fill();
-    ctx.strokeStyle='#101322';ctx.lineWidth=s*.1;ctx.lineCap='round';
+    ctx.strokeStyle='#0a192f';ctx.lineWidth=s*.1;ctx.lineCap='round';
     ctx.beginPath();ctx.moveTo(cx-s*.28,cy+s*.28);ctx.lineTo(cx+s*.05,cy-s*.05);ctx.stroke();
     ctx.beginPath();ctx.moveTo(cx-s*.1,cy-s*.3);ctx.quadraticCurveTo(cx+s*.15,cy-s*.35,cx+s*.3,cy-s*.08);ctx.stroke();
     ctx.beginPath();ctx.moveTo(cx-s*.3,cy-s*.1);ctx.quadraticCurveTo(cx-s*.35,cy+s*.15,cx-s*.08,cy+s*.3);ctx.stroke();
@@ -880,27 +923,27 @@ const QR=(()=>{
 
 /* ═══ i18n ═══ */
 const I18N={
-fa:{subtitle:'نسخه 0.6.8 · ققنوس',standby:'آماده',set:'تنظیمات',log:'لاگ',help:'راهنما',
-vaultTitle:'مخزن آی‌پی‌ها',total:'کل',unique:'یکتا',ports:'پورت',searchPh:'جستجوی آی‌پی یا پورت…',
+fa:{codename:'جهانگرد · 0.9.0',standby:'آماده',set:'تنظیمات',log:'لاگ',help:'راهنما',
+vaultTitle:'مخزن آی‌پی‌های جهانگرد',total:'کل',unique:'یکتا',ports:'پورت',searchPh:'جستجوی آی‌پی یا پورت…',
 filterPort:'فیلتر پورت',sortIp:'مرتب‌سازی آی‌پی',sortPort:'مرتب‌سازی پورت',shuffle:'بر زدن',
 dedupe:'حذف تکراری',copyList:'کپی لیست',importList:'ایمپورت',exportList:'خروجی',slots:'اسلات‌ها',
-resetDefault:'پیش‌فرض',add:'افزودن',selAll:'انتخاب همه',selected:'انتخاب‌شده',random:'تصادفی',
+resetDefault:'پیش‌فرض',add:'افزودن آی‌پی',selAll:'انتخاب همه',selected:'انتخاب‌شده',random:'تصادفی',
 useFirst:'اولی → هدف',delSel:'حذف انتخاب‌شده',forgeTitle:'فورج کانفیگ',targetEp:'اندپوینت هدف',
 noneSel:'— انتخاب نشده —',autoSelect:'انتخاب خودکار',protocolVer:'نسخه پروتکل',outputMode:'حالت خروجی',
-antiFilter:'ضد فیلتر',presetWarp:'وارپ',presetLight:'سبک',presetHeavy:'سنگین',presetCustom:'دلخواه',
-sliders:'اسلایدر',magicI:'پکت‌های جادویی I1–I5',magic:'جادویی',clearI:'پاک‌کردن',
+rawMode:'خام جهانی',antiFilter:'ضد فیلتر',presetStable:'پایدار',presetLight:'سبک',presetHeavy:'سنگین',
+presetStealth:'مخفی',magicI:'پکت‌های جادویی I1–I5 (اختیاری)',magic:'جادویی',clearI:'پاک‌کردن',
 wiw:'وارپ در وارپ (دو لایه)',layer2Ph:'اندپوینت لایه دوم',import:'ایمپورت',
 forgeBtn:'ساخت کانفیگ AmneziaWG',accountTitle:'حساب وارپ',getAcct:'دریافت حساب',
 privKey:'کلید خصوصی',pubKey:'کلید عمومی',reserved:'رزرو',acctId:'شناسه حساب',
 apiInfo:'۴+ روش دسترسی به کلادفلر. روش موفق ذخیره می‌شود.',outTitle:'تونل خروجی',copy:'کپی',
-showQR:'QR کد',bulkBtn:'فورج انبوه',outHint:'فرمول طلایی · اتصال فوری در Amnezia.',
+showQR:'QR کد',bulkBtn:'فورج انبوه',outHint:'حالت خام جهانی · سازگار با همه نسخه‌های Amnezia.',
 downloadPng:'دانلود PNG',close:'بستن',developedBy:'ساخته‌شده توسط',addIpTitle:'افزودن آی‌پی',
 addIpLabel:'آی‌پی:پورت (هر خط یک مورد)',cancel:'انصراف',importTitle:'ایمپورت لیست',
 importLabel:'متن لیست را بچسبانید',importReplace:'جایگزینی کامل',fromClip:'از کلیپ‌بورد',
 slotsTitle:'اسلات‌های ذخیره',slotsInfo:'تا ۳ لیست جداگانه ذخیره و بازیابی کنید.',
 wiwPickTitle:'انتخاب اندپوینت لایه دوم',wiwPickInfo:'اندپوینتی متفاوت از لایه ۱ انتخاب کنید.',
 layer1Is:'لایه ۱',bulkTitle:'فورج انبوه',copyAll:'کپی همه',dlAll:'دانلود همه',
-controlPanel:'پنل تنظیمات',catTheme:'ظاهر',lang:'زبان رابط',theme:'تم رنگی',fontSize:'اندازه فونت',
+controlPanel:'پنل تنظیمات',catTheme:'ظاهر جهانگرد',lang:'زبان رابط',theme:'تم رنگی',fontSize:'اندازه فونت',
 density:'حالت فشرده',animations:'انیمیشن‌ها',auroraBg:'پس‌زمینه شفق متحرک',catConfig:'پیش‌فرض کانفیگ',
 presetDefault:'پریست پیش‌فرض',ipv6:'شامل IPv6',keepalive:'Keepalive',comment:'کامنت هدر',
 catVault:'مخزن آی‌پی',maxRows:'حداکثر ردیف نمایشی',listHeight:'ارتفاع لیست (پیکسل)',
@@ -908,10 +951,11 @@ showPortChip:'نمایش چیپ پورت',confirmDel:'تأیید قبل از ح�
 workerUrl:'آدرس ورکر',catLog:'لاگ',maxLog:'حداکثر تعداد لاگ',logTime:'نمایش زمان در لاگ',
 catAdv:'پیشرفته',autoCopy:'کپی خودکار بعد از ساخت',beep:'صدای بیپ',vibrate:'لرزش موبایل',
 save:'ذخیره',expSet:'خروجی تنظیمات',impSet:'ورودی تنظیمات',reset:'بازنشانی',systemLog:'لاگ سیستم',
-all:'همه',logSearchPh:'جستجو در لاگ…',helpManual:'راهنما',helpPurpose:'هدف برنامه',
-helpPurposeText:'WarpMiner فقط کانفیگ AmneziaWG با فرمت سازگار وارپ می‌سازد که فوراً متصل می‌شود.',
-helpFormula:'فرمول طلایی',helpVault:'مخزن آی‌پی',
-helpVaultText:'آی‌پی‌ها را اضافه، جستجو، فیلتر، مرتب و ستاره‌دار کنید.',
+all:'همه',logSearchPh:'جستجو در لاگ…',helpManual:'راهنمای جهانگرد',helpPurpose:'هدف برنامه',
+helpPurposeText:'WarpMiner جهانگرد کانفیگ AmneziaWG سازگار با وارپ می‌سازد. حالت خام جهانی در همه نسخه‌ها کار می‌کند.',
+helpRaw:'حالت خام جهانی',helpRawText:'حالت خام هیچ پارامتر اضافی ندارد و فقط یک کانفیگ WireGuard خالص با کلید وارپ است. این پایدارترین حالت است و در همه نسخه‌های Amnezia بدون گیر کردن روی Connecting کار می‌کند.',
+helpObfs:'حالت ضد فیلتر',helpObfsText:'پارامترهای استتار (Jc/Jmin/Jmax) اضافه می‌شوند. برای سرور وارپ فقط این پارامترها معنی دارند و S1=0/S2=0 و H1=1..H4=4 باید حفظ شوند.',
+helpVault:'مخزن آی‌پی',helpVaultText:'لیست شامل رنج‌های متنوع است. اگر آی‌پی‌ها فیلتر بودند، از افزودن یا ایمپورت برای وارد کردن آی‌پی‌های جدید استفاده کنید.',
 helpQR:'موتور QR',helpQRText:'موتور QR کاملاً داخلی و آفلاین است و در هر مرورگری کار می‌کند.',
 helpDev:'توسعه‌دهنده',saved:'ذخیره شد',imported:'ایمپورت شد',added:'اضافه شد',removed:'حذف شد',
 dedupeDone:'تکراری‌ها حذف شدند',shuffled:'بر زده شد',sorted:'مرتب شد',copied:'کپی شد',
@@ -925,25 +969,26 @@ bulkBuilt:'کانفیگ‌های انبوه ساخته شد',acctOk:'حساب د
 randomSet:'اندپوینت تصادفی ثبت شد',needItems:'حداقل یک آی‌پی لازم است',
 settingsExported:'تنظیمات دانلود شد',settingsImported:'تنظیمات بارگذاری شد',
 keyReady:'کلید خصوصی آماده شد',autoSelDone:'انتخاب خودکار انجام شد',ip:'IP',port:'پورت',actions:'عملیات'},
-en:{subtitle:'v0.6.8 · Phoenix',standby:'READY',set:'Settings',log:'Log',help:'Help',
-vaultTitle:'IP Vault',total:'Total',unique:'Unique',ports:'Ports',searchPh:'Search IP or port…',
+en:{codename:'Voyager · 0.9.0',standby:'READY',set:'Settings',log:'Log',help:'Help',
+vaultTitle:'Voyager IP Vault',total:'Total',unique:'Unique',ports:'Ports',searchPh:'Search IP or port…',
 filterPort:'Filter port',sortIp:'Sort by IP',sortPort:'Sort by port',shuffle:'Shuffle',
 dedupe:'Dedupe',copyList:'Copy list',importList:'Import',exportList:'Export',slots:'Slots',
-resetDefault:'Default',add:'Add',selAll:'Select all',selected:'Selected',random:'Random',
+resetDefault:'Default',add:'Add IP',selAll:'Select all',selected:'Selected',random:'Random',
 useFirst:'First → Target',delSel:'Delete selected',forgeTitle:'Config Forge',targetEp:'Target endpoint',
 noneSel:'— none selected —',autoSelect:'Auto Select',protocolVer:'Protocol version',outputMode:'Output mode',
-antiFilter:'Anti-filter',presetWarp:'WARP',presetLight:'Light',presetHeavy:'Heavy',presetCustom:'Custom',
-sliders:'Sliders',magicI:'I1–I5 Magic Packets',magic:'Magic',clearI:'Clear',
+rawMode:'Raw Universal',antiFilter:'Anti-filter',presetStable:'Stable',presetLight:'Light',presetHeavy:'Heavy',
+presetStealth:'Stealth',magicI:'I1–I5 Magic Packets (optional)',magic:'Magic',clearI:'Clear',
 wiw:'Warp-in-Warp (double layer)',layer2Ph:'Layer 2 endpoint',import:'Import',
 forgeBtn:'Forge AmneziaWG Config',accountTitle:'WARP Account',getAcct:'Get Account',
 privKey:'Private Key',pubKey:'Public Key',reserved:'Reserved',acctId:'Account ID',
 apiInfo:'4+ methods to reach Cloudflare.',outTitle:'Output Tunnel',copy:'Copy',showQR:'QR Code',
-bulkBtn:'Bulk Forge',outHint:'Golden formula · instant connect.',downloadPng:'Download PNG',close:'Close',
-developedBy:'Developed by',addIpTitle:'Add IP',addIpLabel:'IP:Port (one per line)',cancel:'Cancel',
-importTitle:'Import List',importLabel:'Paste list text',importReplace:'Replace all',fromClip:'From clipboard',
+bulkBtn:'Bulk Forge',outHint:'Raw universal · works on all Amnezia versions.',
+downloadPng:'Download PNG',close:'Close',developedBy:'Developed by',addIpTitle:'Add IP',
+addIpLabel:'IP:Port (one per line)',cancel:'Cancel',importTitle:'Import List',
+importLabel:'Paste list text',importReplace:'Replace all',fromClip:'From clipboard',
 slotsTitle:'Save Slots',slotsInfo:'Save and restore up to 3 lists.',wiwPickTitle:'Select Layer 2 Endpoint',
 wiwPickInfo:'Pick a different endpoint than layer 1.',layer1Is:'Layer 1',bulkTitle:'Bulk Forge',
-copyAll:'Copy all',dlAll:'Download all',controlPanel:'Settings Panel',catTheme:'Appearance',lang:'Language',
+copyAll:'Copy all',dlAll:'Download all',controlPanel:'Settings Panel',catTheme:'Voyager Appearance',lang:'Language',
 theme:'Color theme',fontSize:'Font size',density:'Compact mode',animations:'Animations',
 auroraBg:'Animated aurora background',catConfig:'Config Defaults',presetDefault:'Default preset',
 ipv6:'Include IPv6',keepalive:'Keepalive',comment:'Header comment',catVault:'IP Vault',
@@ -952,8 +997,10 @@ confirmDel:'Confirm delete',catApi:'WARP API',apiMethod:'Method',workerUrl:'Work
 maxLog:'Max log entries',logTime:'Show timestamps',catAdv:'Advanced',autoCopy:'Auto-copy after forge',
 beep:'Success beep',vibrate:'Mobile vibration',save:'Save',expSet:'Export settings',
 impSet:'Import settings',reset:'Reset',systemLog:'System Log',all:'All',logSearchPh:'Search logs…',
-helpManual:'Help',helpPurpose:'Purpose',helpPurposeText:'WarpMiner builds WARP-compatible AmneziaWG configs.',
-helpFormula:'Golden Formula',helpVault:'IP Vault',helpVaultText:'Add, search, filter and star IPs.',
+helpManual:'Voyager Guide',helpPurpose:'Purpose',helpPurposeText:'WarpMiner Voyager builds WARP-compatible AmneziaWG configs. Raw universal works on all versions.',
+helpRaw:'Raw Universal',helpRawText:'Raw mode has no extra params, just a pure WireGuard config with WARP keys. Most stable, works on all Amnezia versions without Connecting-stuck.',
+helpObfs:'Anti-filter',helpObfsText:'Obfuscation params (Jc/Jmin/Jmax) are added. For WARP servers only these matter; S1=0/S2=0 and H1=1..H4=4 must be kept.',
+helpVault:'IP Vault',helpVaultText:'List uses diverse ranges. If IPs are filtered, use Add/Import to add new ones.',
 helpQR:'QR Engine',helpQRText:'Fully offline internal QR engine works in every browser.',
 helpDev:'Developer',saved:'Saved',imported:'Imported',added:'Added',removed:'Removed',
 dedupeDone:'Duplicates removed',shuffled:'Shuffled',sorted:'Sorted',copied:'Copied',
@@ -966,22 +1013,23 @@ logExported:'Log downloaded',confirmDelete:'Delete?',empty:'List is empty',
 bulkBuilt:'Bulk configs built',acctOk:'Account received',acctFail:'Account failed',
 randomSet:'Random endpoint set',needItems:'Need at least one IP',settingsExported:'Settings exported',
 settingsImported:'Settings imported',keyReady:'Private key ready',autoSelDone:'Auto-selected',ip:'IP',port:'Port',actions:'Actions'},
-ru:{subtitle:'v0.6.8 · Феникс',standby:'ГОТОВ',set:'Настройки',log:'Лог',help:'Помощь',
-vaultTitle:'Хранилище IP',total:'Всего',unique:'Уникальных',ports:'Портов',searchPh:'Поиск IP или порта…',
+ru:{codename:'Странник · 0.9.0',standby:'ГОТОВ',set:'Настройки',log:'Лог',help:'Помощь',
+vaultTitle:'Хранилище IP Странника',total:'Всего',unique:'Уникальных',ports:'Портов',searchPh:'Поиск IP или порта…',
 filterPort:'Фильтр порта',sortIp:'Сорт. по IP',sortPort:'Сорт. по порту',shuffle:'Перемешать',
 dedupe:'Убрать дубли',copyList:'Копировать',importList:'Импорт',exportList:'Экспорт',slots:'Слоты',
-resetDefault:'Сброс',add:'Добавить',selAll:'Выбрать все',selected:'Выбрано',random:'Случайный',
+resetDefault:'Сброс',add:'Добавить IP',selAll:'Выбрать все',selected:'Выбрано',random:'Случайный',
 useFirst:'Первый → Цель',delSel:'Удалить выбранное',forgeTitle:'Сборка конфига',targetEp:'Целевой эндпоинт',
 noneSel:'— не выбран —',autoSelect:'Auto Select',protocolVer:'Версия протокола',outputMode:'Режим выхода',
-antiFilter:'Анти-фильтр',presetWarp:'WARP',presetLight:'Легкий',presetHeavy:'Тяжелый',presetCustom:'Свой',
-sliders:'Слайдеры',magicI:'I1–I5 Магические пакеты',magic:'Магия',clearI:'Очистить',
+rawMode:'Сырой универсальный',antiFilter:'Анти-фильтр',presetStable:'Стабильный',presetLight:'Легкий',presetHeavy:'Тяжелый',
+presetStealth:'Стелс',magicI:'I1–I5 Магические пакеты',magic:'Магия',clearI:'Очистить',
 wiw:'Warp-in-Warp (2 слоя)',layer2Ph:'Эндпоинт слоя 2',import:'Импорт',
 forgeBtn:'Собрать AmneziaWG конфиг',accountTitle:'Аккаунт WARP',getAcct:'Получить',
 privKey:'Приватный',pubKey:'Публичный',reserved:'Резерв',acctId:'ID аккаунта',
 apiInfo:'4+ методов к Cloudflare.',outTitle:'Выходной туннель',copy:'Копировать',showQR:'QR код',
-bulkBtn:'Массовая сборка',outHint:'Золотая формула.',downloadPng:'Скачать PNG',close:'Закрыть',
-developedBy:'Разработано',addIpTitle:'Добавить IP',addIpLabel:'IP:Port (по одному)',cancel:'Отмена',
-importTitle:'Импорт списка',importLabel:'Вставьте текст',importReplace:'Заменить все',fromClip:'Из буфера',
+bulkBtn:'Массовая сборка',outHint:'Сырой универсальный · работает на всех версиях.',
+downloadPng:'Скачать PNG',close:'Закрыть',developedBy:'Разработано',addIpTitle:'Добавить IP',
+addIpLabel:'IP:Port (по одному)',cancel:'Отмена',importTitle:'Импорт списка',
+importLabel:'Вставьте текст',importReplace:'Заменить все',fromClip:'Из буфера',
 slotsTitle:'Слоты сохранения',slotsInfo:'До 3 отдельных списков.',wiwPickTitle:'Выбрать эндпоинт слоя 2',
 wiwPickInfo:'Выберите отличный от слоя 1.',layer1Is:'Слой 1',bulkTitle:'Массовая сборка',
 copyAll:'Копировать все',dlAll:'Скачать все',controlPanel:'Панель настроек',catTheme:'Внешний вид',
@@ -992,11 +1040,13 @@ listHeight:'Высота списка (px)',showPortChip:'Показ порта'
 catApi:'WARP API',apiMethod:'Метод',workerUrl:'URL воркера',catLog:'Лог',maxLog:'Макс. записей',
 logTime:'Показ времени',catAdv:'Продвинутое',autoCopy:'Авто-копирование',beep:'Звук',vibrate:'Вибрация',
 save:'Сохранить',expSet:'Экспорт настроек',impSet:'Импорт настроек',reset:'Сброс',systemLog:'Системный лог',
-all:'Все',logSearchPh:'Поиск в логах…',helpManual:'Помощь',helpPurpose:'Цель',
-helpPurposeText:'WarpMiner собирает WARP-совместимые AmneziaWG конфиги.',helpFormula:'Золотая формула',
-helpVault:'Хранилище IP',helpVaultText:'Добавляйте, ищите и помечайте IP.',helpQR:'Движок QR',
-helpQRText:'Полностью оффлайн движок QR работает в любом браузере.',helpDev:'Разработчик',
-saved:'Сохранено',imported:'Импортировано',added:'Добавлено',removed:'Удалено',
+all:'Все',logSearchPh:'Поиск в логах…',helpManual:'Гид Странника',helpPurpose:'Цель',
+helpPurposeText:'WarpMiner Странник собирает WARP-совместимые AmneziaWG конфиги.',
+helpRaw:'Сырой универсальный',helpRawText:'Сырой режим без лишних параметров, чистый WireGuard с ключами WARP. Самый стабильный.',
+helpObfs:'Анти-фильтр',helpObfsText:'Добавляются параметры обфускации. Для WARP важны только они; S1=0/S2=0 и H1=1..H4=4 сохраняются.',
+helpVault:'Хранилище IP',helpVaultText:'Список из разных диапазонов. Если IP заблокированы, добавьте новые.',
+helpQR:'Движок QR',helpQRText:'Полностью оффлайн движок QR работает в любом браузере.',
+helpDev:'Разработчик',saved:'Сохранено',imported:'Импортировано',added:'Добавлено',removed:'Удалено',
 dedupeDone:'Дубли удалены',shuffled:'Перемешано',sorted:'Отсортировано',copied:'Скопировано',
 copyFailed:'Не скопировано',longPress:'Зажмите и скопируйте',imported2:'Установлено как цель',
 layer2Set:'Слой 2 установлен',duplicateErr:'Дубликат!',noKey:'Нет приватного ключа',
@@ -1015,20 +1065,15 @@ function applyI18n(){
   document.documentElement.lang=S.lang;document.documentElement.dir=rtl?'rtl':'ltr';
   document.body.lang=S.lang;document.body.dir=rtl?'rtl':'ltr';
 }
-function setLang(l){S.lang=l;saveS();applyI18n();syncSettings();log('i','Language: '+l)}
-
-/* ═══ لیست پیش‌فرض از IP.txt ═══ */
-const DEFAULT_IPS=["8.6.112.148:891","8.6.112.135:864","8.6.112.87:946","8.6.112.120:1010","8.6.112.165:928","8.6.112.139:7281","8.6.112.178:942","8.6.112.205:3581","8.6.112.176:8319","8.6.112.190:5279","8.6.112.121:500","8.6.112.202:878","8.6.112.223:7559","8.6.112.230:1843","8.6.112.200:4198","8.6.112.233:7152","8.6.112.4:4233","8.6.112.159:878","8.6.112.4:859","8.6.112.233:880","8.6.112.93:942","8.6.112.93:945","8.6.112.182:945","8.6.112.133:968","8.6.112.52:928","8.6.112.121:1180","8.6.112.78:859","8.6.112.205:891","8.6.112.248:903","8.6.112.246:894","8.6.112.230:878","8.6.112.246:859","8.6.112.172:878","8.6.112.104:4233","8.6.112.249:891","8.6.112.46:4198","8.6.112.234:3854","8.6.112.136:4177","8.6.112.224:8886","8.6.112.251:1387","8.6.112.127:4198","8.6.112.200:1010","8.6.112.237:946","8.6.112.82:891","8.6.112.170:1180","8.6.112.29:7152","8.6.112.7:1180","8.6.112.182:891","8.6.112.67:7103","188.114.97.6:7281","8.6.112.235:1070","8.6.112.228:1843","8.6.112.19:908","8.6.112.184:7281","8.6.112.51:2506","188.114.97.6:859","8.6.112.8:1014","8.6.112.253:854","8.6.112.221:500","8.6.112.96:903","8.6.112.174:1014","8.6.112.212:880","8.6.112.154:7281","8.6.112.65:2506","8.6.112.171:946","8.6.112.160:3854","8.6.112.86:1387","8.6.112.163:7281","8.6.112.29:3581","8.6.112.122:4177","8.6.112.154:891","8.6.112.174:939","8.6.112.70:945","8.6.112.53:7156","8.6.112.165:7281","8.6.112.181:7152","8.6.112.122:894","8.6.112.191:908","8.6.112.79:8854","8.6.112.180:928","8.6.112.61:3581","8.6.112.224:854","8.6.112.77:1070","8.6.112.107:3138","8.6.112.106:3138","8.6.112.60:8854"];
-let vault=[],portFilterSet=null;
 
 /* ═══ تنظیمات ═══ */
-const DEF={lang:'fa',theme:'violet',fsize:14,dense:false,anim:true,aurora:true,
-cfgMode:'obfs',ver:'1.5',preset:'warp',mtu:1280,dns:'8.8.8.8,8.8.4.4',ipv6:true,ka:25,comment:true,
+const DEF={lang:'fa',theme:'voyager',fsize:14,dense:false,anim:true,aurora:true,
+cfgMode:'raw',ver:'1.5',preset:'stable',mtu:1280,dns:'8.8.8.8,8.8.4.4',ipv6:true,ka:25,comment:true,
 maxRows:200,listHeight:420,showPort:true,confirmDel:true,proxy:'auto',proxyCustom:'',
 maxLog:300,logTime:true,autocopy:false,beep:true,vibrate:true};
 let S={...DEF};
-try{Object.assign(S,JSON.parse(localStorage.getItem('wm8')||'{}'))}catch(e){}
-function saveS(){try{localStorage.setItem('wm8',JSON.stringify(S))}catch(e){}}
+try{Object.assign(S,JSON.parse(localStorage.getItem('wm9')||'{}'))}catch(e){}
+function saveS(){try{localStorage.setItem('wm9',JSON.stringify(S))}catch(e){}}
 function resetS(){if(S.confirmDel&&!confirm(t('confirmDelete')))return;S={...DEF};saveS();syncSettings();applyAll();toast(t('resetDone'),'ok');log('w','Settings reset')}
 function applyTheme(){document.body.dataset.theme=S.theme;
   document.querySelectorAll('.sw').forEach(w=>w.classList.toggle('on',w.dataset.t2===S.theme))}
@@ -1043,6 +1088,7 @@ function applyAll(){
   $('proxyCustom').classList.toggle('hiddenEl',S.proxy!=='custom');
   if(S.proxyCustom)$('proxyCustom').value=S.proxyCustom;
   $('verChip').textContent='v'+curVer;
+  $('modeChip').textContent=curMode==='raw'?t('rawMode'):t('antiFilter');
   setSeg('modeSeg',curMode,'m');setSeg('verSeg',curVer,'v');
   $('obfsBox').classList.toggle('hiddenEl',curMode!=='obfs');
   applyListHeight();
@@ -1102,18 +1148,22 @@ const X25519=(()=>{
   return{genKeypair,selfTest,b64e};
 })();
 
-/* ═══ AmneziaParams — فرمول طلایی ═══ */
+/* ═══ پریست‌های جهانگرد (بهینه برای ایران) ═══ */
 const AmneziaParams=(()=>{
   const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
-  const PRESETS={warp:{Jc:8,Jmin:55,Jmax:140},light:{Jc:3,Jmin:8,Jmax:30},heavy:{Jc:12,Jmin:40,Jmax:180}};
+  const PRESETS={
+    stable:{Jc:10,Jmin:40,Jmax:100},
+    light:{Jc:3,Jmin:10,Jmax:30},
+    heavy:{Jc:15,Jmin:50,Jmax:120},
+    stealth:{Jc:20,Jmin:60,Jmax:150}
+  };
   function getJunk(p){if(PRESETS[p])return{...PRESETS[p]};
-    return{Jc:Math.max(1,Math.min(128,+$('jc').value||8)),
-      Jmin:Math.max(8,+$('jmin').value||55),
-      Jmax:Math.max(+($('jmin').value||55)+10,+$('jmax').value||140)};}
+    return{Jc:Math.max(1,Math.min(128,+$('jc').value||10)),
+      Jmin:Math.max(8,+$('jmin').value||40),
+      Jmax:Math.max(+($('jmin').value||40)+10,+$('jmax').value||100)};}
   function genI(){const rh=n=>[...crypto.getRandomValues(new Uint8Array(n))].map(b=>b.toString(16).padStart(2,'0').toUpperCase()).join('');
     return{I1:rh(rnd(4,6)),I2:rh(rnd(4,6)),I3:rh(rnd(2,4)),I4:rh(rnd(2,4)),I5:rh(rnd(2,3))};}
-  function golden(p){return{...getJunk(p),S1:0,S2:0,H1:1,H2:2,H3:3,H4:4}}
-  return{golden,genI,PRESETS};
+  return{getJunk,genI,PRESETS};
 })();
 
 /* ═══ اعتبارسنجی ═══ */
@@ -1141,19 +1191,23 @@ async function copyText(text){
     try{ta.setSelectionRange(0,ta.value.length)}catch(e){}
     const ok=document.execCommand('copy');document.body.removeChild(ta);if(ok)return true;}catch(e){}
   try{const ta=document.createElement('textarea');ta.value=text;
-    ta.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;max-width:480px;height:180px;background:#171b2e;color:#e8eaf3;border:2px solid #a78bfa;padding:12px;font-family:monospace;font-size:12px;z-index:10000;border-radius:12px';
+    ta.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;max-width:480px;height:180px;background:#0f2440;color:#e6f1ff;border:2px solid #2dd4bf;padding:12px;font-family:monospace;font-size:12px;z-index:10000;border-radius:12px';
     document.body.appendChild(ta);ta.focus();ta.select();toast(t('longPress'),'warn',4000);
     setTimeout(()=>{if(document.body.contains(ta))document.body.removeChild(ta)},8000);return true;}catch(e){}
   try{prompt('Copy:',text);return true}catch(e){}
   return false;
 }
 
-/* ═══ سازنده کانفیگ — ترتیب دقیق ═══ */
+/* ═══ سازنده کانفیگ جهانگرد ═══
+   حالت خام (raw): کانفیگ خالص وایرگارد + کلید وارپ → سازگار با همه نسخه‌ها
+   حالت ضدفیلتر (obfs): + پارامترهای استتار برای هر نسخه
+   نکته: سرور وارپ وایرگارد استاندارد است، پس فقط Jc/Jmin/Jmax معنی دارند
+   و S1/S2=0 و H1-H4=1-4 باید حفظ شوند. */
 const AmneziaConfig=(()=>{
   function build(o){const L=[];
     if(o.addComment){L.push('# ═══════════════════════════════════════');
-      L.push('# WarpMiner · AmneziaWG v'+o.version);
-      L.push('# Mode: '+(o.mode==='raw'?'FAST (WARP)':'ANTI-FILTER'));
+      L.push('# WarpMiner جهانگرد · AmneziaWG v'+o.version);
+      L.push('# Mode: '+(o.mode==='raw'?'RAW UNIVERSAL':'ANTI-FILTER'));
       L.push('# '+new Date().toISOString());L.push('# Developer: THE SAZ');
       L.push('# ═══════════════════════════════════════');L.push('');}
     L.push('[Interface]');L.push('PrivateKey = '+o.privKey);
@@ -1161,12 +1215,22 @@ const AmneziaConfig=(()=>{
     L.push('Address = '+v4+'/32, '+v6+'/128');
     L.push('DNS = '+o.dns);L.push('MTU = '+o.mtu);
     if(o.reserved&&ConfigValidator.validReserved(o.reserved))L.push('Reserved = '+o.reserved);
-    if(o.params){L.push('Jc = '+o.params.Jc);L.push('Jmin = '+o.params.Jmin);L.push('Jmax = '+o.params.Jmax);
-      L.push('S1 = '+o.params.S1);L.push('S2 = '+o.params.S2);
-      L.push('H1 = '+o.params.H1);L.push('H2 = '+o.params.H2);L.push('H3 = '+o.params.H3);L.push('H4 = '+o.params.H4);
-      if((o.version==='2.0'||o.version==='3.1')&&o.params.S3!==undefined){L.push('S3 = '+o.params.S3);L.push('S4 = '+o.params.S4);}
-      for(const k of['I1','I2','I3','I4','I5'])if(o.params[k]){
-        const up=o.params[k].toUpperCase();if(ConfigValidator.validHex(up))L.push(k+' = '+up);}}
+    // حالت خام: هیچ پارامتر اضافی → سازگاری حداکثری
+    if(o.mode==='obfs'&&o.params){
+      L.push('Jc = '+o.params.Jc);L.push('Jmin = '+o.params.Jmin);L.push('Jmax = '+o.params.Jmax);
+      // برای سرور وارپ (وایرگارد استاندارد) این مقادیر باید حفظ شوند
+      L.push('S1 = 0');L.push('S2 = 0');
+      L.push('H1 = 1');L.push('H2 = 2');L.push('H3 = 3');L.push('H4 = 4');
+      // v2.0 و v3.1 پارامترهای اضافی دارند
+      if(o.version==='2.0'||o.version==='3.1'){
+        L.push('S3 = '+(o.params.S3||0));L.push('S4 = '+(o.params.S4||0));
+      }
+      // I1-I5 فقط وقتی معتبر و غیرخالی باشند
+      for(const k of['I1','I2','I3','I4','I5']){
+        if(o.params[k]){const up=o.params[k].toUpperCase();
+          if(ConfigValidator.validHex(up))L.push(k+' = '+up);}
+      }
+    }
     L.push('');
     const allowed='0.0.0.0/0, ::/0';
     const peer=(ep,al,tag)=>{if(tag)L.push(tag);L.push('[Peer]');L.push('PublicKey = '+CF_PUB);
@@ -1191,7 +1255,7 @@ const WarpApi=(()=>{
     const c=(custom||'').trim();
     if(c)A.push({id:'custom',name:'worker',run:()=>fetch(c,{method:'POST',headers:{'Content-Type':'application/json'},body})});
     if(mode&&mode!=='auto'){const f=A.find(x=>x.id===mode);return f?[f]:A;}
-    let rem=null;try{rem=localStorage.getItem('wm8-api')}catch(e){}
+    let rem=null;try{rem=localStorage.getItem('wm9-api')}catch(e){}
     if(rem){const i=A.findIndex(x=>x.id===rem);if(i>0)A.unshift(A.splice(i,1)[0]);}
     return A;}
   async function register(pubKey,mode,custom,onTry){
@@ -1200,7 +1264,7 @@ const WarpApi=(()=>{
       const res=await m.run();if(!res.ok)throw new Error('HTTP '+res.status);
       const j=await res.json();const root=j.result||j;
       if(!root.client_id&&!root.config)throw new Error('bad response');
-      try{localStorage.setItem('wm8-api',m.id)}catch(e){}
+      try{localStorage.setItem('wm9-api',m.id)}catch(e){}
       return{ok:true,method:m.name,data:root};}catch(e){err=e.message}}
     return{ok:false,error:err};}
   return{register};
@@ -1256,8 +1320,8 @@ function parseEPList(text){const out=[],seen=new Set();
     const m=l.trim().match(/^(\d{1,3}(?:\.\d{1,3}){3})\s*[: ]\s*(\d{1,6})$/);
     if(m){const key=m[1]+':'+m[2];if(!seen.has(key)){seen.add(key);out.push({ip:m[1],port:+m[2],star:false,sel:false});}}});
   return out;}
-function saveVault(){try{localStorage.setItem('wm8-vault',JSON.stringify(vault))}catch(e){}}
-function loadVault(){let saved=null;try{saved=JSON.parse(localStorage.getItem('wm8-vault')||'null')}catch(e){}
+function saveVault(){try{localStorage.setItem('wm9-vault',JSON.stringify(vault))}catch(e){}}
+function loadVault(){let saved=null;try{saved=JSON.parse(localStorage.getItem('wm9-vault')||'null')}catch(e){}
   vault=(saved&&saved.length)?saved:parseEPList(DEFAULT_IPS.join('\n'));}
 function resetVault(){if(S.confirmDel&&!confirm(t('confirmDelete')))return;
   vault=parseEPList(DEFAULT_IPS.join('\n'));portFilterSet=null;saveVault();renderVault();
@@ -1338,17 +1402,17 @@ function doImport(){const replace=$('importReplace').checked,items=parseEPList($
   toast(t('imported')+' ('+items.length+')','ok');log('o','Imported '+items.length)}
 async function importFromClipboard(){try{$('importText').value=await navigator.clipboard.readText()}catch(e){toast(t('copyFailed'),'err')}}
 function renderSlots(){$('slotsList').innerHTML=[1,2,3].map(n=>{
-    let cnt=0;try{const s=localStorage.getItem('wm8-slot'+n);if(s)cnt=JSON.parse(s).length}catch(e){}
+    let cnt=0;try{const s=localStorage.getItem('wm9-slot'+n);if(s)cnt=JSON.parse(s).length}catch(e){}
     return '<div class="set-row"><label>'+t('slots')+' '+n+'<small>'+cnt+' items</small></label>'+
       '<div class="row" style="flex:none">'+
       '<button class="tbtn mini primary" onclick="saveSlot('+n+')">'+ic('download','sm')+'</button>'+
       '<button class="tbtn mini" onclick="loadSlot('+n+')">'+ic('upload','sm')+'</button>'+
       '<button class="tbtn mini danger" onclick="clearSlot('+n+')">'+ic('trash','sm')+'</button>'+
       '</div></div>';}).join('')}
-function saveSlot(n){localStorage.setItem('wm8-slot'+n,JSON.stringify(vault));renderSlots();toast(t('slotSaved')+' '+n,'ok');log('o','Vault → slot '+n)}
-function loadSlot(n){const s=localStorage.getItem('wm8-slot'+n);if(!s)return toast(t('empty'),'err');
+function saveSlot(n){localStorage.setItem('wm9-slot'+n,JSON.stringify(vault));renderSlots();toast(t('slotSaved')+' '+n,'ok');log('o','Vault → slot '+n)}
+function loadSlot(n){const s=localStorage.getItem('wm9-slot'+n);if(!s)return toast(t('empty'),'err');
   vault=JSON.parse(s);saveVault();renderVault();closeM('m-slots');toast(t('slotLoaded')+' '+n,'ok');log('o','Slot '+n+' → vault')}
-function clearSlot(n){localStorage.removeItem('wm8-slot'+n);renderSlots()}
+function clearSlot(n){localStorage.removeItem('wm9-slot'+n);renderSlots()}
 function pickRandom(){if(!vault.length)return toast(t('needItems'),'err');
   const v=vault[rnd(0,vault.length-1)];$('endpoint').value=fmtEP(v);flash('sec-forge');
   toast(t('randomSet'),'ok',1600);log('i','Random target: '+fmtEP(v))}
@@ -1404,14 +1468,14 @@ async function ensureKeys(){
   toast(t('keyReady'),'ok',1500);
 }
 
-/* ═══ فورج ═══ */
-let curMode=S.cfgMode||'obfs',curVer=S.ver||'1.5',curPreset=S.preset||'warp';
+/* ═══ فورج جهانگرد ═══ */
+let curMode=S.cfgMode||'raw',curVer=S.ver||'1.5',curPreset=S.preset||'stable';
 document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{
   curMode=b.dataset.m;setSeg('modeSeg',curMode,'m');
   $('obfsBox').classList.toggle('hiddenEl',curMode!=='obfs');
   $('sec-account').classList.toggle('hiddenEl',curMode!=='raw');
+  $('modeChip').textContent=curMode==='raw'?t('rawMode'):t('antiFilter');
   log('i','Mode ← '+curMode);
-  if(curMode==='obfs'&&!$('priv').value.trim())ensureKeys();
 });
 document.querySelectorAll('#verSeg button').forEach(b=>b.onclick=()=>{
   curVer=b.dataset.v;setSeg('verSeg',curVer,'v');$('verChip').textContent='v'+curVer;log('i','Ver ← v'+curVer)});
@@ -1419,27 +1483,25 @@ document.querySelectorAll('#verSeg button').forEach(b=>b.onclick=()=>{
 $('wiw').addEventListener('change',()=>$('wiwRow').classList.toggle('hiddenEl',!$('wiw').checked));
 function uncheckPresets(){document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('on'))}
 function setPreset(p,btn){curPreset=p;
-  if(p!=='custom'){const j=AmneziaParams.PRESETS[p];
-    $('jc').value=j.Jc;$('jmin').value=j.Jmin;$('jmax').value=j.Jmax;
-    $('jcv').textContent=j.Jc;$('jminv').textContent=j.Jmin;$('jmaxv').textContent=j.Jmax;}
+  const j=AmneziaParams.PRESETS[p];
+  $('jc').value=j.Jc;$('jmin').value=j.Jmin;$('jmax').value=j.Jmax;
+  $('jcv').textContent=j.Jc;$('jminv').textContent=j.Jmin;$('jmaxv').textContent=j.Jmax;
   uncheckPresets();btn.classList.add('on');log('i','Preset ← '+p)}
 function magicGen(){const p=AmneziaParams.genI();
   $('i1').value=p.I1;$('i2').value=p.I2;$('i3').value=p.I3;$('i4').value=p.I4;$('i5').value=p.I5;
   log('i','I1-I5 generated')}
 function clearI(){['i1','i2','i3','i4','i5'].forEach(id=>$(id).value='');log('i','I params cleared')}
 function collectParams(){
-  const junk={Jc:Math.max(1,Math.min(128,+$('jc').value||8)),
-    Jmin:Math.max(8,+$('jmin').value||55),
-    Jmax:Math.max(+($('jmin').value||55)+10,+$('jmax').value||140)};
-  const p={...junk,S1:0,S2:0,H1:1,H2:2,H3:3,H4:4};
-  if(curVer==='2.0'||curVer==='3.1'){p.S3=rnd(10,32);p.S4=rnd(10,20);}
+  const junk=AmneziaParams.getJunk(curPreset);
+  const p={...junk};
+  if(curVer==='2.0'||curVer==='3.1'){p.S3=rnd(0,32);p.S4=rnd(0,20);}
   for(const k of['i1','i2','i3','i4','i5']){const val=$(k).value.trim();
     if(val&&ConfigValidator.validHex(val))p[k.toUpperCase()]=val.toUpperCase();}
   return p;}
 function buildCfgText(ep,mode,opts){opts=opts||{};
   const priv=$('priv').value.trim(),wiw=opts.wiw!==undefined?opts.wiw:$('wiw').checked,
     ep2=opts.ep2||$('endpoint2').value.trim();
-  const params=mode==='raw'?{Jc:8,Jmin:55,Jmax:140,S1:0,S2:0,H1:1,H2:2,H3:3,H4:4}:(opts.params||collectParams());
+  const params=mode==='obfs'?(opts.params||collectParams()):null;
   return AmneziaConfig.build({privKey:priv,endpoint:ep,version:curVer,mode,wiw,endpoint2:ep2,
     ipv4:$('ip4').value.trim(),ipv6:S.ipv6?($('ip6').value.trim()||'2606:4700:110:8482:317d:a018:9443:c7b6'):'',
     reserved:$('cid').value.trim(),dns:S.dns,mtu:S.mtu,keepalive:S.ka,addComment:S.comment,params});}
@@ -1452,13 +1514,14 @@ async function buildConfig(forceMode){
   if($('wiw').checked){const ep2=$('endpoint2').value.trim();
     if(ep2&&ep2===ep){toast(t('duplicateErr'),'warn',2500);log('w','WiW duplicate');return false}}
   const cfg=buildCfgText(ep,mode);$('out').value=cfg;
-  const v=ConfigValidator.runChecks({endpoint:ep,privKey:priv,reserved:$('cid').value.trim(),params:collectParams()});
+  const v=ConfigValidator.runChecks({endpoint:ep,privKey:priv,reserved:$('cid').value.trim(),
+    params:mode==='obfs'?collectParams():null});
   if(v.valid){$('sanity').innerHTML=ic('check','sm')+' SANITY: PASS';$('sanity').className='pass';}
   else{$('sanity').innerHTML=ic('alert','sm')+' SANITY: '+v.issues.length;
     $('sanity').className=v.issues.length>2?'fail':'warn';log('w','Issues: '+v.issues.join(', '));}
-  $('outHint').textContent=mode==='raw'?'FAST · H1-4=1..4 · instant connect.':'Anti-filter v'+curVer+' · golden formula.';
+  $('outHint').textContent=mode==='raw'?t('outHint'):'Anti-filter v'+curVer+' · S1=S2=0, H1-H4=1-4.';
   flash('sec-out');if(S.autocopy)copyText(cfg).catch(()=>{});beep();vibrate(30);
-  log('o',t('forged')+' · '+(mode==='raw'?'FAST':'ANTI v'+curVer)+' · '+cfg.length+'B');return true;}
+  log('o',t('forged')+' · '+(mode==='raw'?'RAW':'ANTI v'+curVer)+' · '+cfg.length+'B');return true;}
 function copyCfg(){if(!$('out').value)return toast(t('nothingCopy'),'err');
   copyText($('out').value).then(ok=>{toast(ok?t('copied'):t('copyFailed'),ok?'ok':'err',1600);if(ok)log('o','Copied')})}
 function dlCfg(){if(!$('out').value)return toast(t('nothingCopy'),'err');
@@ -1484,7 +1547,7 @@ function bulkForge(){
   selected=selected.slice(0,10);
   if(!selected.length)return toast(t('needItems'),'err');
   openM('m-bulk');
-  bulkData=selected.map(v=>({v,text:buildCfgText(fmtEP(v),curMode,{params:collectParams()})}));
+  bulkData=selected.map(v=>({v,text:buildCfgText(fmtEP(v),curMode,{params:curMode==='obfs'?collectParams():null})}));
   $('bulkGrid').innerHTML=bulkData.map((c,i)=>
     '<div class="bcard"><div class="bcard-h"><span class="rank">#'+(i+1)+'</span><span class="ep">'+fmtEP(c.v)+'</span></div>'+
     '<div class="qr-box"><canvas id="qr-'+i+'"></canvas></div>'+
@@ -1511,10 +1574,10 @@ function downloadAll(){if(!bulkData.length)return;
   bulkData.forEach((c,i)=>setTimeout(()=>bulkDl(i),i*400));toast('×'+bulkData.length,'ok',3000)}
 
 /* ═══ کلیدها ═══ */
-function saveKeys(){try{localStorage.setItem('wm8-keys',JSON.stringify({
+function saveKeys(){try{localStorage.setItem('wm9-keys',JSON.stringify({
     priv:$('priv').value,pub:$('pub').value,cid:$('cid').value,accid:$('accid').value,
     ip4:$('ip4').value,ip6:$('ip6').value,ep:$('endpoint').value}))}catch(e){}}
-function loadKeys(){try{const k=JSON.parse(localStorage.getItem('wm8-keys')||'null');if(!k)return;
+function loadKeys(){try{const k=JSON.parse(localStorage.getItem('wm9-keys')||'null');if(!k)return;
     $('priv').value=k.priv||'';$('pub').value=k.pub||'';$('cid').value=k.cid||'';
     $('accid').value=k.accid||'';$('ip4').value=k.ip4||'';$('ip6').value=k.ip6||'';
     if(k.ep)$('endpoint').value=k.ep;if(k.priv)log('i','Keys restored');}catch(e){}}
@@ -1525,17 +1588,17 @@ window.addEventListener('resize',applyListHeight);
 
 /* ═══ Init ═══ */
 loadVault();bindSettings();syncSettings();applyAll();loadKeys();renderVault();
-(function(){const btn=document.querySelector('.presets button[data-p="'+(S.preset||'warp')+'"]');
-  if(btn)setPreset(S.preset||'warp',btn);})();
+(function(){const btn=document.querySelector('.presets button[data-p="'+(S.preset||'stable')+'"]');
+  if(btn)setPreset(S.preset||'stable',btn);})();
 setSeg('modeSeg',curMode,'m');setSeg('verSeg',curVer,'v');
 $('verChip').textContent='v'+curVer;
+$('modeChip').textContent=curMode==='raw'?t('rawMode'):t('antiFilter');
 $('sec-account').classList.toggle('hiddenEl',curMode!=='raw');
-if(curMode==='obfs'&&!$('priv').value.trim())ensureKeys();
-log('i','WarpMiner v0.6.8 · Phoenix');
+log('i','WarpMiner v0.9.0 · جهانگرد (Voyager)');
 log(X25519.selfTest()?'o':'e','X25519 self-test: '+(X25519.selfTest()?'PASS':'FAIL'));
-log('i','IPs: '+vault.length+' · lang: '+S.lang+' · theme: '+S.theme);
-log('i','Golden formula: H1=1..H4=4, S1=S2=0, Jc=8, Jmin=55, Jmax=140');
-log('i','QR engine: internal offline · icons: SVG sprite');
+log('i','IPs: '+vault.length+' (4 diverse ranges) · lang: '+S.lang+' · theme: '+S.theme);
+log('i','RAW mode = universal pure WireGuard+WARP → works on ALL Amnezia versions');
+log('i','ANTI-FILTER = Jc/Jmin/Jmax + S1=S2=0 + H1-H4=1-4 (WARP-compatible)');
 log('i','Developer: THE SAZ');
 
 /* ═══ ثبت سرویس‌ورکر (PWA) ═══ */
