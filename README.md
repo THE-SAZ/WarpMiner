@@ -373,6 +373,12 @@ Released under the **MIT License** — see [LICENSE](LICENSE).
 
 <div align="center">
 
+# ⭐ Star History
+
+<a href="https://star-history.com/#THE-SAZ/saz-bridge&Date">
+  <img src="https://api.star-history.com/svg?repos=THE-SAZ/WarpMiner&type=Date" alt="Star History" width="80%"/>
+</a>
+
 **Developed by [THE SAZ](https://github.com/THE-SAZ) 🏴‍☠️🖤**
 
 [Telegram](https://t.me/the-saz) · [GitHub](https://github.com/THE-SAZ) · [Website](https://zaya.io/thesaz)
